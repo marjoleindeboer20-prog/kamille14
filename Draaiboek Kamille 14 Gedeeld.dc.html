@@ -296,9 +296,12 @@ input{font-family:inherit}
 
   <sc-if value="{{ isWho }}" hint-placeholder-val="{{ false }}">
   <section style="display:flex;flex-direction:column;gap:22px">
-    <div style="display:flex;flex-direction:column;gap:6px">
-      <h2 style="margin:0;font-size:28px;font-weight:500;letter-spacing:-.01em">Wie doet wat</h2>
-      <div style="font-size:14px;color:#5E5A52">{{ whoSummary }}</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <h2 style="margin:0;font-size:28px;font-weight:500;letter-spacing:-.01em">Wie doet wat</h2>
+        <div style="font-size:14px;color:#5E5A52">{{ whoSummary }}</div>
+      </div>
+      <div onClick="{{ goAllTasks }}" style="height:34px;padding:0 14px;display:flex;align-items:center;gap:8px;border:1px solid #CAC4B7;border-radius:8px;background:#FFFFFF;font-size:13.5px;font-weight:500;cursor:pointer" style-hover="border-color:#1A1A18">Alle taken <span style="color:#6E695F">›</span></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:14px;align-items:start">
       <sc-for list="{{ whoGroups }}" as="g" hint-placeholder-count="6">
@@ -1016,11 +1019,12 @@ class Component extends DCLogic {
       locked, needName: !locked && !me, ready: !locked && !!me,
       isHome: view === 'home', isAvail: view === 'avail', isWho: view === 'who',
       goWho: () => this.go('wie'),
+      goAllTasks: () => { this.setState({ fromWho: false, filter: null }); this.go('taken'); },
       ...this.shopVals(),
       whoCardSub: unassigned ? unassigned + ' nog niet verdeeld' : 'Alles is verdeeld',
       showBackWho: view === 'tasks' && !!s.fromWho,
       backWho: () => { const y = this.whoY || 0; this.setState({ fromWho: false, filter: null }); this.go('wie'); setTimeout(() => window.scrollTo(0, y), 60); },
-      whoSummary: unassigned ? unassigned + (unassigned === 1 ? ' taak heeft' : ' taken hebben') + ' nog niemand. Tik op een taak om ernaartoe te gaan.' : 'Alle taken zijn verdeeld. Tik op een taak om ernaartoe te gaan.',
+      whoSummary: unassigned ? unassigned + (unassigned === 1 ? ' taak heeft' : ' taken hebben') + ' nog niemand.' : 'Alle taken zijn verdeeld.',
       whoGroups: PEOPLE.map(name => { const it = byP[name] || [], open = it.filter(x => !x.done).length;
         return { name, ini: ini(name), av: av(name, 26), items: it, empty: !it.length, n: String(it.length), avS: av(name, 22),
           count: it.length ? open + ' open · ' + (it.length - open) + ' klaar' : '' }; }), isTasks: view === 'tasks', notHome: view !== 'home',
