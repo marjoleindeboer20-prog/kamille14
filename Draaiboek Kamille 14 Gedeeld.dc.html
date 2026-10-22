@@ -123,6 +123,35 @@ input{font-family:inherit}
       </div>
     </div>
 
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <h2 style="margin:0;font-size:20px;font-weight:500">Takenlijst</h2>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div onClick="{{ goAvail }}" style="height:34px;padding:0 14px;display:flex;align-items:center;gap:8px;border:1px solid #CAC4B7;border-radius:8px;background:#FFFFFF;font-size:13.5px;font-weight:500;cursor:pointer" style-hover="border-color:#1A1A18">Planning bekijken <span style="color:#6E695F">›</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;background:#FFFFFF;overflow:hidden">
+        <sc-for list="{{ phaseNav }}" as="ph" hint-placeholder-count="6">
+          <div onClick="{{ ph.go }}" style="display:flex;align-items:center;gap:16px;padding:14px 16px;border-bottom:1px solid #E3DED3;cursor:pointer" style-hover="background:#F3F0E8">
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+              <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A;text-transform:uppercase;letter-spacing:.04em">{{ ph.when }}</div>
+              <div style="font-size:16px;font-weight:500">{{ ph.title }}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none">
+              <div style="display:flex;align-items:center;gap:8px">
+                <sc-if value="{{ ph.hasNew }}" hint-placeholder-val="{{ false }}">
+                  <span style="height:20px;padding:0 8px;border-radius:10px;background:#B5543F;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;white-space:nowrap">{{ ph.newLabel }}</span>
+                </sc-if>
+                <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#5E5A52">{{ ph.count }}</div>
+              </div>
+              <div style="width:64px;height:3px;background:#DAD4C8;border-radius:2px;overflow:hidden"><div style="{{ ph.bar }}"></div></div>
+            </div>
+            <div style="font-size:16px;color:#6E695F;flex:none">›</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px">
       <a href="Kamille%2014%20Rondkijken.dc.html" style="display:flex;flex-direction:column;text-decoration:none;color:#1A1A18;border:1px solid #CAC4B7;border-radius:12px;overflow:hidden;background:#FFFFFF" style-hover="border-color:#1A1A18">
         <img src="assets/3d-voorkant.jpg" alt="3D-model van Kamille 14" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#DAD4C8">
@@ -200,35 +229,6 @@ input{font-family:inherit}
         </div>
       </div>
     </div>
-
-    <section style="display:flex;flex-direction:column;gap:12px">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-        <h2 style="margin:0;font-size:20px;font-weight:500">Takenlijst</h2>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <div onClick="{{ goAvail }}" style="height:34px;padding:0 14px;display:flex;align-items:center;gap:8px;border:1px solid #CAC4B7;border-radius:8px;background:#FFFFFF;font-size:13.5px;font-weight:500;cursor:pointer" style-hover="border-color:#1A1A18">Planning bekijken <span style="color:#6E695F">›</span></div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;background:#FFFFFF;overflow:hidden">
-        <sc-for list="{{ phaseNav }}" as="ph" hint-placeholder-count="6">
-          <div onClick="{{ ph.go }}" style="display:flex;align-items:center;gap:16px;padding:14px 16px;border-bottom:1px solid #E3DED3;cursor:pointer" style-hover="background:#F3F0E8">
-            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
-              <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A;text-transform:uppercase;letter-spacing:.04em">{{ ph.when }}</div>
-              <div style="font-size:16px;font-weight:500">{{ ph.title }}</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none">
-              <div style="display:flex;align-items:center;gap:8px">
-                <sc-if value="{{ ph.hasNew }}" hint-placeholder-val="{{ false }}">
-                  <span style="height:20px;padding:0 8px;border-radius:10px;background:#B5543F;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;white-space:nowrap">{{ ph.newLabel }}</span>
-                </sc-if>
-                <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#5E5A52">{{ ph.count }}</div>
-              </div>
-              <div style="width:64px;height:3px;background:#DAD4C8;border-radius:2px;overflow:hidden"><div style="{{ ph.bar }}"></div></div>
-            </div>
-            <div style="font-size:16px;color:#6E695F;flex:none">›</div>
-          </div>
-        </sc-for>
-      </div>
-    </section>
   </div>
   </sc-if>
 
