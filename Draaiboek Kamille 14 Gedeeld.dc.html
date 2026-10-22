@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0;background:#F6F4EE;color:#1A1A18;font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1A1A18}a:hover{color:#4F6B72}
+input{font-family:inherit}
+@keyframes k14pop{0%{transform:scale(.6)}55%{transform:scale(1.25)}100%{transform:scale(1)}}
+</style>
+</helmet>
+
+<sc-if value="{{ locked }}" hint-placeholder-val="{{ false }}">
+  <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box">
+    <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:16px">
+      <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#66615A">Draaiboek · Kamille 14</div>
+      <h1 style="margin:0;font-size:30px;font-weight:500;letter-spacing:-.02em">Wachtwoord</h1>
+      <input type="password" placeholder="Wachtwoord" value="{{ pwDraft }}" onChange="{{ onPw }}" onKeyDown="{{ onPwKey }}" style="height:46px;border:1px solid #C2BBAD;border-radius:10px;background:#FFFFFF;padding:0 14px;font-size:16px;outline:none;color:#1A1A18">
+      <sc-if value="{{ pwWrong }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:13px;color:#9A4A3A">Dat klopt niet.</div>
+      </sc-if>
+      <div onClick="{{ tryPw }}" style="height:46px;border-radius:10px;background:#1A1A18;color:#F6F4EE;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;cursor:pointer;user-select:none">Openen</div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ needName }}" hint-placeholder-val="{{ false }}">
+  <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box">
+    <div style="width:100%;max-width:420px;display:flex;flex-direction:column;gap:18px">
+      <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#66615A">Draaiboek · Kamille 14</div>
+      <h1 style="margin:0;font-size:30px;font-weight:500;letter-spacing:-.02em">Wie ben jij?</h1>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <sc-for list="{{ namePick }}" as="n" hint-placeholder-count="6">
+          <div onClick="{{ n.pick }}" style="height:50px;padding:0 16px;display:flex;align-items:center;border:1px solid #C2BBAD;border-radius:10px;background:#FFFFFF;font-size:16px;cursor:pointer;user-select:none" style-hover="border-color:#1A1A18"><span style="display:flex;align-items:center;gap:12px"><span style="{{ n.av }}">{{ n.ini }}</span><span>{{ n.name }}</span></span></div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ askAdmin }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid #1A1A18;border-radius:10px;background:#FFFFFF">
+          <div style="font-size:14px;color:#5E5A52">Wachtwoord voor Marjolein + Wilmer</div>
+          <input type="password" placeholder="Wachtwoord" value="{{ adminDraft }}" onChange="{{ onAdmin }}" onKeyDown="{{ onAdminKey }}" style="height:44px;border:1px solid #C2BBAD;border-radius:8px;background:#FFFFFF;padding:0 12px;font-size:16px;outline:none;color:#1A1A18">
+          <sc-if value="{{ adminWrong }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:13px;color:#9A4A3A">Dat klopt niet.</div>
+          </sc-if>
+          <div style="display:flex;gap:8px">
+            <div onClick="{{ tryAdmin }}" style="height:40px;padding:0 16px;border-radius:8px;background:#1A1A18;color:#F6F4EE;display:flex;align-items:center;font-size:14px;cursor:pointer;user-select:none">Doorgaan</div>
+            <div onClick="{{ cancelAdmin }}" style="height:40px;padding:0 16px;border-radius:8px;border:1px solid #C2BBAD;display:flex;align-items:center;font-size:14px;cursor:pointer;user-select:none">Annuleer</div>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
+<div style="max-width:1280px;margin:0 auto;padding:40px clamp(20px,4vw,48px) 96px;box-sizing:border-box;display:flex;flex-direction:column;gap:40px">
+
+  <header style="display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div onClick="{{ goHome }}" style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#66615A;cursor:pointer">Draaiboek · Kamille 14</div>
+      <sc-if value="{{ notHome }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-if value="{{ showBackWho }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ backWho }}" style="height:32px;padding:0 14px;display:flex;align-items:center;border-radius:16px;border:1px solid #1A1A18;background:#1A1A18;color:#F6F4EE;font-size:13px;cursor:pointer;user-select:none">‹ Wie doet wat</div>
+        </sc-if>
+        <div onClick="{{ goHome }}" style="height:32px;padding:0 14px;display:flex;align-items:center;border-radius:16px;border:1px solid #C2BBAD;background:#FFFFFF;font-size:13px;cursor:pointer;user-select:none">‹ Overzicht</div>
+        </div>
+      </sc-if>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px 16px;flex-wrap:wrap;padding:12px 14px;border:1px solid #CAC4B7;border-radius:10px;background:#FFFFFF">
+      <div style="display:flex;align-items:center;gap:10px;font-size:14px;flex-wrap:wrap">
+        <span style="color:#66615A">Je bent</span>
+        <span style="{{ meAv }}">{{ meIni }}</span>
+        <span style="font-weight:600">{{ me }}</span>
+        <span onClick="{{ switchMe }}" style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#4F6B72;cursor:pointer;border-bottom:1px solid #ADA698">wissel</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A">
+        <span style="{{ syncDot }}"></span>
+        <span>{{ syncLabel }}</span>
+      </div>
+    </div>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <h1 style="margin:0;font-size:40px;line-height:1.05;font-weight:500;letter-spacing:-.02em;text-wrap:balance">Van sleutel tot verhuisdag</h1>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;font-size:14.5px;line-height:1.5;color:#3E3B35;text-wrap:pretty;max-width:calc(50% - 1px + max(0px, (602px - 100%) * 1000))">
+        <p style="margin:0">Hoi {{ me }}, binnenkort verhuizen papa en mama. Dit online draaiboek brengt daar wat structuur en planning in.</p>
+        <p style="margin:0">Hier staan de taken die gedaan moeten worden, en je kunt aangeven wat je graag wilt oppakken. Je ziet wat jouw taken zijn en wat de anderen doen, en je kunt benodigdheden voor de klusweek noteren.</p>
+        <p style="margin:0">Er is ook een 3D-model van het huis. Daarin kun je alvast rondkijken hoe het huis eruitziet, en zie je hoe het op de verhuisdag ingericht moet worden.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:#CAC4B7;border:1px solid #CAC4B7;border-radius:12px;overflow:hidden">
+      <div style="background:#FFFFFF;padding:22px 24px;display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap">
+        <div style="font-size:clamp(72px,10vw,112px);line-height:.85;font-weight:700;letter-spacing:-.04em;color:#B5543F;font-variant-numeric:tabular-nums">{{ moveN }}</div>
+        <div style="display:flex;flex-direction:column;gap:4px;padding-bottom:4px">
+          <div style="font-size:20px;font-weight:600">{{ moveUnit }}</div>
+          <div style="font-size:14px;color:#5E5A52">tot de verhuizing op vr 18 december</div>
+        </div>
+      </div>
+      <div style="background:#FFFFFF;display:grid;grid-template-rows:1fr 1fr">
+        <div style="padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #E3DED3">
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <div style="font-size:12px;color:#66615A">Sleuteloverdracht</div>
+            <div style="font-size:17px;font-weight:600">Wo 9 december</div>
+          </div>
+          <div style="font-size:14px;font-weight:600;color:#B5543F">{{ countKey }}</div>
+        </div>
+        <div style="padding:16px 20px;display:flex;flex-direction:column;justify-content:center;gap:8px">
+          <div style="display:flex;justify-content:space-between;gap:12px">
+            <div style="font-size:12px;color:#66615A">Voortgang</div>
+            <div style="font-size:14px;font-weight:600">{{ doneLabel }}</div>
+          </div>
+          <div style="height:6px;background:#EDE8DF;border-radius:3px;overflow:hidden"><div style="{{ barStyle }}"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px">
+      <a href="Kamille%2014%20Rondkijken.dc.html" style="display:flex;flex-direction:column;text-decoration:none;color:#1A1A18;border:1px solid #CAC4B7;border-radius:12px;overflow:hidden;background:#FFFFFF" style-hover="border-color:#1A1A18">
+        <img src="assets/3d-voorkant.jpg" alt="3D-model van Kamille 14" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#DAD4C8">
+        <div style="padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid #E3DED3">
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <div style="font-size:18px;font-weight:500">3D-model</div>
+            <div style="font-size:13.5px;color:#5E5A52">Rondkijken per kamer</div>
+          </div>
+          <span style="font-family:'Manrope',system-ui,sans-serif;font-size:12px">Openen ›</span>
+        </div>
+      </a>
+      <div onClick="{{ goMine }}" style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;overflow:hidden;background:#FFFFFF;cursor:pointer" style-hover="border-color:#1A1A18">
+        <div style="aspect-ratio:1/1;background:#F3F0E8;padding:clamp(14px,6%,28px);box-sizing:border-box;display:flex;flex-direction:column;gap:14px;overflow:hidden">
+          <div style="display:flex;align-items:baseline;gap:10px">
+            <span style="font-size:56px;line-height:.9;font-weight:700;letter-spacing:-.03em;color:#B5543F">{{ myOpenN }}</span>
+            <span style="font-size:15px;font-weight:600">{{ myOpenLabel }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;min-height:0">
+            <sc-for list="{{ myTop }}" as="mt" hint-placeholder-count="4">
+              <div style="display:flex;gap:10px;align-items:flex-start;background:#FFFFFF;border:1px solid #E3DED3;border-radius:8px;padding:9px 10px">
+                <span style="width:14px;height:14px;flex:none;margin-top:2px;border:1.5px solid #1A1A18;border-radius:4px"></span>
+                <span style="display:flex;flex-direction:column;gap:1px;min-width:0">
+                  <span style="font-size:13.5px;font-weight:500;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ mt.t }}</span>
+                  <span style="font-size:12px;color:#66615A">{{ mt.when }}</span>
+                </span>
+              </div>
+            </sc-for>
+            <sc-if value="{{ myEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:14px;line-height:1.45;color:#5E5A52;text-wrap:pretty">Je hebt nog niets gekozen. Tik bij een taak op ‘Ik doe dit’.</div>
+            </sc-if>
+          </div>
+        </div>
+        <div style="padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid #E3DED3">
+          <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+            <div style="font-size:18px;font-weight:500">Jouw taken</div>
+            <div style="font-size:13.5px;color:#5E5A52">{{ myTaskSub }}</div>
+          </div>
+          <span style="font-size:12px">Bekijken ›</span>
+        </div>
+      </div>
+      <div onClick="{{ goWho }}" style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;overflow:hidden;background:#FFFFFF;cursor:pointer" style-hover="border-color:#1A1A18">
+        <div style="aspect-ratio:1/1;background:#F3F0E8;padding:clamp(14px,6%,28px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;gap:5px;overflow:hidden">
+          <sc-for list="{{ whoGroups }}" as="wg" hint-placeholder-count="6">
+            <div style="display:flex;align-items:center;gap:8px;background:#FFFFFF;border:1px solid #E3DED3;border-radius:8px;padding:4px 10px">
+              <span style="{{ wg.avS }}">{{ wg.ini }}</span>
+              <span style="flex:1;min-width:0;font-size:13.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ wg.name }}</span>
+              <span style="font-size:13px;font-weight:600;color:#B5543F;flex:none;font-variant-numeric:tabular-nums">{{ wg.n }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid #E3DED3">
+          <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+            <div style="font-size:18px;font-weight:500">Wie doet wat</div>
+            <div style="font-size:13.5px;color:#5E5A52">{{ whoCardSub }}</div>
+          </div>
+          <span style="font-size:12px">Bekijken ›</span>
+        </div>
+      </div>
+      <div onClick="{{ goShop }}" style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;overflow:hidden;background:#FFFFFF;cursor:pointer" style-hover="border-color:#1A1A18">
+        <div style="aspect-ratio:1/1;background:#F3F0E8;padding:clamp(14px,6%,28px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;gap:5px;overflow:hidden">
+          <sc-for list="{{ shopPreview }}" as="sp" hint-placeholder-count="6">
+            <div style="display:flex;align-items:center;gap:8px;background:#FFFFFF;border:1px solid #E3DED3;border-radius:8px;padding:4px 10px">
+              <span style="width:14px;height:14px;flex:none;border:1.5px solid #A39C8E;border-radius:4px"></span>
+              <span style="flex:1;min-width:0;font-size:13.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ sp.t }}</span>
+              <span style="{{ sp.av }}">{{ sp.ini }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid #E3DED3">
+          <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
+            <div style="font-size:18px;font-weight:500">Benodigdheden</div>
+            <div style="font-size:13.5px;color:#5E5A52">{{ shopCardSub }}</div>
+          </div>
+          <span style="font-size:12px">Bekijken ›</span>
+        </div>
+      </div>
+    </div>
+
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <h2 style="margin:0;font-size:20px;font-weight:500">Takenlijst</h2>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div onClick="{{ goAvail }}" style="height:34px;padding:0 14px;display:flex;align-items:center;gap:8px;border:1px solid #CAC4B7;border-radius:8px;background:#FFFFFF;font-size:13.5px;font-weight:500;cursor:pointer" style-hover="border-color:#1A1A18">Planning bekijken <span style="color:#6E695F">›</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;background:#FFFFFF;overflow:hidden">
+        <sc-for list="{{ phaseNav }}" as="ph" hint-placeholder-count="6">
+          <div onClick="{{ ph.go }}" style="display:flex;align-items:center;gap:16px;padding:14px 16px;border-bottom:1px solid #E3DED3;cursor:pointer" style-hover="background:#F3F0E8">
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+              <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A;text-transform:uppercase;letter-spacing:.04em">{{ ph.when }}</div>
+              <div style="font-size:16px;font-weight:500">{{ ph.title }}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none">
+              <div style="display:flex;align-items:center;gap:8px">
+                <sc-if value="{{ ph.hasNew }}" hint-placeholder-val="{{ false }}">
+                  <span style="height:20px;padding:0 8px;border-radius:10px;background:#B5543F;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;white-space:nowrap">{{ ph.newLabel }}</span>
+                </sc-if>
+                <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#5E5A52">{{ ph.count }}</div>
+              </div>
+              <div style="width:64px;height:3px;background:#DAD4C8;border-radius:2px;overflow:hidden"><div style="{{ ph.bar }}"></div></div>
+            </div>
+            <div style="font-size:16px;color:#6E695F;flex:none">›</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isShop }}" hint-placeholder-val="{{ false }}">
+  <section style="display:flex;flex-direction:column;gap:22px;max-width:760px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <h2 style="margin:0;font-size:28px;font-weight:500;letter-spacing:-.01em">Benodigdheden</h2>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:14.5px;line-height:1.5;color:#3E3B35;text-wrap:pretty">
+        <p style="margin:0">Heb je iets nodig om te kunnen klussen of schoonmaken? Zet het op deze lijst. Marjolein en Wilmer zorgen dat alles op 9 december, de dag van de sleuteloverdracht, in het huis klaarstaat.</p>
+        <p style="margin:0">Typ wat je nodig hebt in het vak hieronder, kies een groep en tik op Toevoegen. Je naam komt er vanzelf bij. Staat het er al? Dan hoef je niets te doen. Iets verkeerd getypt? Met het potloodje pas je aan wat je zelf hebt toegevoegd.</p>
+      </div>
+      <sc-if value="{{ shopEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:14px;color:#66615A;padding:18px 0 0">Nog niets op de lijst.</div>
+      </sc-if>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;padding:14px 16px;border:1px solid #1A1A18;border-radius:12px;background:#FFFFFF">
+      <div style="display:flex;gap:8px">
+        <input placeholder="Wat heb je nodig?" value="{{ shopDraft }}" onChange="{{ onShopDraft }}" onKeyDown="{{ onShopKey }}" style="flex:1;min-width:0;height:42px;border:1px solid #C2BBAD;border-radius:8px;background:#FFFFFF;padding:0 12px;font-size:15px;color:#1A1A18;outline:none;font-family:inherit">
+        <div onClick="{{ addShop }}" style="height:42px;padding:0 16px;border-radius:8px;background:#1A1A18;color:#F6F4EE;display:flex;align-items:center;font-size:14px;font-weight:500;cursor:pointer;user-select:none;flex:none">Toevoegen</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <sc-for list="{{ shopCatPills }}" as="cp" hint-placeholder-count="4">
+          <div onClick="{{ cp.pick }}" style="{{ cp.style }}">{{ cp.name }}</div>
+        </sc-for>
+      </div>
+    </div>
+    <sc-for list="{{ shopGroups }}" as="sg" hint-placeholder-count="3">
+      <div style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;background:#FFFFFF;overflow:hidden">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 16px;background:#F3F0E8;border-bottom:1px solid #E3DED3">
+          <span style="font-size:16px;font-weight:600">{{ sg.name }}</span>
+          <span style="font-size:12px;color:#66615A">{{ sg.count }}</span>
+        </div>
+        <sc-for list="{{ sg.items }}" as="si" hint-placeholder-count="4">
+          <div data-tid="{{ si.id }}" style="{{ si.rowStyle }}">
+            <sc-if value="{{ si.canSort }}" hint-placeholder-val="{{ false }}">
+              <div onPointerDown="{{ si.dragStart }}" title="Sleep om te verplaatsen" style="width:18px;height:22px;flex:none;margin:0 -6px 0 -6px;display:flex;align-items:center;justify-content:center;color:#9A9488;font-size:14px;letter-spacing:-2px;cursor:grab;user-select:none;touch-action:none" style-hover="color:#1A1A18">⋮⋮</div>
+            </sc-if>
+            <div onClick="{{ si.toggle }}" style="{{ si.box }}">{{ si.check }}</div>
+            <sc-if value="{{ si.editing }}" hint-placeholder-val="{{ false }}">
+              <div style="flex:1;min-width:0;display:flex;gap:6px;flex-wrap:wrap">
+                <input value="{{ si.editT }}" onChange="{{ si.onEditT }}" onKeyDown="{{ si.onEditKey }}" style="flex:1;min-width:140px;height:36px;border:1px solid #1A1A18;border-radius:8px;background:#FFFFFF;padding:0 10px;font-size:15px;outline:none;color:#1A1A18;font-family:inherit">
+                <div onClick="{{ si.saveEdit }}" style="height:36px;padding:0 12px;border-radius:8px;background:#1A1A18;color:#F6F4EE;display:flex;align-items:center;font-size:13.5px;cursor:pointer;user-select:none">Opslaan</div>
+                <div onClick="{{ si.cancelEdit }}" style="height:36px;padding:0 12px;border-radius:8px;border:1px solid #C2BBAD;display:flex;align-items:center;font-size:13.5px;cursor:pointer;user-select:none">Annuleren</div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ si.notEditing }}" hint-placeholder-val="{{ true }}">
+              <div onClick="{{ si.toggle }}" style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;cursor:pointer">
+                <span style="{{ si.tStyle }}">{{ si.t }}</span>
+                <span style="font-size:12px;color:#66615A">{{ si.sub }}</span>
+              </div>
+            </sc-if>
+            <span title="{{ si.by }}" style="{{ si.av }}">{{ si.ini }}</span>
+            <sc-if value="{{ si.canEditBtn }}" hint-placeholder-val="{{ false }}">
+              <div onClick="{{ si.startEdit }}" title="Bewerken" style="width:32px;height:32px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:8px;color:#6E695F;font-size:15px;cursor:pointer" style-hover="background:#EFECE4;color:#1A1A18">✎</div>
+            </sc-if>
+            <sc-if value="{{ si.canDel }}" hint-placeholder-val="{{ false }}">
+              <div onClick="{{ si.del }}" title="Verwijderen" style="width:32px;height:32px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:8px;color:#6E695F;font-size:15px;cursor:pointer" style-hover="background:#EFECE4;color:#9A4A3A">✕</div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </sc-for>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ isWho }}" hint-placeholder-val="{{ false }}">
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <h2 style="margin:0;font-size:28px;font-weight:500;letter-spacing:-.01em">Wie doet wat</h2>
+      <div style="font-size:14px;color:#5E5A52">{{ whoSummary }}</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:14px;align-items:start">
+      <sc-for list="{{ whoGroups }}" as="g" hint-placeholder-count="6">
+        <div style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;background:#FFFFFF;overflow:hidden">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:#F3F0E8;border-bottom:1px solid #E3DED3">
+            <div style="display:flex;align-items:center;gap:10px;min-width:0">
+              <span style="{{ g.av }}">{{ g.ini }}</span>
+              <span style="font-size:16px;font-weight:600">{{ g.name }}</span>
+            </div>
+            <div style="font-size:12px;color:#66615A;flex:none">{{ g.count }}</div>
+          </div>
+          <sc-if value="{{ g.empty }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:14px 16px;font-size:13.5px;color:#66615A">Nog niets gekozen</div>
+          </sc-if>
+          <sc-for list="{{ g.items }}" as="gi" hint-placeholder-count="3">
+            <div onClick="{{ gi.go }}" style="display:flex;flex-direction:column;gap:6px;padding:11px 16px;border-bottom:1px solid #EDE8DF;cursor:pointer" style-hover="background:#FAF8F3">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+                <span style="{{ gi.titleStyle }}">{{ gi.t }}</span>
+                <sc-if value="{{ gi.date }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;color:#B5543F;flex:none">{{ gi.date }}</span></sc-if>
+              </div>
+              <div style="font-family:'Manrope',system-ui,sans-serif;font-size:11.5px;color:#66615A;text-transform:uppercase;letter-spacing:.04em">{{ gi.phase }}</div>
+              <sc-for list="{{ gi.notes }}" as="gn" hint-placeholder-count="0">
+                <div style="font-size:13px;line-height:1.45;color:#3E3B35;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;background:#EFECE4;border-radius:8px;padding:6px 10px">
+                  <span style="font-weight:600">{{ gn.by }}</span>
+                  <span style="flex:1;min-width:0;text-wrap:pretty">{{ gn.txt }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ isAvail }}" hint-placeholder-val="{{ false }}">
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <h2 style="margin:0;font-size:28px;font-weight:500;letter-spacing:-.01em">Planning</h2>
+      <div style="font-size:14px;color:#5E5A52">Wie doet wat op welke dag. Kies bij een taak op ‘Ik doe dit’ en daarna je datum.</div>
+    </div>
+    <sc-if value="{{ planEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:22px;border:1px dashed #C2BBAD;border-radius:12px;font-size:14px;color:#5E5A52">Er is nog niets ingepland.</div>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:14px;align-items:start">
+      <sc-for list="{{ planDays }}" as="pd" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;background:#FFFFFF;overflow:hidden">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 16px;background:#F3F0E8;border-bottom:1px solid #E3DED3">
+            <div style="font-size:16px;font-weight:600">{{ pd.label }}</div>
+            <div style="font-size:12px;color:#66615A">{{ pd.count }}</div>
+          </div>
+          <sc-for list="{{ pd.items }}" as="pi" hint-placeholder-count="2">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid #EDE8DF">
+              <span style="{{ pi.titleStyle }}">{{ pi.t }}</span>
+              <span style="display:flex;gap:4px;flex:none">
+                <sc-for list="{{ pi.people }}" as="pp" hint-placeholder-count="1">
+                  <span title="{{ pp.name }}" style="{{ pp.av }}">{{ pp.ini }}</span>
+                </sc-for>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{ isTasks }}" hint-placeholder-val="{{ false }}">
+  <section style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="margin:0;font-size:28px;font-weight:500;letter-spacing:-.01em">{{ tasksTitle }}</h2>
+    <div style="display:flex;gap:6px;overflow-x:auto;padding-bottom:2px">
+      <sc-for list="{{ phaseTabs }}" as="pt" hint-placeholder-count="7">
+        <div onClick="{{ pt.pick }}" style="{{ pt.style }}">{{ pt.name }}</div>
+      </sc-for>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="8">
+          <div onClick="{{ f.pick }}" style="{{ f.style }}">{{ f.name }}</div>
+        </sc-for>
+      </div>
+      <div onClick="{{ toggleOpenOnly }}" style="{{ openOnlyStyle }}">{{ openOnlyLabel }}</div>
+    </div>
+    
+  </section>
+
+  <sc-for list="{{ phases }}" as="p" hint-placeholder-count="6">
+    <section style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:10px;border-bottom:1.5px solid #1A1A18;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A;letter-spacing:.04em;text-transform:uppercase">{{ p.when }}</div>
+          <h2 style="margin:0;font-size:24px;font-weight:500;letter-spacing:-.01em">{{ p.title }}</h2>
+        </div>
+        <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A">{{ p.count }}</div>
+      </div>
+      <sc-for list="{{ p.tasks }}" as="t" hint-placeholder-count="5">
+        <div data-tid="{{ t.id }}" style="{{ t.rowStyle }}">
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <sc-if value="{{ t.canEdit }}" hint-placeholder-val="{{ false }}">
+              <div onPointerDown="{{ t.dragStart }}" title="Sleep om te verplaatsen" style="width:18px;height:22px;flex:none;margin:0 -6px 0 -4px;display:flex;align-items:center;justify-content:center;color:#9A9488;font-size:14px;letter-spacing:-2px;cursor:grab;user-select:none;touch-action:none" style-hover="color:#1A1A18">⋮⋮</div>
+            </sc-if>
+            <div onClick="{{ t.toggleDone }}" style="{{ t.checkStyle }}">{{ t.mark }}</div>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+              <sc-if value="{{ t.editing }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <input value="{{ t.editT }}" onChange="{{ t.onEditT }}" onKeyDown="{{ t.onEditKey }}" placeholder="Taak" style="height:40px;border:1px solid #1A1A18;border-radius:8px;background:#FFFFFF;padding:0 12px;font-size:16px;font-weight:500;outline:none;color:#1A1A18">
+                  <textarea value="{{ t.editN }}" onChange="{{ t.onEditN }}" onKeyDown="{{ t.onEditKey }}" placeholder="Omschrijving (optioneel)" rows="3" style="border:1px solid #C2BBAD;border-radius:8px;background:#FFFFFF;padding:10px 12px;font-size:14px;line-height:1.45;font-family:inherit;outline:none;color:#1A1A18;resize:vertical"></textarea>
+                  <div style="display:flex;gap:8px">
+                    <div onClick="{{ t.saveEdit }}" style="height:36px;padding:0 14px;border-radius:8px;background:#1A1A18;color:#F6F4EE;display:flex;align-items:center;font-size:14px;cursor:pointer;user-select:none">Opslaan</div>
+                    <div onClick="{{ t.cancelEdit }}" style="height:36px;padding:0 14px;border-radius:8px;border:1px solid #C2BBAD;display:flex;align-items:center;font-size:14px;cursor:pointer;user-select:none">Annuleer</div>
+                    <div onClick="{{ t.removeTask }}" style="height:36px;padding:0 14px;margin-left:auto;border-radius:8px;border:1px solid #E3C3BA;color:#9A3F2C;display:flex;align-items:center;font-size:14px;cursor:pointer;user-select:none" style-hover="background:#F7E9E4;border-color:#9A3F2C">Verwijderen</div>
+                  </div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ t.notEditing }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                  <span style="{{ t.titleStyle }}">{{ t.t }}</span>
+                  <sc-if value="{{ t.hasNew }}" hint-placeholder-val="{{ false }}">
+                    <span style="height:20px;padding:0 8px;border-radius:10px;background:#B5543F;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;white-space:nowrap">{{ t.newLabel }}</span>
+                  </sc-if>
+                  
+                  <sc-if value="{{ t.canEdit }}" hint-placeholder-val="{{ false }}">
+                    <span onClick="{{ t.startEdit }}" title="Bewerken" style="font-size:15px;line-height:1;color:#6E695F;cursor:pointer;user-select:none;padding:2px 4px" style-hover="color:#1A1A18">✎</span>
+                  </sc-if>
+                </div>
+                <sc-if value="{{ t.n }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:13.5px;line-height:1.45;color:#5E5A52;text-wrap:pretty">{{ t.n }}</div>
+                </sc-if>
+              </sc-if>
+              <sc-if value="{{ t.hasWho }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:13.5px;color:#1A1A18;display:flex;gap:6px;align-items:baseline;flex-wrap:wrap">
+                  <span style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A">Wordt gedaan door</span>
+                  <div style="display:flex;gap:6px 12px;flex-wrap:wrap;align-items:center">
+                    <sc-for list="{{ t.whoList }}" as="wl" hint-placeholder-count="1">
+                      <span style="display:flex;align-items:center;gap:6px;font-weight:500">
+                        <span style="{{ wl.av }}">{{ wl.ini }}</span>
+                        <span>{{ wl.name }}</span>
+                        <sc-if value="{{ wl.date }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;color:#B5543F">{{ wl.date }}</span></sc-if>
+                      </span>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+              <sc-for list="{{ t.notes }}" as="nt" hint-placeholder-count="0">
+                <div style="font-size:13.5px;line-height:1.45;color:#3E3B35;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;background:#EFECE4;border-radius:8px;padding:7px 10px">
+                  <sc-if value="{{ nt.isNew }}" hint-placeholder-val="{{ false }}">
+                    <span title="Nieuw sinds je laatste bezoek" style="width:8px;height:8px;flex:none;border-radius:50%;background:#B5543F;align-self:center"></span>
+                  </sc-if>
+                  <span style="font-weight:600">{{ nt.by }}</span>
+                  <span style="flex:1;min-width:0;text-wrap:pretty">{{ nt.txt }}</span>
+                  <sc-if value="{{ nt.mine }}" hint-placeholder-val="{{ false }}">
+                    <span onClick="{{ nt.remove }}" style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#6E695F;cursor:pointer">wis</span>
+                  </sc-if>
+                </div>
+              </sc-for>
+              <div style="display:flex;gap:8px 14px;align-items:center;flex-wrap:wrap;margin-top:6px">
+                <sc-if value="{{ t.showMine }}" hint-placeholder-val="{{ true }}">
+                  <div onClick="{{ t.toggleMine }}" style="{{ t.mineStyle }}">{{ t.mineLabel }}</div>
+                </sc-if>
+                <sc-if value="{{ t.mine }}" hint-placeholder-val="{{ false }}">
+                  <div onClick="{{ t.toggleNote }}" style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#1A1A18;cursor:pointer;user-select:none;border-bottom:1px solid #ADA698">Opmerking</div>
+                </sc-if>
+                <sc-if value="{{ t.showOtherDate }}" hint-placeholder-val="{{ false }}">
+                  <div onClick="{{ t.toggleOtherDate }}" style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#1A1A18;cursor:pointer;user-select:none;border-bottom:1px solid #ADA698">{{ t.otherDateLabel }}</div>
+                </sc-if>
+                <sc-if value="{{ t.canEdit }}" hint-placeholder-val="{{ false }}">
+                  <div onClick="{{ t.toggleOpen }}" style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A;cursor:pointer;user-select:none;border-bottom:1px solid #CAC4B7">Verdeel</div>
+                </sc-if>
+                <sc-if value="{{ t.link }}" hint-placeholder-val="{{ false }}">
+                  <a href="{{ t.link }}" style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#4F6B72;text-decoration:none">{{ t.linkLabel }}</a>
+                </sc-if>
+                <sc-if value="{{ t.custom }}" hint-placeholder-val="{{ false }}">
+                  <div onClick="{{ t.remove }}" style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#6E695F;cursor:pointer">verwijder</div>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+          <sc-if value="{{ t.showPicker }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:8px;padding-left:34px">
+              <div style="font-size:12px;font-weight:600;color:#66615A">{{ t.pickTitle }}</div>
+              <sc-if value="{{ t.pillMode }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;gap:6px;flex-wrap:wrap">
+                  <sc-for list="{{ t.dateOpts }}" as="dop" hint-placeholder-count="7">
+                    <div onClick="{{ dop.pick }}" style="{{ dop.style }}"><span style="font-size:11px;text-transform:uppercase">{{ dop.wd }}</span><span style="font-size:15px;font-weight:700">{{ dop.n }}</span></div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ t.inputMode }}" hint-placeholder-val="{{ false }}">
+                <input type="date" min="{{ t.dMin }}" max="{{ t.dMax }}" value="{{ t.ppDate }}" onChange="{{ t.onDate }}" style="height:40px;max-width:220px;border:1px solid #C2BBAD;border-radius:8px;background:#FFFFFF;padding:0 12px;font-size:15px;color:#1A1A18">
+              </sc-if>
+              <sc-if value="{{ t.mine }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex">
+                  <span onClick="{{ t.leave }}" style="font-size:12px;color:#6E695F;cursor:pointer;border-bottom:1px solid #CAC4B7">Ik doe toch niet mee</span>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ t.noteOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:8px;padding-left:34px">
+              <input placeholder="Bijv. ik neem de ladder mee" value="{{ t.noteDraft }}" onChange="{{ t.onNoteDraft }}" onKeyDown="{{ t.onNoteKey }}" style="flex:1;min-width:0;height:40px;border:1px solid #C2BBAD;border-radius:8px;background:#FFFFFF;padding:0 12px;font-size:15px;outline:none;color:#1A1A18">
+              <div onClick="{{ t.addNote }}" style="height:40px;padding:0 14px;border-radius:8px;background:#1A1A18;color:#F6F4EE;display:flex;align-items:center;font-size:14px;cursor:pointer;user-select:none">Plaats</div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ t.open }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;padding-left:34px">
+              <sc-for list="{{ t.people }}" as="w" hint-placeholder-count="6">
+                <div onClick="{{ w.toggle }}" style="{{ w.style }}">{{ w.name }}</div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+      <div style="display:flex;gap:14px;align-items:center;padding:12px 0">
+        <div style="width:20px;height:20px;flex:none;border:1.5px dashed #A39C8E;border-radius:5px"></div>
+        <input placeholder="Taak toevoegen…" value="{{ p.draft }}" onChange="{{ p.onDraft }}" onKeyDown="{{ p.onKey }}" style="flex:1;min-width:0;border:none;background:transparent;font-size:15px;color:#1A1A18;outline:none;padding:4px 0">
+      </div>
+    </section>
+  </sc-for>
+  </sc-if>
+
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;syncUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Delen&quot;},&quot;wachtwoord&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;kamille14&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Delen&quot;},&quot;beheerWachtwoord&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;wilmer14&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Delen&quot;}}">
+const SKEY = 'kamille14-draaiboek-v1';
+const MEKEY = 'kamille14-ik';
+const OKKEY = 'kamille14-ok';
+const ADMKEY = 'kamille14-beheer';
+const ADMIN = 'Marjolein + Wilmer';
+const PEOPLE = ['Papa + mama', 'Johan + Christien', 'Anko', 'Gerhard', 'Marjolein + Wilmer', 'Myrthe + Marko'];
+const D3 = 'Kamille%2014%20Rondkijken.dc.html';
+const room = (r) => D3 + '#kamer=' + encodeURIComponent(r);
+// i = vaste index voor het taak-id (cv + i)
+const PAINT = [
+  { i: 'wk', t: 'Woonkamer en keuken', r: 'Woonkamer', n: 'De linker zijmuur loopt zonder hoek door van woonkamer naar keuken: in één keer verven. Twee lagen, met minimaal 4 uur droogtijd ertussen.' },
+  { i: 2, r: 'Hal' }, { i: 3, r: 'Toilet' }, { i: 4, r: 'Hal (garage)' }, { i: 5, r: 'Garage' },
+  { i: 6, r: 'Slaapkamer 1' }, { i: 7, r: 'Studeerkamer' }, { i: 8, r: 'Slaapkamer 2' },
+  { i: 'ot', t: 'Overloop en muur langs de trap', r: 'Overloop', n: 'De muur langs de trap loopt van de woonkamer door naar boven: in één keer verven, van onder tot het trapgat.' },
+  { i: 10, r: 'Zolder' }
+];
+const IN3D = { Toilet: false };
+
+const PHASES = [
+  { id: 'a', when: 'Nu – 8 december', title: 'Regelen en bestellen', tasks: [
+    { id: 'a3', t: 'Energie en water aanmelden per 9 december', n: 'Stroom en gas bij je leverancier, water bij het waterbedrijf in de regio.' },
+    { id: 'a4', t: 'Internet en tv aanvragen', n: 'Een aansluiting duurt vaak 2 tot 4 weken. Wifi tijdens de klusdagen is handig.', f: 1 },
+    { id: 'a5', t: 'Opstal- en inboedelverzekering per 9 december', n: 'Vanaf de sleuteloverdracht ben jij verantwoordelijk, ook als je er nog niet woont.', f: 1 },
+    { id: 'a6', t: 'Adreswijziging doorgeven aan de gemeente', n: 'Kan vanaf 4 weken vóór tot 5 dagen na 18 december.' },
+    { id: 'a7', t: 'Doorstuurservice van PostNL aanvragen', f: 1 },
+    { id: 'a8', t: 'Nieuw adres doorgeven', n: 'Werk, bank, zorgverzekeraar, huisarts, tandarts, abonnementen en webshops.' },
+    { id: 'a9', t: 'Plissés en gordijnen op maat bestellen', n: 'Levertijd is vaak 2 tot 4 weken. Vraag of je vóór de overdracht kunt komen opmeten.', f: 1, link: D3, linkLabel: 'Ramen in 3D ›' },
+    { id: 'a10', t: 'Verfkleuren kiezen en verf bestellen', n: 'De benodigde liters per kamer staan in de verfcalculator van het 3D-model.', link: D3, linkLabel: 'Verfcalculator ›' },
+    { id: 'a11', t: 'Klusspullen inkopen', n: 'Afplaktape, afdekfolie, stucloper, rollers, kwasten, verfbakken, trap, plamuur, schuurpapier, ontvetter.' },
+    { id: 'a12', t: 'Schoonmaakspullen inkopen', n: 'Allesreiniger, ontkalker, glasreiniger, emmers, microvezeldoeken, stofzuigerzakken, vuilniszakken.' },
+    { id: 'a13', t: 'Lampen en armaturen kopen', n: 'Met kroonsteentjes, lampenhaken en een spanningzoeker.' },
+    { id: 'a14', t: 'Verhuisdozen regelen en beginnen met inpakken', n: 'Zet op elke doos de kamer, met dezelfde namen als in het 3D-model.' },
+    { id: 'a15', t: 'Klusdagen afspreken met de helpers', n: 'Vul hierboven in wie wanneer kan.' },
+    { id: 'a16', t: 'Eten en drinken voor de klusdagen regelen', f: 1 }
+  ]},
+  { id: 'b', when: 'Wo 9 december', title: 'Sleuteloverdracht', tasks: [
+    { id: 'b1', t: 'Meterstanden noteren en fotograferen', n: 'Stroom, gas en water. Doorgeven aan de leveranciers.', f: 1 },
+    { id: 'b2', t: 'Sleutels tellen en uitproberen', n: 'Voordeur, achterdeur, schuur, brievenbus, meterkast, ramen.' },
+    { id: 'b3', t: 'Handleidingen en garantiebewijzen meenemen', n: 'Ook onderhoudsgegevens van de cv-ketel.' },
+    { id: 'b4', t: 'Huidige staat van het huis fotograferen', n: 'Handig als er later gebreken blijken.', f: 1 },
+    { id: 'b5', t: 'Rookmelders testen', f: 1 },
+    { id: 'b6', t: 'Hoofdkraan, gaskraan en groepenkast opzoeken', n: 'Label de groepen meteen; dat heb je nodig bij het ophangen van lampen.', f: 1 },
+    { id: 'b7', t: 'Cilindersloten laten vervangen', n: 'Je weet niet hoeveel sleutels er nog in omloop zijn.', f: 1 },
+    { id: 'b8', t: 'Ramen opmeten voor plissés', n: 'Als dat nog niet eerder kon.' }
+  ]},
+  { id: 'c', when: 'Do 10 – do 17 december', title: 'Schoonmaken, verven en ophangen', tasks: [
+    { id: 'c1', t: 'Huis leeghalen en grof stofzuigen', n: 'Eerst stofvrij, dan verven. Stof in natte verf krijg je er niet meer uit.' },
+    { id: 'c2', t: 'Muren voorbereiden', n: 'Spijkers en pluggen eruit, gaten plamuren, schuren en ontvetten.' },
+    { id: 'c3', t: 'Afplakken en afdekken', n: 'Plinten, kozijnen en plafondrand afplakken; afdekplaatjes van stopcontacten eraf; stucloper op de vloer.' }
+  ].concat(PAINT.map(p => ({ id: 'cv' + p.i, t: 'Verven: ' + (p.t || p.r), n: p.n || '', link: IN3D[p.r] === false ? D3 : room(p.r), linkLabel: IN3D[p.r] === false ? 'Bekijk in 3D ›' : p.r + ' in 3D ›' }))).concat([
+    { id: 'c4', t: 'Afplaktape verwijderen', n: 'Haal het weg zolang de laatste laag nog net nat is, dan krijg je strakke randen.', f: 1 },
+    { id: 'c5', t: 'Plissés en gordijnrails ophangen', link: room('Woonkamer'), linkLabel: 'Ramen in 3D ›' },
+    { id: 'c6', t: 'Lampen ophangen', n: 'Groep uitzetten en met de spanningzoeker controleren.' },
+    { id: 'c7', t: 'Keuken schoonmaken', n: 'Kastjes binnen en buiten, afzuigkap, oven en koelkast.', link: room('Keuken'), linkLabel: 'Keuken in 3D ›' },
+    { id: 'c8', t: 'Badkamer en toilet schoonmaken', n: 'Ontkalken, en putjes en afvoeren doorspoelen.', link: room('Badkamer'), linkLabel: 'Badkamer in 3D ›' },
+    { id: 'c9', t: 'Ramen lappen, binnen en buiten' },
+    { id: 'c10', t: 'Vloeren als laatste schoonmaken' },
+    { id: 'c11', t: 'Afval naar de milieustraat', n: 'Verfresten en volle verfblikken zijn klein chemisch afval.', f: 1 },
+    { id: 'c12', t: 'Extra sleutels laten maken', f: 1 },
+    { id: 'c13', t: 'Wifi-router aansluiten en testen' },
+    { id: 'c14', t: 'Naam op de brievenbus en deurbel', f: 1 },
+    { id: 'd1', t: 'Laatste dozen inpakken, eerste-nachtdoos apart', n: 'Beddengoed, toiletpapier, waterkoker, opladers, medicijnen, gereedschap, schoonmaakspullen.', f: 1 },
+    { id: 'd2', t: 'Koelkast en vriezer leeg en ontdooien', f: 1 },
+    { id: 'd3', t: 'Transportbouten in de wasmachine', f: 1 },
+    { id: 'd4', t: 'Bedden en kasten demonteren', n: 'Schroeven per meubel in een zakje en vastplakken aan het meubel.' },
+    { id: 'd5', t: 'Kamernamen op de deuren in het nieuwe huis plakken', n: 'Dezelfde namen als op de dozen. Zo weten verhuizers en helpers waar alles heen moet.', f: 1, link: D3, linkLabel: 'Indeling in 3D ›' },
+    { id: 'd6', t: 'Parkeerplek bij beide adressen vrijhouden' }
+  ])},
+  { id: 'e', when: 'Vr 18 december', title: 'Verhuisdag', tasks: [
+    { id: 'e1', t: 'Verhuizers ontvangen en per kamer uitleg geven', link: D3, linkLabel: 'Indeling in 3D ›' },
+    { id: 'e2', t: 'Meubels plaatsen volgens de indeling', n: 'Bank, tv-meubel en eettafel staan in het model op maat.', link: room('Woonkamer'), linkLabel: 'Woonkamer in 3D ›' },
+    { id: 'e3', t: 'Bedden als eerste opbouwen', link: room('Slaapkamer 1'), linkLabel: 'Slaapkamer in 3D ›' },
+    { id: 'e4', t: 'Wasmachine en koelkast aansluiten', n: 'Koelkast na het vervoer een paar uur rechtop laten staan voor je hem aanzet.' },
+    { id: 'e5', t: 'Schade controleren voordat de verhuizers vertrekken', f: 1 },
+    { id: 'e6', t: 'Oude woning leeg en schoon achterlaten', n: 'Meterstanden noteren en sleutels inleveren.' },
+    { id: 'e7', t: 'Eten en drinken voor de helpers' }
+  ]},
+  { id: 'f', when: 'Na 18 december', title: 'Afronden', tasks: [
+    { id: 'f1', t: 'Adreswijziging controleren op MijnOverheid' },
+    { id: 'f2', t: 'Afvalpas of containers aanvragen bij de gemeente', f: 1 },
+    { id: 'f3', t: 'Verhuisdozen terugbrengen of wegdoen' },
+    { id: 'f4', t: 'Kennismaken met de buren' },
+    { id: 'f5', t: 'Helpers bedanken' }
+  ]}
+];
+
+// boodschappenlijst: startlijst uit de taken, aangevuld door iedereen
+const SHOP_CATS = ['Klussen', 'Schoonmaken', 'Eten en drinken', 'Overig'];
+const SHOP_BASE = [
+  ['Klussen', ['Afplaktape', 'Afdekfolie', 'Stucloper', 'Verfrollers en kwasten', 'Verfbakken', 'Plamuur', 'Schuurpapier', 'Ontvetter', 'Spanningzoeker', 'Kroonsteentjes en lampenhaken', 'Pluggen en schroeven']],
+  ['Schoonmaken', ['Allesreiniger', 'Ontkalker', 'Glasreiniger', 'Emmers', 'Microvezeldoeken', 'Stofzuigerzakken', 'Vuilniszakken']],
+  ['Eten en drinken', ['Koffie en thee', 'Melk en suiker', 'Frisdrank en water', 'Broodjes en beleg', 'Koekjes', 'Bekers en servetten']]
+].flatMap(([cat, list]) => list.map((t, i) => ({ id: 'sb-' + cat[0] + i, t, cat, by: 'Marjolein + Wilmer', base: true })));
+
+const iso = (d) => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+const WD = ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'], MO = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+const MOL = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+const WDL = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
+const pd = (s) => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+const fmtShort = (s) => { const d = pd(s); return WD[d.getDay()] + ' ' + d.getDate() + ' ' + MO[d.getMonth()]; };
+const fmtLong = (s) => { const d = pd(s); const l = WDL[d.getDay()]; return l[0].toUpperCase() + l.slice(1) + ' ' + d.getDate() + ' ' + MOL[d.getMonth()]; };
+const RANGE = { a: [null, '2026-12-08'], b: ['2026-12-09', '2026-12-09'], c: ['2026-12-10', '2026-12-17'], d: ['2026-12-17', '2026-12-17'], e: ['2026-12-18', '2026-12-18'], f: ['2026-12-19', '2027-01-31'] };
+const rangeFor = (pid) => { const r = RANGE[pid]; const t = iso(new Date()); let a = r[0] || t; if (a < t && r[1] >= t) a = t; return [a, r[1]]; };
+const daysBetween = (a, b) => { const out = []; for (let d = pd(a); iso(d) <= b; d.setDate(d.getDate() + 1)) out.push(iso(d)); return out; };
+const DAYS = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18].map(n => {
+  const wd = ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'][new Date(2026, 11, n).getDay()];
+  return { n, wd, we: wd === 'za' || wd === 'zo' };
+});
+
+// Same function runs in the Google Apps Script backend.
+function applyOp(s, o) {
+  s.done = s.done || {}; s.who = s.who || {}; s.avail = s.avail || {}; s.custom = s.custom || {}; s.notes = s.notes || {};
+  if (o.op === 'done') s.done[o.id] = !!o.v;
+  if (o.op === 'who') { const c = (s.who[o.id] || []).filter(x => x !== o.p); if (o.v) c.push(o.p); s.who[o.id] = c; }
+  if (o.op === 'avail') s.avail[o.k] = !!o.v;
+  if (o.op === 'add') s.custom[o.pid] = (s.custom[o.pid] || []).concat(o.task);
+  if (o.op === 'del') s.custom[o.pid] = (s.custom[o.pid] || []).filter(x => x.id !== o.id);
+  if (o.op === 'note') s.notes[o.id] = (s.notes[o.id] || []).concat(o.note);
+  if (o.op === 'delnote') s.notes[o.id] = (s.notes[o.id] || []).filter(x => x.id !== o.nid);
+  if (o.op === 'assign') s.who[o.id] = o.p ? [o.p] : [];
+  if (o.op === 'plan') { s.plan = s.plan || {}; s.plan[o.k] = o.v || ''; }
+  if (o.op === 'order') { s.order = s.order || {}; s.order[o.pid] = o.ids; }
+  if (o.op === 'hide') { s.hidden = s.hidden || {}; s.hidden[o.id] = true; }
+  if (o.op === 'edit') { s.edits = s.edits || {}; s.edits[o.id] = { t: o.t, n: o.n }; }
+  if (o.op === 'shopadd') { s.shop = { ...(s.shop || {}), [o.item.id]: o.item }; }
+  if (o.op === 'shopdel') { s.shop = { ...(s.shop || {}) }; delete s.shop[o.id]; }
+  if (o.op === 'shopgot') { s.shopgot = { ...(s.shopgot || {}) }; if (o.v) s.shopgot[o.id] = o.by; else delete s.shopgot[o.id]; }
+  return s;
+}
+const pickData = (s) => ({ done: s.done || {}, who: s.who || {}, avail: s.avail || {}, custom: s.custom || {}, notes: s.notes || {}, edits: s.edits || {}, plan: s.plan || {}, hidden: s.hidden || {}, order: s.order || {}, shop: s.shop || {}, shopgot: s.shopgot || {} });
+
+const ACC = '#B5543F';
+const HC = { 'Papa + mama': ['PM', '#8A5A2B'], 'Johan + Christien': ['JC', '#4F6B72'], 'Anko': ['A', '#5B7A4A'], 'Gerhard': ['G', '#6A5A8C'], 'Marjolein + Wilmer': ['MW', '#B5543F'], 'Myrthe + Marko': ['MM', '#9A4A6E'] };
+const av = (p, sz) => 'width:' + (sz || 24) + 'px;height:' + (sz || 24) + 'px;flex:none;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#FFFFFF;font-size:' + Math.round((sz || 24) * 0.42) + 'px;font-weight:700;letter-spacing:-.02em;background:' + ((HC[p] || [])[1] || '#66615A');
+const ini = (p) => (HC[p] || [''])[0];
+const pill = (on) => 'height:32px;padding:0 12px;display:flex;align-items:center;border-radius:16px;font-size:13px;cursor:pointer;user-select:none;white-space:nowrap;' +
+  (on ? 'background:#1A1A18;color:#F6F4EE;border:1px solid #1A1A18' : 'background:#FFFFFF;color:#1A1A18;border:1px solid #C2BBAD');
+const lsGet = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
+
+class Component extends DCLogic {
+  state = { shop: {}, shopgot: {}, shopDraft: '', shopCat: 'Klussen', done: {}, who: {}, avail: {}, custom: {}, notes: {}, edits: {}, plan: {}, hidden: {}, order: {}, pickOpen: {}, editing: null, drafts: {}, noteDrafts: {}, open: {}, noteOpen: {}, filter: null, openOnly: false,
+    me: null, unlocked: false, pwDraft: '', pwWrong: false, sync: 'local' };
+  pending = 0;
+
+  url() { if (this.supa) return 'supa'; const u = (this.props.syncUrl || '').trim(); if (u) return u; return /(^|\.)naarkamille14\.nl$/.test(location.hostname) ? 'api.php' : ''; }
+  hdr() { return { 'Content-Type': 'text/plain;charset=utf-8', 'X-Wachtwoord': lsGet(OKKEY) || '', 'X-Beheer': lsGet(ADMKEY) || '' }; }
+  admOk() { return this.url() ? !!lsGet(ADMKEY) : lsGet(ADMKEY) === this.adminPw(); }
+  api = async (body) => {
+    if (this.supa) {
+      const pw = lsGet(OKKEY) || '';
+      const [fn, args] = !body ? ['k14_get', { pw }] : body.op === 'login' ? ['k14_login', { pw: body.pw }] : ['k14_op', { pw, beheer: lsGet(ADMKEY) || '', o: body }];
+      const h = { 'Content-Type': 'application/json', apikey: this.supa.key };
+      if (!/^sb_/.test(this.supa.key)) h.Authorization = 'Bearer ' + this.supa.key;
+      const r = await fetch(this.supa.url.replace(/\/+$/, '') + '/rest/v1/rpc/' + fn, { method: 'POST', cache: 'no-store', headers: h, body: JSON.stringify(args) });
+      if (!r.ok) throw new Error('supabase ' + r.status);
+      const j = await r.json();
+      return { status: j && j.fout === 'wachtwoord' ? 401 : 200, j };
+    }
+    const r = body ? await fetch(this.url(), { method: 'POST', headers: body.op === 'login' ? { 'Content-Type': 'text/plain;charset=utf-8' } : this.hdr(), body: JSON.stringify(body) })
+      : await fetch(this.url(), { cache: 'no-store', headers: { 'X-Wachtwoord': lsGet(OKKEY) || '' } });
+    return { status: r.status, j: r.status === 401 ? null : await r.json() };
+  };
+  login = async (pw) => { try { const { j } = await this.api({ op: 'login', pw }); return (this.supa ? j : j && j.rol) || null; } catch (e) { return null; } };
+  lockOut = () => { lsSet(OKKEY, null); this.setState({ unlocked: false, sync: 'err' }); };
+  pw() { return (this.props.wachtwoord ?? 'kamille14').trim(); }
+
+  // 'nieuw sinds je laatste bezoek': per persoon op dit apparaat bijhouden wanneer je een fase voor het laatst hebt bekeken
+  seen() {
+    const me = this.state.me; if (!me) return null;
+    if (!this._seen || this._seenFor !== me) {
+      let v = null; try { v = JSON.parse(lsGet('k14-seen-' + me) || 'null'); } catch (e) {}
+      if (!v) { v = { base: Date.now(), t: {} }; lsSet('k14-seen-' + me, JSON.stringify(v)); }
+      this._seen = v; this._seenFor = me;
+    }
+    return this._seen;
+  }
+  markPhaseSeen = (pid) => {
+    const sv = this.seen(), p = PHASES.find(x => x.id === pid); if (!sv || !p) return;
+    const now = Date.now();
+    p.tasks.concat(this.state.custom[pid] || []).forEach(t => { sv.t[t.id] = now; });
+    lsSet('k14-seen-' + this.state.me, JSON.stringify(sv));
+  };
+  readHash = () => {
+    if (this.state.view === 'tasks' && this.state.phaseSel) this.markPhaseSeen(this.state.phaseSel);
+    const h = decodeURIComponent((location.hash || '').slice(1));
+    const [v, ph] = h.split('/');
+    if (v !== 'taken') this.setState({ fromWho: false });
+    this.setState({ view: v === 'planning' || v === 'beschikbaarheid' ? 'avail' : v === 'wie' ? 'who' : v === 'boodschappen' ? 'shop' : v === 'taken' ? 'tasks' : 'home', phaseSel: v === 'taken' && ph ? ph : null });
+    window.scrollTo(0, 0);
+  };
+  go = (h) => { if (location.hash.slice(1) === h) this.readHash(); else location.hash = h; };
+  componentDidMount() {
+    // terug vanuit 3D: zelfde scherm en scrollpositie als bij vertrek
+    let ret = null; try { ret = JSON.parse(sessionStorage.getItem('k14-return') || 'null'); sessionStorage.removeItem('k14-return'); } catch (e) {}
+    if (ret && !location.hash && ret.hash) history.replaceState(null, '', ret.hash);
+    this.readHash();
+    if (ret) { const y = ret.y || 0; [80, 400, 1200].forEach(ms => setTimeout(() => { if (Math.abs(window.scrollY - y) > 4) window.scrollTo(0, y); }, ms)); }
+    this.onLeave3D = (e) => { const a = e.target.closest && e.target.closest('a[href*="Rondkijken"]'); if (!a) return; try { sessionStorage.setItem('k14-return', JSON.stringify({ hash: location.hash, y: window.scrollY })); } catch (er) {} };
+    document.addEventListener('click', this.onLeave3D, true);
+    window.addEventListener('hashchange', this.readHash);
+    try { const s = JSON.parse(lsGet(SKEY) || 'null'); if (s) this.setState(pickData(s)); } catch (e) {}
+    const start = () => {
+    const me = lsGet(MEKEY);
+    const meOk = PEOPLE.includes(me) && (me !== ADMIN || this.admOk());
+    this.setState({ me: meOk ? me : null, unlocked: this.url() ? !!lsGet(OKKEY) : lsGet(OKKEY) === this.pw() });
+    if (this.url()) {
+      this.setState({ sync: 'loading' });
+      this.pull();
+      this.timer = setInterval(() => { if (!document.hidden && this.state.unlocked) this.pull(); }, 5000);
+      this.onVis = () => { if (!document.hidden) this.pull(); else if (this.state.view === 'tasks' && this.state.phaseSel) this.markPhaseSeen(this.state.phaseSel); };
+      document.addEventListener('visibilitychange', this.onVis);
+    }
+    };
+    fetch('supabase.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).then(c => { if (c && c.url && c.key) this.supa = c; }, () => {}).finally(start);
+  }
+  componentWillUnmount() { document.removeEventListener('click', this.onLeave3D, true); window.removeEventListener('hashchange', this.readHash); clearInterval(this.timer); if (this.onVis) document.removeEventListener('visibilitychange', this.onVis); }
+
+  cache = () => lsSet(SKEY, JSON.stringify(pickData(this.state)));
+  pull = async () => {
+    try {
+      if (!lsGet(OKKEY)) return;
+      const { status, j } = await this.api(null);
+      if (status === 401) return this.lockOut();
+      if (!this.pending) this.setState({ ...pickData(j), sync: 'ok' }, this.cache);
+    } catch (e) { this.setState({ sync: 'err' }); }
+  };
+  confetti = (ox, oy, n) => {
+    const cv = document.createElement('canvas'), W = innerWidth, H = innerHeight, dpr = devicePixelRatio || 1;
+    cv.width = W * dpr; cv.height = H * dpr;
+    cv.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+    document.body.appendChild(cv);
+    const g = cv.getContext('2d'); g.scale(dpr, dpr);
+    const cols = ['#B5543F', '#4F6B72', '#5B7A4A', '#C9A24A', '#9A4A6E', '#1A1A18'];
+    const ps = Array.from({ length: n || 140 }, () => ({ x: ox != null ? ox : W / 2 + (Math.random() - .5) * W * .3, y: oy != null ? oy : H * .35, vx: (Math.random() - .5) * (ox != null ? 9 : 14), vy: -Math.random() * (ox != null ? 9 : 14) - 3, r: Math.random() * 6.28, vr: (Math.random() - .5) * .4, w: 6 + Math.random() * 6, h: 4 + Math.random() * 4, c: cols[Math.floor(Math.random() * cols.length)] }));
+    const t0 = performance.now();
+    const step = (t) => {
+      g.clearRect(0, 0, W, H);
+      ps.forEach(p => { p.vy += .35; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr; g.save(); g.translate(p.x, p.y); g.rotate(p.r); g.fillStyle = p.c; g.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); g.restore(); });
+      if (t - t0 < (ox != null ? 1500 : 2600)) requestAnimationFrame(step); else cv.remove();
+    };
+    requestAnimationFrame(step);
+  };
+  dragStart = (e, pid, id, ids) => {
+    e.preventDefault();
+    this.setState({ drag: { pid, id, over: null, after: false } });
+    const mv = (ev) => {
+      const el = document.elementFromPoint(ev.clientX, ev.clientY); const row = el && el.closest && el.closest('[data-tid]');
+      if (!row || !ids.includes(row.dataset.tid)) return;
+      const r = row.getBoundingClientRect(), after = ev.clientY > r.top + r.height / 2;
+      const d = this.state.drag; if (d && (d.over !== row.dataset.tid || d.after !== after)) this.setState({ drag: { ...d, over: row.dataset.tid, after } });
+      if (ev.clientY < 60) window.scrollBy(0, -12); else if (ev.clientY > window.innerHeight - 60) window.scrollBy(0, 12);
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up);
+      const d = this.state.drag; this.setState({ drag: null });
+      if (!d || !d.over || d.over === d.id) return;
+      const rest = ids.filter(x => x !== d.id); let j = rest.indexOf(d.over); if (d.after) j++;
+      rest.splice(j, 0, d.id);
+      if (rest.join() !== ids.join()) this.send({ op: 'order', pid, ids: rest });
+    };
+    window.addEventListener('pointermove', mv); window.addEventListener('pointerup', up); window.addEventListener('pointercancel', up);
+  };
+  checkPhase = (pid) => {
+    const p = PHASES.find(x => x.id === pid); if (!p) return;
+    const all = p.tasks.concat(this.state.custom[pid] || []).filter(t => !(this.state.hidden || {})[t.id]);
+    if (all.length && all.every(t => this.state.done[t.id])) this.confetti();
+  };
+  send = async (op, phaseId) => {
+    this.setState(s => applyOp(JSON.parse(JSON.stringify(pickData(s))), op), () => { this.cache(); if (phaseId) this.checkPhase(phaseId); });
+    if (!this.url()) return;
+    this.pending++;
+    this.setState({ sync: 'saving' });
+    try {
+      const { status, j } = await this.api(op);
+      if (status === 401) { this.pending--; return this.lockOut(); }
+      this.pending--;
+      if (!this.pending) this.setState({ ...pickData(j), sync: 'ok' }, this.cache);
+    } catch (e) { this.pending--; this.setState({ sync: 'err' }); }
+  };
+
+  addTask = (pid) => {
+    const t = (this.state.drafts[pid] || '').trim(); if (!t) return;
+    this.setState(s => ({ drafts: { ...s.drafts, [pid]: '' } }));
+    this.send({ op: 'add', pid, task: { id: 'x' + Date.now(), t, by: this.state.me } });
+  };
+  addShop = () => {
+    const t = (this.state.shopDraft || '').trim(); if (!t) return;
+    this.setState({ shopDraft: '' });
+    this.send({ op: 'shopadd', item: { id: 's' + Date.now(), t, cat: this.state.shopCat, by: this.state.me, ts: Date.now() } });
+  };
+  addNote = (id) => {
+    const txt = (this.state.noteDrafts[id] || '').trim(); if (!txt) return;
+    this.setState(s => ({ noteDrafts: { ...s.noteDrafts, [id]: '' }, noteOpen: { ...s.noteOpen, [id]: false } }));
+    this.send({ op: 'note', id, note: { id: 'n' + Date.now(), by: this.state.me, txt } });
+  };
+  adminPw() { return (this.props.beheerWachtwoord ?? 'wilmer14').trim(); }
+  tryAdmin = async () => {
+    if (this.url()) {
+      const pw = (this.state.adminDraft || '').trim();
+      if (await this.login(pw) === 'beheer') { lsSet(ADMKEY, pw); lsSet(MEKEY, ADMIN); this.setState({ me: ADMIN, askAdmin: false }); }
+      else this.setState({ adminWrong: true });
+      return;
+    }
+    if ((this.state.adminDraft || '').trim().toLowerCase() === this.adminPw().toLowerCase()) {
+      lsSet(ADMKEY, this.adminPw()); lsSet(MEKEY, ADMIN); this.setState({ me: ADMIN, askAdmin: false });
+    } else this.setState({ adminWrong: true });
+  };
+  tryPw = async () => {
+    if (this.url()) {
+      const pw = this.state.pwDraft.trim();
+      if (await this.login(pw)) { lsSet(OKKEY, pw); this.setState({ unlocked: true, pwWrong: false }, this.pull); }
+      else this.setState({ pwWrong: true });
+      return;
+    }
+    if (this.state.pwDraft.trim().toLowerCase() === this.pw().toLowerCase()) { lsSet(OKKEY, this.pw()); this.setState({ unlocked: true, pwWrong: false }); }
+    else this.setState({ pwWrong: true });
+  };
+
+  shopVals() {
+    const s = this.state, me = s.me, isAdm = me === ADMIN, got = s.shopgot || {};
+    const items = SHOP_BASE.filter(x => !(s.hidden || {})[x.id]).concat(Object.values(s.shop || {}).sort((a, b) => (a.ts || 0) - (b.ts || 0)))
+      .map(x => (s.edits || {})[x.id] ? { ...x, t: s.edits[x.id].t } : x);
+    const ed = s.shopEdit;
+    const row = (x, ids, cat) => {
+      const g = got[x.id], editing = !!ed && ed.id === x.id, mayEdit = isAdm || (!x.base && x.by === me);
+      const save = () => { const t = (this.state.shopEdit || {}).t; if (!t || !t.trim()) return; this.setState({ shopEdit: null }); this.send({ op: 'edit', id: x.id, t: t.trim(), n: '' }); };
+      return { id: x.id, t: x.t, by: x.by,
+        editing, notEditing: !editing, editT: editing ? ed.t : '', canEditBtn: mayEdit && !editing, canSort: isAdm && !editing,
+        startEdit: () => this.setState({ shopEdit: { id: x.id, t: x.t } }),
+        onEditT: (e) => this.setState({ shopEdit: { id: x.id, t: e.target.value } }),
+        onEditKey: (e) => { if (e.key === 'Enter') save(); if (e.key === 'Escape') this.setState({ shopEdit: null }); },
+        saveEdit: save, cancelEdit: () => this.setState({ shopEdit: null }),
+        dragStart: (e) => this.dragStart(e, 'shop-' + cat, x.id, ids),
+        rowStyle: 'display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid #EDE8DF;transition:opacity .12s;' + (s.drag && s.drag.id === x.id ? 'opacity:.35;' : '') + (s.drag && s.drag.over === x.id && s.drag.id !== x.id ? 'box-shadow:inset 0 ' + (s.drag.after ? '-3px' : '3px') + ' 0 ' + ACC + ';' : ''), ini: ini(x.by), av: av(x.by, 24),
+        sub: 'Toegevoegd door ' + x.by + (g ? ' · gekocht' : ''),
+        tStyle: 'font-size:15px;line-height:1.3;' + (g ? 'color:#6E695F;text-decoration:line-through' : 'color:#1A1A18;font-weight:500'),
+        // alleen Marjolein + Wilmer vinken af; anderen zien alleen de status
+        box: 'width:22px;height:22px;flex:none;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;user-select:none;cursor:' + (isAdm ? 'pointer;' : 'default;') + (g ? 'background:#1A1A18;color:#F6F4EE;border:1.5px solid #1A1A18' : 'background:#FFFFFF;color:transparent;border:1.5px solid #A39C8E'),
+        check: '✓',
+        toggle: () => { if (isAdm) this.send({ op: 'shopgot', id: x.id, v: !g, by: me }); },
+        canDel: isAdm || (!x.base && x.by === me),
+        del: () => this.send(x.base ? { op: 'hide', id: x.id } : { op: 'shopdel', id: x.id }) };
+    };
+    const open = items.filter(x => !got[x.id]);
+    return {
+      isShop: s.view === 'shop', shopEmpty: !items.length, goShop: () => this.go('boodschappen'),
+      shopPreview: open.slice(0, 6).map(x => ({ t: x.t, ini: ini(x.by), av: av(x.by, 20) })),
+      shopCardSub: open.length ? open.length + ' nog te halen' : 'Alles is binnen',
+      shopDraft: s.shopDraft, onShopDraft: (e) => this.setState({ shopDraft: e.target.value }),
+      onShopKey: (e) => { if (e.key === 'Enter') this.addShop(); }, addShop: this.addShop,
+      shopCatPills: SHOP_CATS.map(c => ({ name: c, style: pill(c === s.shopCat), pick: () => this.setState({ shopCat: c }) })),
+      shopGroups: SHOP_CATS.map(c => {
+        let list = items.filter(x => (x.cat || 'Overig') === c);
+        const ord = (s.order || {})['shop-' + c];
+        if (ord) { const pos = (id) => { const i = ord.indexOf(id); return i < 0 ? 1e4 : i; }; const base = list.map(x => x.id); list = list.slice().sort((a, b) => (pos(a.id) - pos(b.id)) || (base.indexOf(a.id) - base.indexOf(b.id))); }
+        // nog te halen bovenaan, afgevinkt onderaan
+        const sorted = list.filter(x => !got[x.id]).concat(list.filter(x => got[x.id]));
+        const ids = sorted.map(x => x.id);
+        return { name: c, items: sorted.map(x => row(x, ids, c)), count: list.length ? list.filter(x => !got[x.id]).length + ' nog te halen' : '' };
+      }).filter(g => g.items.length)
+    };
+  }
+  renderVals() {
+    const s = this.state, me = s.me;
+    const locked = (this.url() ? true : !!this.pw()) && !s.unlocked;
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const until = (d) => {
+      const n = Math.round((new Date(2026, 11, d) - today) / 864e5);
+      return n > 1 ? 'Nog ' + n + ' dagen' : n === 1 ? 'Morgen' : n === 0 ? 'Vandaag' : 'Geweest';
+    };
+    let total = 0, doneN = 0, myN = 0, myDone = 0;
+    const myOpen = [], planMap = {};
+    const phaseNav = [], byP = {}; let unassigned = 0;
+    const sv = this.seen();
+    const tsOf = (id) => { const n = parseInt(String(id || '').slice(1), 10); return isNaN(n) ? 0 : n; };
+    const since = (tid) => sv ? (sv.t[tid] || sv.base) : Infinity;
+    const noteNew = (tid, n) => !!sv && n.by !== me && tsOf(n.id) > since(tid);
+    const newIn = (t) => (s.notes[t.id] || []).filter(n => noteNew(t.id, n)).length + (t.custom && t.by && t.by !== me && tsOf(t.id) > since(t.id) ? 1 : 0);
+    const phases = PHASES.map(p => {
+      const all = p.tasks.concat((s.custom[p.id] || []).map(c => ({ ...c, custom: true }))).filter(t => !(s.hidden || {})[t.id]).map(t => s.edits[t.id] ? { ...t, ...s.edits[t.id] } : t);
+      const ord = (s.order || {})[p.id];
+      if (ord) { const pos = (id) => { const i = ord.indexOf(id); return i < 0 ? 1e4 : i; }; const base = all.map(t => t.id); all.sort((x, y) => (pos(x.id) - pos(y.id)) || (base.indexOf(x.id) - base.indexOf(y.id))); }
+      const allIds = all.map(t => t.id);
+      all.forEach(t => {
+        total++; if (s.done[t.id]) doneN++;
+        if ((s.who[t.id] || []).includes(me)) { myN++; if (s.done[t.id]) myDone++; else myOpen.push({ t: t.t, when: p.when }); }
+      });
+      const [rA, rB] = rangeFor(p.id);
+      all.forEach(t => { const w = s.who[t.id] || []; if (!w.length) unassigned++;
+        w.forEach(name => { const d = rA === rB ? rA : p.id === 'c' ? (s.plan[t.id + '|' + name] || '') : '';
+          (byP[name] = byP[name] || []).push({ t: t.t, phase: p.title, date: d ? fmtShort(d) : '', done: !!s.done[t.id],
+            titleStyle: 'font-size:14.5px;line-height:1.35;' + (s.done[t.id] ? 'color:#6E695F;text-decoration:line-through' : 'color:#1A1A18;font-weight:500'),
+            notes: (s.notes[t.id] || []).map(n => ({ by: n.by, txt: n.txt })),
+            go: () => { this.whoY = window.scrollY; this.setState({ filter: name, fromWho: true }); this.go('taken/' + p.id); } }); }); });
+      all.forEach(t => (s.who[t.id] || []).forEach(name => {
+        const d = rA === rB ? rA : p.id === 'c' ? (s.plan[t.id + '|' + name] || '') : ''; if (!d) return;
+        const day = planMap[d] = planMap[d] || {}; const it = day[t.id] = day[t.id] || { t: t.t, done: !!s.done[t.id], people: [] };
+        it.people.push(name);
+      }));
+      const pDone = all.filter(t => s.done[t.id]).length;
+      const pNew = all.reduce((a, t) => a + newIn(t), 0);
+      phaseNav.push({ when: p.when, title: p.title, count: pDone + ' / ' + all.length, hasNew: pNew > 0, newLabel: pNew + ' nieuw',
+        bar: 'height:100%;background:' + (pDone === all.length && all.length ? '#5B7A4A' : ACC) + ';width:' + (all.length ? Math.round(pDone / all.length * 100) : 0) + '%',
+        go: () => this.go('taken/' + p.id) });
+      const tasks = all.filter(t => {
+        if (s.openOnly && s.done[t.id]) return false;
+        if (s.filter && !(s.who[t.id] || []).includes(s.filter)) return false;
+        return true;
+      }).map(t => {
+        const done = !!s.done[t.id], who = s.who[t.id] || [], mine = who.includes(me);
+        const ed = s.editing && s.editing.id === t.id ? s.editing : null;
+        const [dMin, dMax] = rangeFor(p.id), single = dMin === dMax, opts = daysBetween(dMin, dMax);
+        const datable = p.id === 'c';
+        const dateOf = (name) => single ? dMin : datable ? (s.plan[t.id + '|' + name] || '') : '';
+        const myDate = mine ? dateOf(me) : '';
+        const pp = mine ? me : (me === ADMIN && who.length ? who[0] : null), ppDate = pp ? dateOf(pp) : '';
+        return {
+          editing: !!ed, notEditing: !ed, canEdit: me === ADMIN,
+          editT: ed ? ed.t : '', editN: ed ? ed.n : '',
+          startEdit: () => this.setState({ editing: { id: t.id, t: t.t, n: t.n || '' } }),
+          onEditT: (e) => { const v = e.target.value; this.setState(st => ({ editing: { ...st.editing, t: v } })); },
+          onEditN: (e) => { const v = e.target.value; this.setState(st => ({ editing: { ...st.editing, n: v } })); },
+          onEditKey: (e) => { if (e.key === 'Escape') this.setState({ editing: null }); },
+          saveEdit: () => { const x = this.state.editing; if (!x || !x.t.trim()) return; this.setState({ editing: null }); this.send({ op: 'edit', id: t.id, t: x.t.trim(), n: x.n.trim() }); },
+          cancelEdit: () => this.setState({ editing: null }),
+          dragStart: (e) => this.dragStart(e, p.id, t.id, allIds),
+          rowStyle: 'display:flex;flex-direction:column;gap:10px;padding:14px 0;border-bottom:1px solid #DAD4C8;transition:opacity .12s;' + (s.drag && s.drag.id === t.id ? 'opacity:.35;' : '') + (s.drag && s.drag.over === t.id && s.drag.id !== t.id ? 'box-shadow:inset 0 ' + (s.drag.after ? '-3px' : '3px') + ' 0 ' + ACC + ';' : ''),
+          removeTask: () => { if (!window.confirm('“' + t.t + '” verwijderen?')) return; this.setState({ editing: null }); this.send(t.custom ? { op: 'del', pid: p.id, id: t.id } : { op: 'hide', id: t.id }); },
+          ...t, f: !!t.f, n: t.n || '', link: t.link || '', custom: !!t.custom,
+          mark: done ? '✓' : '',
+          checkStyle: 'width:20px;height:20px;flex:none;margin-top:1px;border-radius:5px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;user-select:none;' +
+            (done ? 'background:' + ACC + ';color:#FFFFFF;border:1.5px solid ' + ACC + (s.pop === t.id ? ';animation:k14pop .45s cubic-bezier(.3,1.6,.5,1)' : '') : 'background:' + (mine ? '#FFFFFF' : '#F3F0E8') + ';color:transparent;border:1.5px solid ' + (mine ? '#1A1A18' : '#C2BBAD')) + (mine ? '' : ';cursor:default'),
+          titleStyle: 'font-size:16px;line-height:1.35;font-weight:500;' + (done ? 'color:#6E695F;text-decoration:line-through' : 'color:#1A1A18'),
+          hasWho: who.length > 0,
+          whoText: who.join(', '),
+          whoList: who.map(name => ({ name, ini: ini(name), av: av(name, 22), date: dateOf(name) ? fmtShort(dateOf(name)) : '' })),
+          showPicker: !!pp && datable && (mine ? (!ppDate || !!s.pickOpen[t.id]) : !!s.pickOpen[t.id]),
+          pickTitle: mine ? 'Wanneer doe jij dit?' : 'Wanneer doet ' + pp + ' dit?',
+          showOtherDate: !mine && !!pp && datable,
+          otherDateLabel: ppDate ? 'Datum: ' + fmtShort(ppDate) : 'Datum kiezen',
+          toggleOtherDate: () => this.setState(st => ({ pickOpen: { ...st.pickOpen, [t.id]: !st.pickOpen[t.id] } })),
+          pillMode: opts.length <= 10, inputMode: opts.length > 10, dMin, dMax, myDate, ppDate,
+          onDate: (e) => { const v = e.target.value; this.setState(st => ({ pickOpen: { ...st.pickOpen, [t.id]: false } })); this.send({ op: 'plan', k: t.id + '|' + pp, v }); },
+          dateOpts: opts.length <= 10 ? opts.map(o => { const d = pd(o), on = o === ppDate; return { wd: WD[d.getDay()], n: d.getDate(),
+            style: 'width:48px;height:52px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;cursor:pointer;user-select:none;line-height:1.1;' + (on ? 'background:#B5543F;color:#FFFFFF;border:1px solid #B5543F' : 'background:#FFFFFF;color:#1A1A18;border:1px solid #C2BBAD'),
+            pick: () => { this.setState(st => ({ pickOpen: { ...st.pickOpen, [t.id]: false } })); this.send({ op: 'plan', k: t.id + '|' + pp, v: on ? '' : o }); } }; }) : [],
+          mineLabel: mine ? (myDate ? '✓ ' + fmtShort(myDate) : '✓ Ik doe dit') : 'Ik doe dit',
+          showMine: !who.length || mine,
+          mine,
+          mineStyle: 'height:32px;padding:0 14px;display:flex;align-items:center;border-radius:16px;font-size:13px;font-weight:500;cursor:pointer;user-select:none;white-space:nowrap;' +
+            (mine ? 'background:' + ACC + ';color:#FFFFFF;border:1px solid ' + ACC : 'background:#FFFFFF;color:#1A1A18;border:1px solid #1A1A18'),
+          toggleMine: () => { if (mine && myDate && datable && !s.pickOpen[t.id]) { this.setState(st => ({ pickOpen: { ...st.pickOpen, [t.id]: true } })); return; } this.send({ op: 'assign', id: t.id, p: mine ? null : me }); },
+          leave: () => this.send({ op: 'assign', id: t.id, p: null }),
+          hasNew: newIn(t) > 0, newLabel: newIn(t) + ' nieuw',
+          notes: (s.notes[t.id] || []).map(nt => ({ ...nt, isNew: noteNew(t.id, nt), mine: nt.by === me, remove: () => this.send({ op: 'delnote', id: t.id, nid: nt.id }) })),
+          noteOpen: mine && !!s.noteOpen[t.id],
+          noteDraft: s.noteDrafts[t.id] || '',
+          toggleNote: () => this.setState(st => ({ noteOpen: { ...st.noteOpen, [t.id]: !st.noteOpen[t.id] } })),
+          onNoteDraft: (e) => { const v = e.target.value; this.setState(st => ({ noteDrafts: { ...st.noteDrafts, [t.id]: v } })); },
+          onNoteKey: (e) => { if (e.key === 'Enter') this.addNote(t.id); },
+          addNote: () => this.addNote(t.id),
+          open: !!s.open[t.id] && me === ADMIN,
+          toggleOpen: () => this.setState(st => ({ open: { ...st.open, [t.id]: !st.open[t.id] } })),
+          toggleDone: (e) => { if (!mine) return; if (!done) { this.setState({ pop: t.id }); if (e && e.clientX) this.confetti(e.clientX, e.clientY, 36); } this.send({ op: 'done', id: t.id, v: !done }, !done ? p.id : null); },
+          remove: () => this.send({ op: 'del', pid: p.id, id: t.id }),
+          people: PEOPLE.map(name => ({ name, style: pill(who.includes(name)), toggle: () => { const on = !who.includes(name); if (on && datable && name !== me) this.setState(st => ({ pickOpen: { ...st.pickOpen, [t.id]: true } })); this.send({ op: 'assign', id: t.id, p: on ? name : null }); } }))
+        };
+      });
+      return {
+        id: p.id, when: p.when, title: p.title, tasks, count: pDone + ' / ' + all.length,
+        draft: s.drafts[p.id] || '',
+        onDraft: (e) => { const v = e.target.value; this.setState(st => ({ drafts: { ...st.drafts, [p.id]: v } })); },
+        onKey: (e) => { if (e.key === 'Enter') this.addTask(p.id); }
+      };
+    }).filter(p => (!s.filter || p.tasks.length) && (!s.phaseSel || p.id === s.phaseSel));
+    const view = s.view || 'home';
+    const filled = PEOPLE.filter(p => DAYS.some(d => s.avail[p + '|' + d.n])).length;
+    const myDays = DAYS.filter(d => s.avail[me + '|' + d.n]).map(d => d.wd + ' ' + d.n);
+    const selPhase = PHASES.find(p => p.id === s.phaseSel);
+
+    const SYNC = {
+      local: ['#C9A24A', 'Niet gekoppeld · alleen op dit apparaat'],
+      loading: ['#A39C8E', 'Laden…'],
+      saving: ['#A39C8E', 'Opslaan…'],
+      ok: ['#5E8C6A', 'Gedeeld met iedereen'],
+      err: ['#B5543F', 'Geen verbinding · probeer opnieuw']
+    }[s.sync];
+
+    return {
+      locked, needName: !locked && !me, ready: !locked && !!me,
+      isHome: view === 'home', isAvail: view === 'avail', isWho: view === 'who',
+      goWho: () => this.go('wie'),
+      ...this.shopVals(),
+      whoCardSub: unassigned ? unassigned + ' nog niet verdeeld' : 'Alles is verdeeld',
+      showBackWho: view === 'tasks' && !!s.fromWho,
+      backWho: () => { const y = this.whoY || 0; this.setState({ fromWho: false, filter: null }); this.go('wie'); setTimeout(() => window.scrollTo(0, y), 60); },
+      whoSummary: unassigned ? unassigned + (unassigned === 1 ? ' taak heeft' : ' taken hebben') + ' nog niemand. Tik op een taak om ernaartoe te gaan.' : 'Alle taken zijn verdeeld. Tik op een taak om ernaartoe te gaan.',
+      whoGroups: PEOPLE.map(name => { const it = byP[name] || [], open = it.filter(x => !x.done).length;
+        return { name, ini: ini(name), av: av(name, 26), items: it, empty: !it.length, n: String(it.length), avS: av(name, 22),
+          count: it.length ? open + ' open · ' + (it.length - open) + ' klaar' : '' }; }), isTasks: view === 'tasks', notHome: view !== 'home',
+      goHome: () => this.go(''),
+      goAvail: () => this.go('planning'),
+      goMine: () => { this.setState({ filter: me }); this.go('taken'); },
+      phaseNav,
+      availSummary: filled + ' van ' + PEOPLE.length + ' ingevuld',
+      myAvail: myDays.length ? 'Jij kunt: ' + myDays.join(', ') : 'Jij hebt nog geen dagen ingevuld',
+      ...(() => {
+        const todayIso = iso(today);
+        const keys = Object.keys(planMap).sort();
+        const mk = (k) => { const items = Object.values(planMap[k]); const ppl = [...new Set(items.flatMap(i => i.people))];
+          return { k, items, ppl, label: fmtLong(k), count: items.length === 1 ? '1 taak' : items.length + ' taken' }; };
+        const all = keys.map(mk);
+        const upcoming = all.filter(d => d.k >= todayIso);
+        return {
+          planEmpty: all.length === 0,
+          planSummary: upcoming.length ? upcoming.length + (upcoming.length === 1 ? ' dag' : ' dagen') + ' ingepland' : 'Nog niets ingepland',
+          planDays: all.map(d => ({ label: d.label + (d.k < todayIso ? ' · geweest' : ''), count: d.count,
+            items: d.items.map(i => ({ t: i.t, titleStyle: 'font-size:14px;line-height:1.35;' + (i.done ? 'color:#6E695F;text-decoration:line-through' : 'color:#1A1A18;font-weight:500'),
+              people: i.people.map(n => ({ name: n, ini: ini(n), av: av(n, 22) })) })) })),
+          planPreview: upcoming.slice(0, 4).map(d => { const x = pd(d.k); return { wd: WD[x.getDay()], n: x.getDate(), count: d.count, people: d.ppl.slice(0, 4).map(n => ({ ini: ini(n), av: av(n, 22) })) }; })
+        };
+      })(),
+      miniDays: DAYS.map(d => ({ n: d.n })),
+      myOpenN: String(myOpen.length),
+      myOpenLabel: myOpen.length === 1 ? 'open taak' : 'open taken',
+      myTop: myOpen.slice(0, 4),
+      myEmpty: myN === 0,
+      myTaskCount: myN === 1 ? '1 taak' : myN + ' taken',
+      myTaskSub: myN ? (myN - myDone) + ' open · ' + myDone + ' klaar' : 'Nog niets gekozen',
+      tasksTitle: selPhase ? selPhase.title : 'Alle taken',
+      phaseTabs: [{ name: 'Alle', key: null }].concat(PHASES.map(p => ({ name: p.title, key: p.id }))).map(f => ({
+        name: f.name, style: pill((s.phaseSel || null) === f.key), pick: () => this.go(f.key ? 'taken/' + f.key : 'taken')
+      })),
+      pwDraft: s.pwDraft, pwWrong: s.pwWrong,
+      onPw: (e) => this.setState({ pwDraft: e.target.value, pwWrong: false }),
+      onPwKey: (e) => { if (e.key === 'Enter') this.tryPw(); },
+      tryPw: this.tryPw,
+      namePick: PEOPLE.map(name => ({ name, ini: ini(name), av: av(name, 30), pick: () => {
+        if (name === ADMIN && !this.admOk()) { this.setState({ askAdmin: true, adminDraft: '', adminWrong: false }); return; }
+        lsSet(MEKEY, name); this.setState({ me: name });
+      } })),
+      askAdmin: !!s.askAdmin, adminDraft: s.adminDraft || '', adminWrong: !!s.adminWrong,
+      onAdmin: (e) => this.setState({ adminDraft: e.target.value, adminWrong: false }),
+      onAdminKey: (e) => { if (e.key === 'Enter') this.tryAdmin(); },
+      tryAdmin: this.tryAdmin,
+      cancelAdmin: () => this.setState({ askAdmin: false }),
+      me: me || '',
+      switchMe: () => { lsSet(MEKEY, null); this.setState({ me: null }); },
+      syncDot: 'width:8px;height:8px;border-radius:4px;background:' + SYNC[0],
+      syncLabel: SYNC[1],
+      countKey: until(9), countMove: until(18),
+      moveN: String(Math.max(0, Math.round((new Date(2026, 11, 18) - today) / 864e5))),
+      moveUnit: Math.round((new Date(2026, 11, 18) - today) / 864e5) === 1 ? 'dag' : 'dagen',
+      meIni: ini(me), meAv: av(me, 24),
+      doneLabel: doneN + ' van ' + total + ' taken',
+      barStyle: 'height:100%;background:' + ACC + ';border-radius:3px;width:' + (total ? Math.round(doneN / total * 100) : 0) + '%;transition:width .3s',
+      days: DAYS.map(d => ({ ...d, headStyle: 'padding:8px 4px;text-align:center;border-bottom:1px solid #DAD4C8;' + (d.n === 9 || d.n === 18 ? 'background:#ECE8DE' : d.we ? 'background:#F3F0E8' : '') })),
+      availRows: PEOPLE.map(p => ({
+        name: p,
+        ini: ini(p), av: av(p, 24),
+        nameStyle: 'padding:0 10px;display:flex;align-items:center;gap:8px;font-size:13.5px;border-bottom:1px solid #E3DED3;min-height:40px;' + (p === me ? 'font-weight:600' : ''),
+        cells: DAYS.map(d => {
+          const k = p + '|' + d.n, on = !!s.avail[k];
+          return {
+            mark: on ? '✓' : '',
+            toggle: () => this.send({ op: 'avail', k, v: !on }),
+            mini: 'width:12px;height:12px;border-radius:50%;' + (on ? 'background:' + HC[p][1] : 'border:1.5px solid #CAC4B7;box-sizing:border-box'),
+            style: 'width:32px;height:32px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;user-select:none;' +
+              (on ? 'background:' + HC[p][1] + ';color:#FFFFFF;border:1px solid ' + HC[p][1] : 'background:transparent;color:transparent;border:1px solid ' + (p === me ? '#A39C8E' : '#CAC4B7'))
+          };
+        })
+      })),
+      filters: [{ name: 'Iedereen', key: null }, { name: 'Mijn taken', key: me }].concat(PEOPLE.filter(p => p !== me).map(p => ({ name: p, key: p }))).map(f => ({
+        name: f.name, style: pill(s.filter === f.key), pick: () => this.setState({ filter: f.key })
+      })),
+      openOnlyLabel: s.openOnly ? '✓ Alleen open taken' : 'Alleen open taken',
+      openOnlyStyle: pill(s.openOnly),
+      toggleOpenOnly: () => this.setState(st => ({ openOnly: !st.openOnly })),
+      phases
+    };
+  }
+}
+</script>
+</body>
+</html>
