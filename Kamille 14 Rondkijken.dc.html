@@ -2314,6 +2314,21 @@ class Component extends DCLogic {
       });
     });
     this.inLights = inLights;
+    // vaste set extra lampjes (uit, intensiteit 0): zo blijft het aantal lampen in de scene gelijk
+    // en hoeft three.js bij een verdiepingswissel niet alle shaders opnieuw te compileren
+    const padLights = new T.Group();
+    scene.add(padLights);
+    for (let i = 0; i < 8; i++) {
+      const pp = new T.PointLight('#000000', 0, 1, 2);
+      pp.position.set(0, -50000, 0);
+      pp.castShadow = false;
+      pp.visible = false;
+      padLights.add(pp);
+    }
+    this.padLights = padLights;
+    const renderRaw = renderer.render.bind(renderer);
+    renderer.render = (s, c) => { if (s === scene) this.syncPadLights(); renderRaw(s, c); };
+    setTimeout(() => this.warmLevels(), 1500);
 
     controls.addEventListener('start', () => { this._pendingView = null; this._vReady = true; });
     const ground = new T.Mesh(new T.PlaneGeometry(20000, 20000), new T.MeshStandardMaterial({ color: '#D8D4C9', roughness: 1 }));
@@ -2390,6 +2405,47 @@ class Component extends DCLogic {
       d.raf = requestAnimationFrame(loop);
     };
     loop();
+  };
+
+
+  // houdt het aantal zichtbare lampen altijd op 7, zodat de shaders bij een wissel hetzelfde blijven
+  syncPadLights = () => {
+    const d = this.d3, pads = this.padLights;
+    if (!d || !pads) return;
+    let n = 0;
+    d.scene.traverseVisible(o => { if (o.isPointLight && o.parent !== pads) n++; });
+    const need = Math.max(0, 7 - n);
+    pads.children.forEach((pp, i) => { pp.visible = i < need; });
+  };
+
+  // na het laden alvast de shaders van alle verdiepingen klaarzetten, zodat wisselen direct gaat
+  warmLevels = () => {
+    const d = this.d3;
+    if (!d || this._warmed) return;
+    if (this.state.walk) { setTimeout(() => this.warmLevels(), 3000); return; }
+    this._warmed = true;
+    const st = this.state, cur = st.lvl, ren = d.renderer;
+    const sh = ren.shadowMap.enabled, cs = d.sun.castShadow;
+    const lampVis = this.inLights ? this.inLights.children.map(pl => pl.visible) : [];
+    try {
+      [0, 1, 2, 3].forEach(n => {
+        if (n === cur) return;
+        st.lvl = n;
+        ren.shadowMap.enabled = n === 3;
+        d.sun.castShadow = n === 3;
+        if (this.inLights) this.inLights.children.forEach(pl => { pl.visible = n !== 3 && pl.userData.lvl === n; });
+        this.rebuildScene();
+        this.syncPadLights();
+        const hid = [];
+        d.scene.traverse(o => { if (!o.visible && !o.isLight) { hid.push(o); o.visible = true; } });
+        try { ren.compile(d.scene, d.camera); } finally { hid.forEach(o => { o.visible = false; }); }
+      });
+    } catch (e) {}
+    st.lvl = cur;
+    ren.shadowMap.enabled = sh;
+    d.sun.castShadow = cs;
+    if (this.inLights) this.inLights.children.forEach((pl, i) => { pl.visible = lampVis[i]; });
+    this.rebuildScene();
   };
 
   // deuren zwaaien open en dicht; het blad schuift daarbij uit de dagkant naar het scharnier
