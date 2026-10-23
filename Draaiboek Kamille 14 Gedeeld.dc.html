@@ -123,35 +123,6 @@ input{font-family:inherit}
       </div>
     </div>
 
-    <section style="display:flex;flex-direction:column;gap:12px">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-        <h2 style="margin:0;font-size:20px;font-weight:500">Takenlijst</h2>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <div onClick="{{ goAvail }}" style="height:34px;padding:0 14px;display:flex;align-items:center;gap:8px;border:1px solid #CAC4B7;border-radius:8px;background:#FFFFFF;font-size:13.5px;font-weight:500;cursor:pointer" style-hover="border-color:#1A1A18">Planning bekijken <span style="color:#6E695F">›</span></div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;background:#FFFFFF;overflow:hidden">
-        <sc-for list="{{ phaseNav }}" as="ph" hint-placeholder-count="6">
-          <div onClick="{{ ph.go }}" style="display:flex;align-items:center;gap:16px;padding:14px 16px;border-bottom:1px solid #E3DED3;cursor:pointer" style-hover="background:#F3F0E8">
-            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
-              <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A;text-transform:uppercase;letter-spacing:.04em">{{ ph.when }}</div>
-              <div style="font-size:16px;font-weight:500">{{ ph.title }}</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none">
-              <div style="display:flex;align-items:center;gap:8px">
-                <sc-if value="{{ ph.hasNew }}" hint-placeholder-val="{{ false }}">
-                  <span style="height:20px;padding:0 8px;border-radius:10px;background:#B5543F;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;white-space:nowrap">{{ ph.newLabel }}</span>
-                </sc-if>
-                <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#5E5A52">{{ ph.count }}</div>
-              </div>
-              <div style="width:64px;height:3px;background:#DAD4C8;border-radius:2px;overflow:hidden"><div style="{{ ph.bar }}"></div></div>
-            </div>
-            <div style="font-size:16px;color:#6E695F;flex:none">›</div>
-          </div>
-        </sc-for>
-      </div>
-    </section>
-
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px">
       <a href="Kamille%2014%20Rondkijken.dc.html" style="display:flex;flex-direction:column;text-decoration:none;color:#1A1A18;border:1px solid #CAC4B7;border-radius:12px;overflow:hidden;background:#FFFFFF" style-hover="border-color:#1A1A18">
         <img src="assets/3d-voorkant.jpg" alt="3D-model van Kamille 14" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#DAD4C8">
@@ -229,6 +200,35 @@ input{font-family:inherit}
         </div>
       </div>
     </div>
+
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <h2 style="margin:0;font-size:20px;font-weight:500">Takenlijst</h2>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div onClick="{{ goAvail }}" style="height:34px;padding:0 14px;display:flex;align-items:center;gap:8px;border:1px solid #CAC4B7;border-radius:8px;background:#FFFFFF;font-size:13.5px;font-weight:500;cursor:pointer" style-hover="border-color:#1A1A18">Planning bekijken <span style="color:#6E695F">›</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;background:#FFFFFF;overflow:hidden">
+        <sc-for list="{{ phaseNav }}" as="ph" hint-placeholder-count="6">
+          <div onClick="{{ ph.go }}" style="display:flex;align-items:center;gap:16px;padding:14px 16px;border-bottom:1px solid #E3DED3;cursor:pointer" style-hover="background:#F3F0E8">
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+              <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A;text-transform:uppercase;letter-spacing:.04em">{{ ph.when }}</div>
+              <div style="font-size:16px;font-weight:500">{{ ph.title }}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none">
+              <div style="display:flex;align-items:center;gap:8px">
+                <sc-if value="{{ ph.hasNew }}" hint-placeholder-val="{{ false }}">
+                  <span style="height:20px;padding:0 8px;border-radius:10px;background:#B5543F;color:#FFFFFF;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;white-space:nowrap">{{ ph.newLabel }}</span>
+                </sc-if>
+                <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#5E5A52">{{ ph.count }}</div>
+              </div>
+              <div style="width:64px;height:3px;background:#DAD4C8;border-radius:2px;overflow:hidden"><div style="{{ ph.bar }}"></div></div>
+            </div>
+            <div style="font-size:16px;color:#6E695F;flex:none">›</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
   </div>
   </sc-if>
 
@@ -296,12 +296,9 @@ input{font-family:inherit}
 
   <sc-if value="{{ isWho }}" hint-placeholder-val="{{ false }}">
   <section style="display:flex;flex-direction:column;gap:22px">
-    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:14px">
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <h2 style="margin:0;font-size:28px;font-weight:500;letter-spacing:-.01em">Wie doet wat</h2>
-        <div style="font-size:14px;color:#5E5A52">{{ whoSummary }}</div>
-      </div>
-      <div onClick="{{ goAllTasks }}" style="height:34px;padding:0 14px;display:flex;align-items:center;gap:8px;border:1px solid #CAC4B7;border-radius:8px;background:#FFFFFF;font-size:13.5px;font-weight:500;cursor:pointer" style-hover="border-color:#1A1A18">Alle taken <span style="color:#6E695F">›</span></div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <h2 style="margin:0;font-size:28px;font-weight:500;letter-spacing:-.01em">Wie doet wat</h2>
+      <div style="font-size:14px;color:#5E5A52">{{ whoSummary }}</div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:14px;align-items:start">
       <sc-for list="{{ whoGroups }}" as="g" hint-placeholder-count="6">
@@ -397,6 +394,118 @@ input{font-family:inherit}
         </div>
         <div style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A">{{ p.count }}</div>
       </div>
+      <sc-if value="{{ p.hasMove }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:22px;padding:16px 0 22px;border-bottom:1px solid #DAD4C8">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="font-size:19px;font-weight:600">Wie doet wat op de verhuisdag</div>
+            <div style="font-size:14px;line-height:1.45;color:#5E5A52;text-wrap:pretty;max-width:640px">De verhuizers sjouwen. Wij bouwen op, richten in en zorgen voor eten. Kies hieronder per persoon welke klussen je doet; ook partners apart.</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:10px;align-items:start">
+            <sc-for list="{{ p.movePeople }}" as="mp" hint-placeholder-count="8">
+              <div style="{{ mp.cardStyle }}">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span style="{{ mp.av }}">{{ mp.ini }}</span>
+                  <span style="flex:1;min-width:0;font-size:16px;font-weight:600">{{ mp.name }}</span>
+                  <span style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A">{{ mp.count }}</span>
+                </div>
+                <sc-for list="{{ mp.jobs }}" as="mj" hint-placeholder-count="0">
+                  <div style="display:flex;gap:10px;align-items:flex-start">
+                    <div onClick="{{ mj.toggle }}" style="{{ mj.box }}">{{ mj.mark }}</div>
+                    <div style="display:flex;flex-direction:column;gap:1px;min-width:0">
+                      <span style="{{ mj.tStyle }}">{{ mj.t }}</span>
+                      <span style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A">{{ mj.where }}</span>
+                    </div>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ mp.empty }}" hint-placeholder-val="{{ true }}">
+                  <div style="font-size:13.5px;color:#8A8478">Nog niets gekozen</div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:14px;align-items:start">
+            <sc-for list="{{ p.moveGroups }}" as="mg" hint-placeholder-count="10">
+              <div style="display:flex;flex-direction:column;border:1px solid #CAC4B7;border-radius:12px;background:#FFFFFF;overflow:hidden">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 16px;background:#F3F0E8;border-bottom:1px solid #E3DED3;flex-wrap:wrap">
+                  <sc-if value="{{ mg.gEditing }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;gap:8px;align-items:center;flex:1;min-width:0;flex-wrap:wrap">
+                      <input value="{{ mg.gEditT }}" onChange="{{ mg.gOnEdit }}" onKeyDown="{{ mg.gKey }}" placeholder="Naam kaart" style="height:34px;flex:1;min-width:120px;border:1px solid #1A1A18;border-radius:8px;background:#FFFFFF;padding:0 10px;font-size:15px;font-weight:600;outline:none;color:#1A1A18">
+                      <div onClick="{{ mg.gRemove }}" style="height:34px;padding:0 12px;border-radius:8px;border:1px solid #E3C3BA;color:#9A3F2C;display:flex;align-items:center;font-size:13px;cursor:pointer;user-select:none;background:#FFFFFF">Kaart verwijderen</div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ mg.gNotEditing }}" hint-placeholder-val="{{ true }}">
+                  <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+                    <span style="font-size:16px;font-weight:600">{{ mg.name }}</span>
+                    <sc-if value="{{ mg.isAdm }}" hint-placeholder-val="{{ false }}">
+                      <span onClick="{{ mg.gStart }}" title="Kaart bewerken" style="font-size:15px;line-height:1;color:#6E695F;cursor:pointer;user-select:none;padding:2px 4px;margin-left:-6px" style-hover="color:#1A1A18">✎</span>
+                    </sc-if>
+                    <sc-if value="{{ mg.link }}" hint-placeholder-val="{{ false }}">
+                      <a href="{{ mg.link }}" style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#4F6B72;text-decoration:none">{{ mg.linkLabel }}</a>
+                    </sc-if>
+                  </div>
+                  </sc-if>
+                  <span style="font-family:'Manrope',system-ui,sans-serif;font-size:12px;color:#66615A">{{ mg.count }}</span>
+                </div>
+                <sc-for list="{{ mg.jobs }}" as="j" hint-placeholder-count="4">
+                  <div style="display:flex;flex-direction:column;gap:8px;padding:12px 16px;border-bottom:1px solid #EDE8DF">
+                    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+                      <sc-if value="{{ j.editing }}" hint-placeholder-val="{{ false }}">
+                        <div style="display:flex;flex-direction:column;gap:8px;flex:1;min-width:0">
+                          <input value="{{ j.editT }}" onChange="{{ j.onEditT }}" onKeyDown="{{ j.onEditKey }}" placeholder="Klus" style="height:40px;border:1px solid #1A1A18;border-radius:8px;background:#FFFFFF;padding:0 12px;font-size:15px;font-weight:500;outline:none;color:#1A1A18">
+                          <textarea value="{{ j.editN }}" onChange="{{ j.onEditN }}" onKeyDown="{{ j.onEditKey }}" placeholder="Ondertitel (optioneel)" rows="2" style="border:1px solid #C2BBAD;border-radius:8px;background:#FFFFFF;padding:10px 12px;font-size:14px;line-height:1.45;font-family:inherit;outline:none;color:#1A1A18;resize:vertical"></textarea>
+                          <div style="display:flex;gap:8px">
+                            <div onClick="{{ j.saveEdit }}" style="height:36px;padding:0 14px;border-radius:8px;background:#1A1A18;color:#F6F4EE;display:flex;align-items:center;font-size:14px;cursor:pointer;user-select:none">Opslaan</div>
+                            <div onClick="{{ j.cancelEdit }}" style="height:36px;padding:0 14px;border-radius:8px;border:1px solid #C2BBAD;display:flex;align-items:center;font-size:14px;cursor:pointer;user-select:none">Annuleer</div>
+                            <div onClick="{{ j.removeJob }}" style="height:36px;padding:0 14px;margin-left:auto;border-radius:8px;border:1px solid #E3C3BA;color:#9A3F2C;display:flex;align-items:center;font-size:14px;cursor:pointer;user-select:none" style-hover="background:#F7E9E4;border-color:#9A3F2C">Verwijderen</div>
+                          </div>
+                        </div>
+                      </sc-if>
+                      <sc-if value="{{ j.notEditing }}" hint-placeholder-val="{{ true }}">
+                        <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+                          <div style="display:flex;gap:6px;align-items:baseline">
+                            <span style="{{ j.tStyle }}">{{ j.t }}</span>
+                            <sc-if value="{{ j.canEdit }}" hint-placeholder-val="{{ false }}">
+                              <span onClick="{{ j.startEdit }}" title="Bewerken" style="font-size:15px;line-height:1;color:#6E695F;cursor:pointer;user-select:none;padding:2px 4px" style-hover="color:#1A1A18">✎</span>
+                            </sc-if>
+                          </div>
+                          <sc-if value="{{ j.n }}" hint-placeholder-val="{{ false }}">
+                            <span style="font-size:13.5px;line-height:1.45;color:#5E5A52;text-wrap:pretty">{{ j.n }}</span>
+                          </sc-if>
+                        </div>
+                      </sc-if>
+                      <div style="display:flex;gap:4px;flex:none">
+                        <sc-for list="{{ j.people }}" as="jp" hint-placeholder-count="0">
+                          <span title="{{ jp.name }}" style="{{ jp.av }}">{{ jp.ini }}</span>
+                        </sc-for>
+                      </div>
+                    </div>
+                    <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+                      <sc-for list="{{ j.pick }}" as="pk" hint-placeholder-count="2">
+                        <div onClick="{{ pk.toggle }}" style="{{ pk.style }}">{{ pk.label }}</div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ mg.isAdm }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;gap:10px;align-items:center;padding:10px 16px">
+                    <span style="width:18px;height:18px;flex:none;border:1.5px dashed #A39C8E;border-radius:5px"></span>
+                    <input placeholder="Klus toevoegen…" value="{{ mg.draft }}" onChange="{{ mg.onDraft }}" onKeyDown="{{ mg.onKey }}" style="flex:1;min-width:0;border:none;background:transparent;font-size:14.5px;color:#1A1A18;outline:none;height:32px">
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+            <sc-if value="{{ p.moveAdm }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:14px 16px;border:1.5px dashed #A39C8E;border-radius:12px">
+                <div style="font-size:16px;font-weight:600">Nieuwe kaart</div>
+                <div style="display:flex;gap:8px">
+                  <input placeholder="Kamer of onderwerp, bv. Garage" value="{{ p.roomDraft }}" onChange="{{ p.onRoomDraft }}" onKeyDown="{{ p.onRoomKey }}" style="flex:1;min-width:0;height:38px;border:1px solid #C2BBAD;border-radius:8px;background:#FFFFFF;padding:0 12px;font-size:14.5px;outline:none;color:#1A1A18">
+                  <div onClick="{{ p.addRoom }}" style="height:38px;padding:0 14px;border-radius:8px;background:#1A1A18;color:#F6F4EE;display:flex;align-items:center;font-size:14px;cursor:pointer;user-select:none">Toevoegen</div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
       <sc-for list="{{ p.tasks }}" as="t" hint-placeholder-count="5">
         <div data-tid="{{ t.id }}" style="{{ t.rowStyle }}">
           <div style="display:flex;gap:14px;align-items:flex-start">
@@ -514,10 +623,12 @@ input{font-family:inherit}
           </sc-if>
         </div>
       </sc-for>
+      <sc-if value="{{ p.showAdd }}" hint-placeholder-val="{{ true }}">
       <div style="display:flex;gap:14px;align-items:center;padding:12px 0">
         <div style="width:20px;height:20px;flex:none;border:1.5px dashed #A39C8E;border-radius:5px"></div>
         <input placeholder="Taak toevoegen…" value="{{ p.draft }}" onChange="{{ p.onDraft }}" onKeyDown="{{ p.onKey }}" style="flex:1;min-width:0;border:none;background:transparent;font-size:15px;color:#1A1A18;outline:none;padding:4px 0">
       </div>
+      </sc-if>
     </section>
   </sc-for>
   </sc-if>
@@ -594,21 +705,66 @@ const PHASES = [
     { id: 'd5', t: 'Kamernamen op de deuren in het nieuwe huis plakken', n: 'Dezelfde namen als op de dozen. Zo weten verhuizers en helpers waar alles heen moet.', f: 1, link: D3, linkLabel: 'Indeling in 3D ›' },
     { id: 'd6', t: 'Parkeerplek bij beide adressen vrijhouden' }
   ])},
-  { id: 'e', when: 'Vr 18 december', title: 'Verhuisdag', tasks: [
-    { id: 'e1', t: 'Verhuizers ontvangen en per kamer uitleg geven', link: D3, linkLabel: 'Indeling in 3D ›' },
-    { id: 'e2', t: 'Meubels plaatsen volgens de indeling', n: 'Bank, tv-meubel en eettafel staan in het model op maat.', link: room('Woonkamer'), linkLabel: 'Woonkamer in 3D ›' },
-    { id: 'e3', t: 'Bedden als eerste opbouwen', link: room('Slaapkamer 1'), linkLabel: 'Slaapkamer in 3D ›' },
-    { id: 'e4', t: 'Wasmachine en koelkast aansluiten', n: 'Koelkast na het vervoer een paar uur rechtop laten staan voor je hem aanzet.' },
-    { id: 'e5', t: 'Schade controleren voordat de verhuizers vertrekken', f: 1 },
-    { id: 'e6', t: 'Oude woning leeg en schoon achterlaten', n: 'Meterstanden noteren en sleutels inleveren.' },
-    { id: 'e7', t: 'Eten en drinken voor de helpers' }
-  ]},
+  { id: 'e', when: 'Vr 18 december', title: 'Verhuisdag', tasks: [] },
   { id: 'f', when: 'Na 18 december', title: 'Afronden', tasks: [
     { id: 'f1', t: 'Adreswijziging controleren op MijnOverheid' },
     { id: 'f2', t: 'Afvalpas of containers aanvragen bij de gemeente', f: 1 },
     { id: 'f3', t: 'Verhuisdozen terugbrengen of wegdoen' },
     { id: 'f4', t: 'Kennismaken met de buren' },
     { id: 'f5', t: 'Helpers bedanken' }
+  ]}
+];
+
+// verhuisdag: klussen per persoon (los, ook partners); aanmeldingen in s.who['v-…'], afgevinkt in s.done['v-…']
+const HELP = [['Johan', 'Johan + Christien'], ['Christien', 'Johan + Christien'], ['Anko', 'Anko'], ['Gerhard', 'Gerhard'], ['Marjolein', 'Marjolein + Wilmer'], ['Wilmer', 'Marjolein + Wilmer'], ['Myrthe', 'Myrthe + Marko'], ['Marko', 'Myrthe + Marko']];
+const HH = Object.fromEntries(HELP);
+// basiskaarten + eigen kaarten (custom['mv-rooms']) en eigen klussen (custom['mv-<kaart>']); verbergen via hidden, hernoemen via edits
+const moveList = (s) => {
+  const hid = s.hidden || {}, ed = s.edits || {}, cu = s.custom || {};
+  const E = (x) => ed[x.id] ? { ...x, ...ed[x.id] } : x;
+  return MOVE.map(g => ({ ...g, base: true })).concat((cu['mv-rooms'] || []).map(r => ({ id: r.id, g: r.t, jobs: [] })))
+    .filter(g => !hid[g.id]).map(g => ({ ...g, g: ed[g.id] ? ed[g.id].t : g.g,
+      jobs: g.jobs.concat((cu['mv-' + g.id] || []).map(j => ({ ...j, custom: true }))).filter(j => !hid[j.id]).map(E) }));
+};
+const MOVE = [
+  { id: 'oud', g: 'Oud huis', jobs: [
+    { id: 'v-oud-wijs', t: 'Verhuizers helpen de verhuiswagen te vullen' },
+    { id: 'v-ziva', t: 'Ziva veilig overbrengen', n: 'In reismand en met kattenbak in de badkamer zetten.' },
+    { id: 'v-oud-schoon', t: 'Oude huis schoonmaken na de laatste rit', n: 'Meterstanden noteren, sleutels inleveren.' }
+  ]},
+  { id: 'wk', g: 'Woonkamer', r: 'Woonkamer', jobs: [
+    { id: 'v-wk-bank', t: 'Tv-kast plaatsen en tv aansluiten' },
+    { id: 'v-wk-tafel', t: 'Eettafel en stoelen neerzetten', n: 'Volgens de indeling in het 3D-model.' },
+    { id: 'v-wk-deco', t: 'Inrichting woonkamer', n: 'Lauters-lamp, plant, schilderij en kussens.' }
+  ]},
+  { id: 'keuken', g: 'Keuken', r: 'Keuken', jobs: [
+    { id: 'v-keuken', t: 'Keuken uitpakken', n: 'Eerst koffie, borden en bestek, dan de rest.' },
+    { id: 'v-koel', t: 'Koelkast aansluiten', n: 'Een paar uur rechtop laten staan voor je hem aanzet.' }
+  ]},
+  { id: 'sk1', g: 'Slaapkamer 1', r: 'Slaapkamer 1', jobs: [
+    { id: 'v-sk1-bed', t: 'Bed opbouwen en opmaken' },
+    { id: 'v-sk2-kleding', t: 'Kledingkast opbouwen' }
+  ]},
+  { id: 'sk2', g: 'Slaapkamer 2', r: 'Slaapkamer 2', jobs: [
+    { id: 'v-sk2-bed', t: 'Eenpersoonsbed opbouwen en opmaken' },
+    { id: 'v-sk2-kast', t: 'Twee Bestå-kasten', n: 'Opbouwen en aan de muur vastzetten.' }
+  ]},
+  { id: 'stu', g: 'Studeerkamer', r: 'Studeerkamer', jobs: [
+    { id: 'v-stu-kast', t: 'Acht Bestå-kasten', n: 'Zes in een rij en twee haaks.' },
+    { id: 'v-stu-bureau', t: 'Bureau, lage Bestå en printer', n: 'Bureau 20 cm van de muur.' }
+  ]},
+  { id: 'bad', g: 'Badkamer en toilet', r: 'Badkamer', jobs: [
+    { id: 'v-bad', t: 'Klaarmaken voor de eerste nacht', n: 'Handdoeken, wc-papier, zeep.' }
+  ]},
+  { id: 'zol', g: 'Zolder', r: 'Zolder', jobs: [
+    { id: 'v-zol-bed', t: 'Brimnes-bed opbouwen en opmaken', n: 'Tegen het knieschot, met hoofdbord en zwevende nachtkastjes.' },
+    { id: 'v-zol-kast', t: 'Brimnes-kledingkast opbouwen', n: 'Tegen de zijgevel. Met twee mensen.' },
+    { id: 'v-wasm', t: 'Wasmachine en droger aansluiten', n: 'Transportbouten uit de wasmachine halen.' }
+  ]},
+  { id: 'overal', g: 'Overal', jobs: [
+    { id: 'v-eten', t: 'Koffie, lunch en boodschappen', n: 'Ook voor de verhuizers.' },
+    { id: 'v-gereedschap', t: 'Gereedschap en schroefjes beheren', n: 'Accuboor, inbussleutels, waterpas. Weet waar alles ligt.' },
+    { id: 'v-dozen', t: 'Lege dozen plat en afval weg' }
   ]}
 ];
 
@@ -926,10 +1082,15 @@ class Component extends DCLogic {
         const day = planMap[d] = planMap[d] || {}; const it = day[t.id] = day[t.id] || { t: t.t, done: !!s.done[t.id], people: [] };
         it.people.push(name);
       }));
-      const pDone = all.filter(t => s.done[t.id]).length;
+      const mIds = p.id === 'e' ? moveList(s).flatMap(g => g.jobs.map(j => j.id)) : [];
+      if (p.id === 'e') moveList(s).forEach(g => g.jobs.forEach(j => (s.who[j.id] || []).forEach(n => { const h = HH[n]; if (!h) return; const d = !!s.done[j.id];
+        (byP[h] = byP[h] || []).push({ t: j.t + (h !== n ? ' (' + n + ')' : ''), phase: p.title + ' · ' + g.g, date: fmtShort(rA), done: d,
+          titleStyle: 'font-size:14.5px;line-height:1.35;' + (d ? 'color:#6E695F;text-decoration:line-through' : 'color:#1A1A18;font-weight:500'), notes: [],
+          go: () => { this.whoY = window.scrollY; this.setState({ filter: h, fromWho: true }); this.go('taken/e'); } }); })));
+      const pDone = all.filter(t => s.done[t.id]).length + mIds.filter(id => s.done[id]).length, pTot = all.length + mIds.length;
       const pNew = all.reduce((a, t) => a + newIn(t), 0);
-      phaseNav.push({ when: p.when, title: p.title, count: pDone + ' / ' + all.length, hasNew: pNew > 0, newLabel: pNew + ' nieuw',
-        bar: 'height:100%;background:' + (pDone === all.length && all.length ? '#5B7A4A' : ACC) + ';width:' + (all.length ? Math.round(pDone / all.length * 100) : 0) + '%',
+      phaseNav.push({ when: p.when, title: p.title, count: pDone + ' / ' + pTot, hasNew: pNew > 0, newLabel: pNew + ' nieuw',
+        bar: 'height:100%;background:' + (pDone === pTot && pTot ? '#5B7A4A' : ACC) + ';width:' + (pTot ? Math.round(pDone / pTot * 100) : 0) + '%',
         go: () => this.go('taken/' + p.id) });
       const tasks = all.filter(t => {
         if (s.openOnly && s.done[t.id]) return false;
@@ -995,13 +1156,57 @@ class Component extends DCLogic {
           people: PEOPLE.map(name => ({ name, style: pill(who.includes(name)), toggle: () => { const on = !who.includes(name); if (on && datable && name !== me) this.setState(st => ({ pickOpen: { ...st.pickOpen, [t.id]: true } })); this.send({ op: 'assign', id: t.id, p: on ? name : null }); } }))
         };
       });
+      const isAdm = me === ADMIN, onAv = (n, sz) => av(HH[n], sz), canTick = (who) => isAdm || who.some(n => HH[n] === me);
+      const mine = HELP.filter(([n, h]) => h === me).map(x => x[0]);
+      const pickers = isAdm ? HELP.map(x => x[0]) : mine;
+      const ML = p.id !== 'e' ? [] : moveList(s);
+      const allJobs = ML.flatMap(g => g.jobs.map(j => ({ ...j, g: g.g })));
+      const dr = (k) => s.drafts[k] || '', setDr = (k) => (e) => { const v = e.target.value; this.setState(st => ({ drafts: { ...st.drafts, [k]: v } })); };
+      const jobDone = (id) => !!s.done[id];
+      const tickFor = (j) => { const who = s.who[j.id] || [], d = jobDone(j.id), ok = canTick(who);
+        return { mark: d ? '✓' : '', toggle: () => { if (ok) this.send({ op: 'done', id: j.id, v: !d }); },
+          box: 'width:20px;height:20px;flex:none;margin-top:1px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;user-select:none;cursor:' + (ok ? 'pointer;' : 'default;') + (d ? 'background:' + ACC + ';color:#FFFFFF;border:1.5px solid ' + ACC : 'background:#FFFFFF;color:transparent;border:1.5px solid ' + (ok ? '#1A1A18' : '#C2BBAD')),
+          tStyle: 'font-size:14.5px;line-height:1.35;' + (d ? 'color:#6E695F;text-decoration:line-through' : 'color:#1A1A18;font-weight:500') }; };
+      const movePeople = p.id !== 'e' ? [] : HELP.filter(x => !s.filter || x[1] === s.filter).map(x => x[0]).sort((a, b) => (mine.includes(b) ? 1 : 0) - (mine.includes(a) ? 1 : 0)).map(n => {
+        const jobs = allJobs.filter(j => (s.who[j.id] || []).includes(n)).map(j => ({ t: j.t, where: j.g, ...tickFor(j) }));
+        const me2 = mine.includes(n);
+        return { name: n, ini: n[0], av: onAv(n, 30), jobs, empty: !jobs.length, count: jobs.length ? jobs.filter(j => j.mark).length + ' / ' + jobs.length : '',
+          cardStyle: 'display:flex;flex-direction:column;gap:10px;padding:14px 16px;border-radius:12px;background:' + (me2 ? '#FBF3EF' : '#FFFFFF') + ';border:1.5px solid ' + (me2 ? ACC : '#CAC4B7') };
+      });
+      const moveGroups = p.id !== 'e' || s.filter ? [] : ML.map(g => {
+        const jk = 'mv-' + g.id, addJob = () => { const t = dr(jk).trim(); if (!t) return; this.setState(st => ({ drafts: { ...st.drafts, [jk]: '' } })); this.send({ op: 'add', pid: jk, task: { id: 'vx' + Date.now(), t, n: '', by: me } }); };
+        const jobs = g.jobs.map(j => { const who = s.who[j.id] || [], ed = s.editing && s.editing.id === j.id ? s.editing : null;
+          return { t: j.t, n: j.n || '', canEdit: isAdm, editing: !!ed, notEditing: !ed, editT: ed ? ed.t : '', editN: ed ? ed.n : '',
+            startEdit: () => this.setState({ editing: { id: j.id, t: j.t, n: j.n || '' } }),
+            onEditT: (e) => { const v = e.target.value; this.setState(st => ({ editing: { ...st.editing, t: v } })); },
+            onEditN: (e) => { const v = e.target.value; this.setState(st => ({ editing: { ...st.editing, n: v } })); },
+            onEditKey: (e) => { if (e.key === 'Escape') this.setState({ editing: null }); },
+            saveEdit: () => { const x = this.state.editing; if (!x || !x.t.trim()) return; this.setState({ editing: null }); this.send({ op: 'edit', id: j.id, t: x.t.trim(), n: x.n.trim() }); },
+            cancelEdit: () => this.setState({ editing: null }),
+            removeJob: () => { if (!window.confirm('“' + j.t + '” verwijderen?')) return; this.setState({ editing: null }); this.send(j.custom ? { op: 'del', pid: jk, id: j.id } : { op: 'hide', id: j.id }); }, tStyle: 'font-size:15px;line-height:1.35;font-weight:500;' + (jobDone(j.id) ? 'color:#6E695F;text-decoration:line-through' : 'color:#1A1A18'),
+            people: who.filter(n => !pickers.includes(n)).map(n => ({ name: n, ini: n[0], av: onAv(n, 24) })),
+            pick: pickers.map(n => { const on = who.includes(n); return { label: (on ? '✓ ' : '') + n, style: pill(on), toggle: () => this.send({ op: 'who', id: j.id, p: n, v: !on }) }; }) }; });
+        const taken = g.jobs.filter(j => (s.who[j.id] || []).length).length;
+        const ged = s.editing && s.editing.id === g.id ? s.editing : null;
+        return { name: g.g, jobs, isAdm, draft: dr(jk), onDraft: setDr(jk), onKey: (e) => { if (e.key === 'Enter') addJob(); }, addJob,
+          gEditing: !!ged, gNotEditing: !ged, gEditT: ged ? ged.t : '',
+          gStart: () => this.setState({ editing: { id: g.id, t: g.g, n: '' } }),
+          gOnEdit: (e) => { const v = e.target.value; this.setState(st => ({ editing: { ...st.editing, t: v } })); },
+          gKey: (e) => { if (e.key === 'Escape') this.setState({ editing: null }); if (e.key === 'Enter') { const t = (this.state.editing.t || '').trim(); if (t) { this.setState({ editing: null }); this.send({ op: 'edit', id: g.id, t, n: '' }); } } },
+          gRemove: () => { if (!window.confirm('Kaart “' + g.g + '” met alle klussen verwijderen?')) return; this.setState({ editing: null }); this.send(g.base ? { op: 'hide', id: g.id } : { op: 'del', pid: 'mv-rooms', id: g.id }); },
+          count: taken + ' van ' + g.jobs.length + ' verdeeld', link: g.r ? (g.r === 'Indeling' ? D3 : room(g.r)) : '', linkLabel: g.r ? 'In 3D ›' : '' };
+      });
       return {
-        id: p.id, when: p.when, title: p.title, tasks, count: pDone + ' / ' + all.length,
+        id: p.id, when: p.when, title: p.title, tasks, count: pDone + ' / ' + pTot, movePeople, moveGroups, hasMove: p.id === 'e' && movePeople.length > 0, moveAdm: isAdm && !s.filter,
+        roomDraft: dr('mv-room'), onRoomDraft: setDr('mv-room'),
+        addRoom: () => { const t = dr('mv-room').trim(); if (!t) return; this.setState(st => ({ drafts: { ...st.drafts, 'mv-room': '' } })); this.send({ op: 'add', pid: 'mv-rooms', task: { id: 'mr' + Date.now(), t, by: me } }); },
+        onRoomKey: (e) => { if (e.key === 'Enter') { const t = dr('mv-room').trim(); if (!t) return; this.setState(st => ({ drafts: { ...st.drafts, 'mv-room': '' } })); this.send({ op: 'add', pid: 'mv-rooms', task: { id: 'mr' + Date.now(), t, by: me } }); } },
         draft: s.drafts[p.id] || '',
         onDraft: (e) => { const v = e.target.value; this.setState(st => ({ drafts: { ...st.drafts, [p.id]: v } })); },
-        onKey: (e) => { if (e.key === 'Enter') this.addTask(p.id); }
+        onKey: (e) => { if (e.key === 'Enter') this.addTask(p.id); },
+        showAdd: p.id !== 'e'
       };
-    }).filter(p => (!s.filter || p.tasks.length) && (!s.phaseSel || p.id === s.phaseSel));
+    }).filter(p => (!s.filter || p.tasks.length || p.hasMove) && (!s.phaseSel || p.id === s.phaseSel));
     const view = s.view || 'home';
     const filled = PEOPLE.filter(p => DAYS.some(d => s.avail[p + '|' + d.n])).length;
     const myDays = DAYS.filter(d => s.avail[me + '|' + d.n]).map(d => d.wd + ' ' + d.n);
@@ -1019,12 +1224,11 @@ class Component extends DCLogic {
       locked, needName: !locked && !me, ready: !locked && !!me,
       isHome: view === 'home', isAvail: view === 'avail', isWho: view === 'who',
       goWho: () => this.go('wie'),
-      goAllTasks: () => { this.setState({ fromWho: false, filter: null }); this.go('taken'); },
       ...this.shopVals(),
       whoCardSub: unassigned ? unassigned + ' nog niet verdeeld' : 'Alles is verdeeld',
       showBackWho: view === 'tasks' && !!s.fromWho,
       backWho: () => { const y = this.whoY || 0; this.setState({ fromWho: false, filter: null }); this.go('wie'); setTimeout(() => window.scrollTo(0, y), 60); },
-      whoSummary: unassigned ? unassigned + (unassigned === 1 ? ' taak heeft' : ' taken hebben') + ' nog niemand.' : 'Alle taken zijn verdeeld.',
+      whoSummary: unassigned ? unassigned + (unassigned === 1 ? ' taak heeft' : ' taken hebben') + ' nog niemand. Tik op een taak om ernaartoe te gaan.' : 'Alle taken zijn verdeeld. Tik op een taak om ernaartoe te gaan.',
       whoGroups: PEOPLE.map(name => { const it = byP[name] || [], open = it.filter(x => !x.done).length;
         return { name, ini: ini(name), av: av(name, 26), items: it, empty: !it.length, n: String(it.length), avS: av(name, 22),
           count: it.length ? open + ' open · ' + (it.length - open) + ' klaar' : '' }; }), isTasks: view === 'tasks', notHome: view !== 'home',
