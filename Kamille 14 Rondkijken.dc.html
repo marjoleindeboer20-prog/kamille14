@@ -29,19 +29,21 @@
   
 
   <div style="flex:1;min-width:0;min-height:0;display:flex;flex-direction:column">
-    <header style="display:flex;align-items:center;gap:16px;padding:12px 22px;border-bottom:1px solid #DDD8CC;background:#F6F4EE;flex:none">
+    <header style="display:flex;flex-wrap:wrap;align-items:center;column-gap:16px;row-gap:8px;padding:10px max(14px, env(safe-area-inset-right)) 10px max(14px, env(safe-area-inset-left));border-bottom:1px solid #DDD8CC;background:#F6F4EE;flex:none">
       <div>
         <div style="font-size:15.5px;font-weight:600;letter-spacing:-.012em;line-height:1.2;white-space:nowrap">Kamille 14, Drachten</div>
       </div>
       <div style="flex:1"></div>
-      <div style="display:flex;align-items:center;gap:8px">
+      <sc-if value="{{ isMW }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
         <span style="font-size:12px;color:#6B6862;white-space:nowrap">Woonkamer</span>
         <div style="display:flex;gap:2px;padding:2px;background:#E7E3D9;border-radius:8px">
           <div sc-camel-on-click="{{ onIndNu }}" style="{{ indNuBtn }}">Huidig</div>
           <div sc-camel-on-click="{{ onIndAlt }}" style="{{ indAltBtn }}">Bank bij raam</div>
         </div>
       </div>
-      <a href="Draaiboek%20Kamille%2014%20Gedeeld.dc.html" style="height:30px;padding:0 11px;display:flex;align-items:center;border-radius:7px;font-size:12.5px;color:#4A4741;text-decoration:none;white-space:nowrap;margin-right:6px">‹ Draaiboek</a>
+      </sc-if>
+      <a href="Draaiboek%20Kamille%2014%20Gedeeld.dc.html" style="height:30px;padding:0 11px;display:flex;align-items:center;border-radius:7px;font-size:12.5px;color:#4A4741;text-decoration:none;white-space:nowrap;margin-right:6px;background:#EDEAE2">‹ Draaiboek</a>
       <sc-if value="{{ isAdm }}" hint-placeholder-val="{{ false }}"><div sc-camel-on-click="{{ onPaint }}" style="{{ paintBtn }}">Verf berekenen</div></sc-if>
       </header>
 
@@ -265,23 +267,23 @@
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;: { &quot;width&quot;: 1440, &quot;height&quot;: 900 }}">
 const KEY = 'kamille14-rondkijken-v1';
 // vaste indeling voor de publieke versie
-const BAKED_ITEMS = [{"id":"strelitzia-wk","name":"Strelitzia","w":40,"h":40,"hh":175,"x":62,"y":362,"rot":0,"shape":"circle","cat":"div"},{"id":"slede-wk","name":"Sledefauteuil","w":64,"h":78,"hh":105,"x":394,"y":202,"rot":25,"shape":"rect","cat":"zit"},{"id":"brimnes-zo","name":"Brimnes bed","w":166,"h":206,"hh":47,"x":176,"y":378,"rot":0,"shape":"rect","cat":"bed","lv":2},{"id":"bureau-st","name":"Bureau","col":"#4A3528","w":160,"h":80,"hh":75,"x":200,"y":931,"rot":90,"shape":"rect","cat":"kast","lv":1},{"id":"blade1-st","name":"Ladeblok","col":"#4A3528","w":40,"h":74,"hh":72,"x":200,"y":989,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"blade2-st","name":"Ladeblok","col":"#4A3528","w":40,"h":74,"hh":72,"x":200,"y":873,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"bstoel-st","name":"Bureaustoel","w":60,"h":60,"hh":120,"x":267,"y":931,"rot":90,"shape":"rect","cat":"kast","lv":1},{"id":"billy6-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":1036,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy5-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":736,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy1-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":976,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy2-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":916,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy3-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":856,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy4-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":796,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"f1mta7mngo","name":"Eettafel","w":220,"h":100,"x":128,"y":588,"rot":90,"shape":"rect","cat":"eet"},{"id":"f3mta857u5","name":"Tv-meubel","w":100,"h":40,"hh":45,"x":62,"y":274,"rot":270,"shape":"rect","cat":"zit"},{"id":"f4mta85o82","name":"Salontafel","w":60,"h":60,"hh":42,"x":394,"y":330,"rot":0,"shape":"rect","cat":"zit","col":"#D9CDB8"},{"id":"f5mta89bg0","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":652,"rot":90,"shape":"rect","cat":"eet"},{"id":"f6mta89pe7","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":652,"rot":270,"shape":"rect","cat":"eet"},{"id":"f7mta89tol","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":594,"rot":270,"shape":"rect","cat":"eet"},{"id":"f8mta89yrx","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":594,"rot":90,"shape":"rect","cat":"eet"},{"id":"f9mta8a2f6","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":536,"rot":90,"shape":"rect","cat":"eet"},{"id":"f10mta8a5jx","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":536,"rot":270,"shape":"rect","cat":"eet"},{"id":"bin-keuken","name":"Prullenbak","w":30,"h":30,"hh":65,"x":57,"y":1066,"rot":0,"shape":"circle","cat":"div"},{"id":"f1mtbproaq","name":"Plant","w":58,"h":58,"hh":155,"x":536,"y":556,"rot":0,"shape":"circle","cat":"div"},{"id":"f2mtbpssgj","name":"Vloerkleed","w":200,"h":250,"hh":1,"x":395,"y":345,"rot":0,"shape":"rect","cat":"kleed","col":"#E2D9CA"},{"id":"f1mtbqs5bb","name":"Hoekbank Charlotte rechts","w":295,"h":272,"hh":78,"x":431,"y":376,"rot":90,"shape":"L","cat":"zit","col":"#DDCFB9"},{"id":"kapstok-hal","name":"Kapstok","w":79,"h":32,"hh":185,"x":356,"y":1021,"rot":270,"cat":"berg","col":"#2B2A27"},{"id":"bed-sk1","name":"Tweepersoonsbed","w":160,"h":200,"hh":95,"x":129,"y":360,"rot":270,"shape":"rect","cat":"bed","lv":1,"col":"#9C8C76","wood":true},{"id":"nk1-sk1","name":"Nachtkastje","col":"#9C8C76","w":55,"h":40,"hh":48,"x":49,"y":251,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"nk2-sk1","name":"Nachtkastje","col":"#9C8C76","w":55,"h":40,"hh":48,"x":49,"y":469,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"kk-sk1","name":"Kledingkast","w":200,"h":60,"hh":220,"x":129.5,"y":626,"rot":180,"shape":"rect","cat":"kast","lv":1},{"id":"nymo-1","name":"Hanglamp Nymo","w":44,"h":44,"hh":258,"x":128,"y":533,"rot":0,"shape":"circle","cat":"div","lv":0,"pend":true},{"id":"nymo-2","name":"Hanglamp Nymo","w":44,"h":44,"hh":258,"x":128,"y":643,"rot":0,"shape":"circle","cat":"div","lv":0,"pend":true},{"id":"lauters-wk","name":"Staande lamp Lauters","w":52,"h":52,"hh":147,"x":541,"y":186,"rot":0,"shape":"circle","cat":"div","lv":0},{"id":"bed-sk2","name":"Eenpersoonsbed","w":90,"h":200,"hh":85,"x":505,"y":257,"rot":0,"shape":"rect","cat":"bed","lv":1,"white":true},{"id":"billy1-sk2","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":549,"y":500,"rot":90,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy2-sk2","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":549,"y":439,"rot":90,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"besta1-st","name":"Bestå open kast","besta":true,"w":60,"h":40,"hh":193,"x":99,"y":686,"rot":0,"shape":"rect","cat":"kast","lv":1,"front":"lades"},{"id":"besta2-st","name":"Bestå open kast","besta":true,"w":60,"h":40,"hh":193,"x":159,"y":686,"rot":0,"shape":"rect","cat":"kast","lv":1,"front":"deuren"},{"id":"bestalaag-st","name":"Bestå laag met printer","w":60,"h":40,"hh":64,"x":220,"y":1041,"rot":270,"shape":"rect","cat":"kast","lv":1,"lowbesta":true},{"id":"brimkast-zo","name":"Brimnes kledingkast","w":117,"h":50,"hh":190,"x":55,"y":610,"rot":270,"shape":"rect","cat":"kast","lv":2,"kast3":true}];
+const BAKED_ITEMS = [{"id":"strelitzia-wk","name":"Strelitzia","w":40,"h":40,"hh":175,"x":62,"y":362,"rot":0,"shape":"circle","cat":"div"},{"id":"slede-wk","name":"Sledefauteuil","w":64,"h":78,"hh":105,"x":394,"y":202,"rot":25,"shape":"rect","cat":"zit"},{"id":"brimnes-zo","name":"Brimnes bed","w":166,"h":206,"hh":47,"x":176,"y":378,"rot":0,"shape":"rect","cat":"bed","lv":2},{"id":"bureau-st","name":"Bureau","col":"#4A3528","w":160,"h":80,"hh":75,"x":200,"y":931,"rot":90,"shape":"rect","cat":"kast","lv":1},{"id":"blade1-st","name":"Ladeblok","col":"#4A3528","w":40,"h":74,"hh":72,"x":200,"y":989,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"blade2-st","name":"Ladeblok","col":"#4A3528","w":40,"h":74,"hh":72,"x":200,"y":873,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"bstoel-st","name":"Bureaustoel","w":60,"h":60,"hh":120,"x":267,"y":931,"rot":90,"shape":"rect","cat":"kast","lv":1},{"id":"billy6-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":1036,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy5-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":736,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy1-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":976,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy2-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":916,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy3-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":856,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy4-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":796,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"f1mta7mngo","name":"Eettafel","w":220,"h":100,"x":128,"y":588,"rot":90,"shape":"rect","cat":"eet"},{"id":"f3mta857u5","name":"Tv-meubel","w":100,"h":40,"hh":45,"x":62,"y":274,"rot":270,"shape":"rect","cat":"zit"},{"id":"f4mta85o82","name":"Salontafel","w":60,"h":60,"hh":42,"x":394,"y":330,"rot":0,"shape":"rect","cat":"zit","col":"#D9CDB8"},{"id":"f5mta89bg0","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":652,"rot":90,"shape":"rect","cat":"eet"},{"id":"f6mta89pe7","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":652,"rot":270,"shape":"rect","cat":"eet"},{"id":"f7mta89tol","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":594,"rot":270,"shape":"rect","cat":"eet"},{"id":"f8mta89yrx","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":594,"rot":90,"shape":"rect","cat":"eet"},{"id":"f9mta8a2f6","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":536,"rot":90,"shape":"rect","cat":"eet"},{"id":"f10mta8a5jx","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":536,"rot":270,"shape":"rect","cat":"eet"},{"id":"bin-keuken","name":"Prullenbak","w":30,"h":30,"hh":65,"x":57,"y":1066,"rot":0,"shape":"circle","cat":"div"},{"id":"bijzettafel-wk","name":"Bijzettafel rond met monstera","w":50,"h":50,"hh":50,"x":536,"y":556,"rot":0,"shape":"circle","cat":"zit"},{"id":"f2mtbpssgj","name":"Vloerkleed","w":200,"h":250,"hh":1,"x":395,"y":345,"rot":0,"shape":"rect","cat":"kleed","col":"#E2D9CA"},{"id":"f1mtbqs5bb","name":"Hoekbank Charlotte rechts","w":295,"h":272,"hh":78,"x":431,"y":376,"rot":90,"shape":"L","cat":"zit","col":"#DDCFB9"},{"id":"kapstok-hal","name":"Kapstok","w":79,"h":32,"hh":185,"x":356,"y":1021,"rot":270,"cat":"berg","col":"#2B2A27"},{"id":"schoenenrek-hal","name":"Schoenenrek","w":79,"h":32,"hh":37,"x":356,"y":1021,"rot":270,"shape":"rect","cat":"berg"},{"id":"spiegel-hal","name":"Wandspiegel whitewash","w":50,"h":3.5,"hh":200,"sh":160,"lt":6,"frame":"#E4DED3","x":450,"y":1079,"rot":180,"shape":"rect","cat":"div"},{"id":"hexagon-hal","name":"Hexagon fotocollectie","w":143,"h":2,"hh":227,"x":341,"y":837,"rot":270,"shape":"rect","cat":"div"},{"id":"bed-sk1","name":"Tweepersoonsbed","w":160,"h":200,"hh":95,"x":129,"y":335,"rot":270,"shape":"rect","cat":"bed","lv":1,"col":"#9C8C76","wood":true},{"id":"fotoplank-sk1","name":"Fotoplank zwart","w":115,"h":12,"hh":150,"x":35,"y":339,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"nk1-sk1","name":"Nachtkastje","col":"#9C8C76","w":55,"h":40,"hh":48,"x":49,"y":226,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"nk2-sk1","name":"Nachtkastje","col":"#9C8C76","w":55,"h":40,"hh":48,"x":49,"y":444,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"kk-sk1","name":"Kledingkast","w":200,"h":60,"hh":220,"x":129.5,"y":626,"rot":180,"shape":"rect","cat":"kast","lv":1},{"id":"nymo-1","name":"Hanglamp Nymo","w":44,"h":44,"hh":258,"x":128,"y":533,"rot":0,"shape":"circle","cat":"div","lv":0,"pend":true},{"id":"nymo-2","name":"Hanglamp Nymo","w":44,"h":44,"hh":258,"x":128,"y":643,"rot":0,"shape":"circle","cat":"div","lv":0,"pend":true},{"id":"lauters-wk","name":"Staande lamp Lauters","w":52,"h":52,"hh":147,"x":541,"y":186,"rot":0,"shape":"circle","cat":"div","lv":0},{"id":"bed-sk2","name":"Eenpersoonsbed","w":90,"h":200,"hh":85,"x":505,"y":257,"rot":0,"shape":"rect","cat":"bed","lv":1,"white":true},{"id":"wasmand-bk","name":"Wasmand zwart","w":44.8,"h":34.1,"hh":61.5,"x":367,"y":889.5,"rot":90,"shape":"rect","cat":"div","lv":1},{"id":"ladekast-sk2","name":"Ladekast","w":100,"h":48,"hh":75,"x":546,"y":409,"rot":90,"shape":"rect","cat":"kast","lv":1},{"id":"spiegel-sk2","name":"Wandspiegel zwart","w":40,"h":3,"hh":190,"x":30.5,"y":534,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"billy1-sk2","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":637,"y":524,"rot":270,"shape":"rect","cat":"kast","besta":true,"camping":1},{"id":"billy2-sk2","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":637,"y":584,"rot":270,"shape":"rect","cat":"kast","besta":true,"camping":2},{"id":"besta1-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":322,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta2-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":262,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta3-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":202,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta4-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":142,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta5-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":442,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta6-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":382,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"koelvries-gar","name":"Koel-vriescombinatie","w":59.5,"h":65.8,"hh":185.3,"x":650,"y":178,"rot":270,"shape":"rect","cat":"kast"},{"id":"platsa1-gar","name":"Platsa kast wit","w":60,"h":55,"hh":180,"x":644.5,"y":238,"rot":270,"shape":"rect","cat":"kast"},{"id":"platsa2-gar","name":"Platsa kast wit","w":60,"h":55,"hh":180,"x":644.5,"y":298,"rot":270,"shape":"rect","cat":"kast"},{"id":"platsa3-gar","name":"Platsa kast wit","w":60,"h":55,"hh":180,"x":644.5,"y":358,"rot":270,"shape":"rect","cat":"kast"},{"id":"fontein-gar","name":"Fonteinmeubel","w":46,"h":41,"hh":88,"x":647.5,"y":47,"rot":270,"shape":"rect","cat":"kast"},{"id":"airco-gar","name":"Airco binnendeel","w":80,"h":22,"hh":232,"x":906,"y":110,"rot":90,"shape":"rect","cat":"kast"},{"id":"besta1-st","name":"Bestå open kast","besta":true,"w":60,"h":40,"hh":193,"x":99,"y":686,"rot":0,"shape":"rect","cat":"kast","lv":1,"front":"lades"},{"id":"besta2-st","name":"Bestå open kast","besta":true,"w":60,"h":40,"hh":193,"x":159,"y":686,"rot":0,"shape":"rect","cat":"kast","lv":1,"front":"deuren"},{"id":"bestalaag-st","name":"Bestå laag met printer","w":60,"h":40,"hh":64,"x":220,"y":1041,"rot":270,"shape":"rect","cat":"kast","lv":1,"lowbesta":true},{"id":"brimkast-zo","name":"Brimnes kledingkast","w":117,"h":50,"hh":190,"x":55,"y":610,"rot":270,"shape":"rect","cat":"kast","lv":2,"kast3":true}];
 const CX = 466, CZ = 555;
 // tweede indeling woonkamer: bank tegen de westmuur, tv-meubel tegen de blauwe muur
 const ALT_WOON = {
   'f1mtbqs5bb': { x: 165, y: 307, rot: 270 },
   'f3mta857u5': { x: 550, y: 330, rot: 90 },
-  'f2mtbpssgj': { x: 360, y: 315 },
-  'f4mta85o82': { x: 360, y: 300 },
+  'f2mtbpssgj': { x: 201, y: 338 },   // kleed en salontafel: zelfde plek ten opzichte van de bank als in de vaste indeling, 180° gedraaid
+  'f4mta85o82': { x: 202, y: 353 },
   'f1mta7mngo': { x: 128, y: 588, rot: 180 },
-  'f5mta89bg0': { x: 64, y: 638, rot: 180 },
-  'f6mta89pe7': { x: 64, y: 532, rot: 0 },
-  'f7mta89tol': { x: 122, y: 532, rot: 0 },
-  'f8mta89yrx': { x: 122, y: 638, rot: 180 },
-  'f9mta8a2f6': { x: 180, y: 638, rot: 180 },
-  'f10mta8a5jx': { x: 180, y: 532, rot: 0 },
+  'f5mta89bg0': { x: 70, y: 641, rot: 180 },   // stoelen gecentreerd om de eettafel (128, 588)
+  'f6mta89pe7': { x: 70, y: 535, rot: 0 },
+  'f7mta89tol': { x: 128, y: 535, rot: 0 },
+  'f8mta89yrx': { x: 128, y: 641, rot: 180 },
+  'f9mta8a2f6': { x: 186, y: 641, rot: 180 },
+  'f10mta8a5jx': { x: 186, y: 535, rot: 0 },
   'nymo-1': { x: 183, y: 588 },
-  'f1mtbproaq': { x: 541, y: 186 },
+  'bijzettafel-wk': { x: 541, y: 186 },
   'nymo-2': { x: 73, y: 588 }
 };
 const ALT_WEG = ['slede-wk', 'strelitzia-wk', 'lauters-wk'];
@@ -320,11 +322,12 @@ const WALLS_G = [
   [598, 0, 333, 24], [598, 622, 333, 14], [598, 24, 19, 598], [917, 24, 14, 598],
   [617, 472, 300, 14],
   [450, 624, 120, 10],      // kastwand onder de trap, iets naar voren in de kamer
-  [440, 617, 10, 89]        // zijwand van de kast, door tot de onderste waaiertrede (z 706), gelijk met de zijkant van de trap (x 450)
+  [440, 617, 10, 89],       // zijwand van de kast, door tot de onderste waaiertrede (z 706), gelijk met de zijkant van de trap (x 450)
+  [617, 24, 10, 100]        // garage: verdikking van de westmuur, 100 cm vanaf de achtergevel, fonteinmeubel ertegen (foto)
 ];
 
 // plafondhoogte per wand: de aanbouw is lager (2.37 m tegen 2.58 m)
-const WH_G = { 9: 237, 10: 237, 11: 237, 12: 237, 13: 237, 14: 196, 15: 258 };
+const WH_G = { 9: 237, 10: 237, 11: 237, 12: 237, 13: 237, 14: 196, 15: 258, 16: 237 };
 
 const FLOORS_G = [
   // woonkamer, met de kast onder de trap eruit gesneden
@@ -345,14 +348,14 @@ const FLOORS_G = [
 // scharnier: 'u0' | 'u1' · draaizijde: alongX 'n'|'s' · alongZ 'w'|'e'
 // Overgenomen uit de verkoopplattegrond (begane grond).
 const WOPEN_G = {
-  0:  [[104,215,2,235,'w'], [215,301,2,235,'do','u0','n','z'], [301,387,2,235,'do','u1','n','z'], [387,497,2,235,'w']],   // achterpui: één doorlopend kozijn, geen muur tussen ramen en deuren
-  1:  [[53,289,95,220,'w',null,null,'k'], [354,410,95,220,'w',null,null,'k']],
+  0:  [[104,215,2,235,'w',null,null,'PL'], [215,301,2,235,'do','u0','n','zL'], [301,387,2,235,'do','u1','n','zL'], [387,497,2,235,'w',null,null,'PL']],   // 'P': geen plissé · 'L': grijze gordijnen   // achterpui: één doorlopend kozijn, geen muur tussen ramen en deuren
+  1:  [[53,289,95,220,'w',null,null,'kM'], [354,410,95,220,'w',null,null,'kM']],   // 'M': plissé die vanuit het midden naar boven en onder sluit
   3:  [[798,905,2,220,'do','u1','w','zk']],   // voordeur loopt door tot de gevelband
   5:  [[9,91,2,211,'do','u1','n','z']],
   7:  [[39,114,2,211,'do','u1','w','z']],
   9:  [[127,217,2,215,'do','u0','n','z']],
   10: [[168,258,2,215,'do','u0','s','z'], [258,308,2,215,'w']],
-  12: [[219,419,90,220,'w']],
+  12: [[219,419,198,228,'w']],   // smal bovenlicht vlak onder het plafond (foto)
   13: [[146,231,2,211,'do','u1','n','z']],
   14: [[37,114,2,188,'do','u1','n','z']]
 };
@@ -578,6 +581,7 @@ function kindOf(it) {
   if (n.indexOf('poef') >= 0) return 'pouf';
   if (n.indexOf('bureaustoel') >= 0) return 'office';
   if (n.indexOf('stoel') >= 0 || n.indexOf('kruk') >= 0) return 'chair';
+  if (n.indexOf('bijzettafel') >= 0) return 'bijzettafel';
   if (n.indexOf('salontafel') >= 0) return 'blocktable';
   if (n.indexOf('tafel') >= 0 || n.indexOf('bureau') >= 0) return 'table';
   if (it.pend || n.indexOf('hanglamp') >= 0) return 'pendant';
@@ -587,6 +591,16 @@ function kindOf(it) {
   if (n.indexOf('plant') >= 0) return 'plant';
   if (n.indexOf('piano') >= 0) return 'piano';
   if (n.indexOf('tv') === 0) return 'tvmeubel';
+  if (n.indexOf('schoenenrek') >= 0) return 'schoenenrek';
+  if (n.indexOf('wasmand') >= 0) return 'wasmand';
+  if (n.indexOf('hexagon') >= 0) return 'hexwand';
+  if (n.indexOf('platsa') >= 0) return 'platsa';
+  if (n.indexOf('ladekast') >= 0) return 'ladekast';
+  if (n.indexOf('fotoplank') >= 0) return 'fotoplank';
+  if (n.indexOf('wandspiegel') >= 0) return 'wandspiegel';
+  if (n.indexOf('airco') >= 0) return 'airco';
+  if (n.indexOf('fontein') >= 0) return 'fontein';
+  if (n.indexOf('koel') >= 0) return 'koelkast';
   if (it.lowbesta) return 'lowbesta';
   if (n.indexOf('billy') >= 0 || it.besta) return 'billy';
   if (n.indexOf('kledingkast') >= 0) return 'wardrobe';
@@ -908,6 +922,227 @@ function buildPiece(T, g, it, col, fabTex) {
       const kap = new T.Mesh(new T.CylinderGeometry(8, 8, 14, 28, 1, true), new T.MeshStandardMaterial({ color: '#7D7F84', roughness: 0.95, side: T.DoubleSide, emissive: '#FFE9C4', emissiveIntensity: 0.12 }));
       kap.position.set(cx + q * 8, 80, zf + 10); g.add(kap);
     });
+    return;
+  }
+
+  if (k === 'bijzettafel') {
+    // ronde bijzettafel: houten blad, zwart metalen kruisframe; monstera in een lichte pot erop
+    const R = w / 2, bladT = 2.5, th = hh;
+    const hout = new T.MeshStandardMaterial({ color: '#B08A62', roughness: 0.7 });
+    const zw = new T.MeshStandardMaterial({ color: '#1D1D1E', roughness: 0.45, metalness: 0.4 });
+    const bl = new T.Mesh(new T.CylinderGeometry(R, R, bladT, 40), hout); bl.position.y = th - bladT / 2; bl.castShadow = true; bl.receiveShadow = true; g.add(bl);
+    [0, Math.PI / 2].forEach(a => {
+      const p = new T.Group(); p.rotation.y = a + Math.PI / 4; g.add(p);
+      const m1 = new T.Mesh(new T.BoxGeometry(R * 1.75, 2, 2), zw); m1.position.y = 1; m1.castShadow = true; p.add(m1);   // voet
+      const m2 = new T.Mesh(new T.BoxGeometry(R * 1.6, 2, 2), zw); m2.position.y = th - bladT - 1; p.add(m2);              // onder het blad
+      [-1, 1].forEach(sx => { const st = new T.Mesh(new T.BoxGeometry(2, th - bladT, 2), zw); st.position.set(sx * R * 0.8, (th - bladT) / 2, 0); st.castShadow = true; p.add(st); });
+    });
+    // monstera
+    const y0 = th;
+    const pot = new T.Mesh(new T.CylinderGeometry(11, 9, 20, 24), new T.MeshStandardMaterial({ color: '#E6E1D8', roughness: 0.6 }));
+    pot.position.y = y0 + 10; pot.castShadow = true; g.add(pot);
+    const aarde = new T.Mesh(new T.CylinderGeometry(10.3, 10.3, 0.6, 20), new T.MeshStandardMaterial({ color: '#3B2E24', roughness: 1 })); aarde.position.y = y0 + 19.2; g.add(aarde);
+    const stM = new T.MeshStandardMaterial({ color: '#3E6B35', roughness: 0.7 });
+    const cv = document.createElement('canvas'); cv.width = cv.height = 128; const x = cv.getContext('2d');
+    x.fillStyle = '#2F5E2E'; x.beginPath(); x.ellipse(64, 64, 58, 62, 0, 0, Math.PI * 2); x.fill();
+    x.globalCompositeOperation = 'destination-out';
+    for (let i = 0; i < 6; i++) { const a = -1.2 + i * 0.48; [1, -1].forEach(sd => { x.save(); x.translate(64, 64); x.rotate(sd * a + (sd < 0 ? Math.PI : 0)); x.fillRect(22, -3.5, 50, 7); x.restore(); }); }
+    for (let i = 0; i < 4; i++) { x.beginPath(); x.ellipse(64 + (i % 2 ? 16 : -16), 34 + i * 18, 4, 2.5, 0, 0, 7); x.fill(); }
+    x.globalCompositeOperation = 'source-over'; x.strokeStyle = '#4D8040'; x.lineWidth = 2.5; x.beginPath(); x.moveTo(64, 4); x.lineTo(64, 124); x.stroke();
+    const blTex = new T.CanvasTexture(cv);
+    const blM = new T.MeshStandardMaterial({ map: blTex, transparent: true, alphaTest: 0.4, side: T.DoubleSide, roughness: 0.55 });
+    const bladen = [[0, 52, 24, 0.5], [1.2, 46, 20, 0.7], [2.3, 58, 26, 0.45], [3.4, 44, 22, 0.8], [4.4, 54, 25, 0.55], [5.4, 40, 18, 0.9], [0.6, 64, 22, 0.35]];
+    bladen.forEach(([a, len, sz, tilt]) => {
+      const dx = Math.cos(a), dz = Math.sin(a), rr = len * 0.45, top = y0 + 18 + len * 0.85;
+      const stg = new T.Mesh(new T.CylinderGeometry(0.5, 0.7, len, 6), stM);
+      stg.position.set(dx * rr / 2, y0 + 18 + len * 0.42, dz * rr / 2); stg.rotation.set(dz * 0.5, 0, -dx * 0.5); g.add(stg);
+      const lf = new T.Mesh(new T.PlaneGeometry(sz, sz * 1.1), blM);
+      lf.position.set(dx * rr, top, dz * rr); lf.rotation.order = 'YXZ'; lf.rotation.y = -a + Math.PI / 2; lf.rotation.x = -Math.PI / 2 + tilt; lf.castShadow = true; g.add(lf);
+    });
+    return;
+  }
+
+  if (k === 'schoenenrek') {
+    // zwart schoenenrek 79×32×37 (TJUSIG-stijl, past bij de kapstok): twee zijframes, twee lagen latten, paar schoenen
+    const zw = new T.MeshStandardMaterial({ color: '#1F1F1E', roughness: 0.55, metalness: 0.05 });
+    [-1, 1].forEach(sx => { box(2.5, hh, 2.5, sx * (w / 2 - 1.5), hh / 2, dp / 2 - 2, zw); box(2.5, hh, 2.5, sx * (w / 2 - 1.5), hh / 2, -dp / 2 + 2, zw); box(2.5, 2.5, dp - 2, sx * (w / 2 - 1.5), 8, 0, zw); box(2.5, 2.5, dp - 2, sx * (w / 2 - 1.5), hh - 1.25, 0, zw); });
+    [8, hh - 1.25].forEach(y => { for (let i = 0; i < 4; i++) box(w - 5, 1.6, 4.5, 0, y + 0.2, -dp / 2 + 4 + i * (dp - 8) / 3, zw); });
+    const sc = [['#3B3A38', 30], ['#E9E6E0', 28], ['#5B4636', 27], ['#2E3B4E', 29]];
+    sc.forEach(([c, l], i) => {
+      const m = new T.MeshStandardMaterial({ color: c, roughness: 0.7 });
+      const x0 = -w / 2 + 12 + i * 18, y = i < 2 ? hh + 0.5 : 9.3;
+      [-3.5, 3.5].forEach(o => { box(7.5, 3, l, x0 + o, y + 1.5, 0, m); box(7, 5, l * 0.4, x0 + o, y + 4, -l * 0.25, m); });
+    });
+    return;
+  }
+
+  if (k === 'wasmand') {
+    // zwarte wasmand in rotan-look met deksel en greepgat (foto)
+    const cv = document.createElement('canvas'); cv.width = cv.height = 64; const x = cv.getContext('2d');
+    x.fillStyle = '#2A2B2D'; x.fillRect(0, 0, 64, 64); x.fillStyle = '#18191A';
+    for (let i = 0; i < 8; i++) for (let j = 0; j < 8; j++) if ((i + j) % 2) x.fillRect(i * 8 + 1, j * 8 + 2, 6, 4);
+    const tx = new T.CanvasTexture(cv); tx.wrapS = tx.wrapT = T.RepeatWrapping; tx.repeat.set(5, 6);
+    const zw = new T.MeshStandardMaterial({ color: '#FFFFFF', map: tx, roughness: 0.7 });
+    const dk = new T.MeshStandardMaterial({ color: '#2C2D2F', roughness: 0.6 });
+    const bh = hh - 4;
+    box(w - 3, bh, dp - 3, 0, bh / 2, 0, zw);
+    box(w, 3, dp, 0, bh + 1.5, 0, dk);                       // deksel
+    box(10, 0.4, 3, 0, bh + 3.1, 0, new T.MeshStandardMaterial({ color: '#0E0E0F', roughness: 0.8 }));   // greepgat
+    return;
+  }
+
+  if (k === 'hexwand') {
+    // hexagon fotocollectie (foto): 12 zeshoeken 28×24, liggend (punt links en rechts), zwart-wit foto's, groen blad, hartje
+    const R = 14, gx = 23, gy = 26, y0 = hh - 12 - 2 * gy;
+    const hexShape = (rr) => { const sh = new T.Shape(); for (let a = 0; a < 6; a++) { const an = a * Math.PI / 3; const px = rr * Math.cos(an), py = rr * Math.sin(an); if (a) sh.lineTo(px, py); else sh.moveTo(px, py); } sh.closePath(); return sh; };
+    const tex = (kind, seed) => {
+      const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
+      let sd = seed * 9301 + 49297; const rnd = () => (sd = (sd * 9301 + 49297) % 233280) / 233280;
+      if (kind === 'zw') {
+        const gr = x.createLinearGradient(0, 0, 0, 128); gr.addColorStop(0, '#D8D8D6'); gr.addColorStop(1, '#9A9A98'); x.fillStyle = gr; x.fillRect(0, 0, 128, 128);
+        for (let i = 0; i < 3; i++) { const v = 30 + rnd() * 60 | 0; x.fillStyle = 'rgb(' + v + ',' + v + ',' + v + ')'; const px = 25 + rnd() * 78; x.beginPath(); x.arc(px, 40 + rnd() * 15, 9, 0, 7); x.fill(); x.fillRect(px - 11, 50 + rnd() * 10, 22, 60); }
+      } else if (kind === 'blad') {
+        x.fillStyle = '#1F4A2A'; x.fillRect(0, 0, 128, 128);
+        for (let i = 0; i < 40; i++) { x.strokeStyle = ['#2E6B3A', '#3F8A47', '#1A3D22'][i % 3]; x.lineWidth = 3 + rnd() * 5; x.beginPath(); const a = rnd() * 6.3, px = rnd() * 128, py = rnd() * 128; x.moveTo(px, py); x.lineTo(px + Math.cos(a) * 50, py + Math.sin(a) * 50); x.stroke(); }
+      } else if (kind === 'groot') {
+        x.fillStyle = '#4E8A4A'; x.fillRect(0, 0, 128, 128); x.strokeStyle = '#A9C98E'; x.lineWidth = 3; x.beginPath(); x.moveTo(20, 128); x.quadraticCurveTo(60, 60, 110, 0); x.stroke();
+        for (let i = 0; i < 6; i++) { x.beginPath(); x.moveTo(30 + i * 14, 110 - i * 18); x.lineTo(0 + i * 10, 40 - i * 4); x.stroke(); }
+      } else if (kind === 'hart') {
+        x.fillStyle = '#FBFBF9'; x.fillRect(0, 0, 128, 128); x.fillStyle = '#5E8C6A';
+        x.beginPath(); x.moveTo(64, 92); x.bezierCurveTo(20, 62, 34, 28, 64, 46); x.bezierCurveTo(94, 28, 108, 62, 64, 92); x.fill();
+      } else if (kind === 'effen') { x.fillStyle = '#6A9B76'; x.fillRect(0, 0, 128, 128); }
+      else if (kind === 'strand') { const gr = x.createLinearGradient(0, 0, 0, 128); gr.addColorStop(0, '#E9C9C2'); gr.addColorStop(0.5, '#D8CDB0'); gr.addColorStop(0.55, '#9DB07A'); gr.addColorStop(1, '#7E9A5E'); x.fillStyle = gr; x.fillRect(0, 0, 128, 128); }
+      else { x.fillStyle = '#EAD9C8'; x.fillRect(0, 0, 128, 128); x.fillStyle = '#C9A993'; for (let i = 0; i < 4; i++) x.fillRect(20 + i * 24, 30, 12, 70); x.strokeStyle = '#6C8A4E'; x.lineWidth = 4; x.beginPath(); x.moveTo(10, 128); x.lineTo(40, 10); x.stroke(); }
+      const t = new T.CanvasTexture(c); t.repeat.set(1 / (2 * R), 1 / (2 * R)); t.offset.set(0.5, 0.5); if (T.SRGBColorSpace) t.colorSpace = T.SRGBColorSpace; return t;
+    };
+    const L = [[0, 0.5, 'zw'], [1, 0, 'strand'], [1, 1, 'zw'], [1, 2, 'blad'], [2, 0.5, 'zw'], [2, 1.5, 'zw'], [3, 0, 'groot'], [3, 1, 'hart'], [3, 2, 'zw'], [4, 0.5, 'zw'], [4, 1.5, 'effen'], [5, 0, 'zw'], [5, 1, 'stad']];
+    const rand = new T.MeshStandardMaterial({ color: '#EFE9DE', roughness: 0.7 });
+    L.forEach(([c, rw, kind], i) => {
+      const px = -w / 2 + R + c * gx, py = hh - 12 - rw * gy;
+      const back = new T.Mesh(new T.ExtrudeGeometry(hexShape(R), { depth: 1.2, bevelEnabled: false }), rand);
+      back.position.set(px, py, -dp / 2); back.castShadow = true; g.add(back);
+      const f = new T.Mesh(new T.ShapeGeometry(hexShape(R - 0.7)), new T.MeshStandardMaterial({ map: tex(kind, i + 1), roughness: 0.6 }));
+      f.position.set(px, py, -dp / 2 + 1.25); g.add(f);
+    });
+    return;
+  }
+
+  if (k === 'platsa') {
+    // IKEA Platsa 60×55×180, wit: plint, drie gelijke greeploze deuren boven elkaar
+    const wit = new T.MeshStandardMaterial({ color: '#F2F2EF', roughness: 0.5 });
+    const dw = new T.MeshStandardMaterial({ color: '#F7F7F5', roughness: 0.45 });
+    const pl = 8, kh = hh - pl;
+    box(w - 2, pl, dp - 6, 0, pl / 2, -2, wit);
+    box(w, kh, dp - 2, 0, pl + kh / 2, -1, wit);
+    const dh = (kh - 0.8) / 3;
+    for (let i = 0; i < 3; i++) {
+      const yc = pl + 0.2 + dh * i + dh / 2;
+      box(w - 0.4, dh - 0.4, 1.8, 0, yc, dp / 2 - 0.9, dw);
+    }
+    return;
+  }
+
+  if (k === 'ladekast') {
+    // ladekast met drie lades (foto): grijs eiken, licht overstekend blad, zwarte ingefreesde greeplijsten
+    const ek = new T.MeshStandardMaterial({ color: '#8E8170', roughness: 0.8 });
+    const fr = new T.MeshStandardMaterial({ color: '#978A78', roughness: 0.8 });
+    const zw = new T.MeshStandardMaterial({ color: '#1C1C1D', roughness: 0.5 });
+    const plint = 3, blad = 2.5, kh = hh - plint - blad;
+    box(w - 2, plint, dp - 4, 0, plint / 2, -1, zw);
+    box(w, kh, dp - 1, 0, plint + kh / 2, -0.5, ek);
+    box(w + 0.6, blad, dp + 0.6, 0, hh - blad / 2, 0, ek);
+    const lh = (kh - 1.2) / 3;
+    for (let i = 0; i < 3; i++) {
+      const yc = plint + 0.3 + lh * i + lh / 2;
+      box(w - 1, lh - 0.6, 1.6, 0, yc, dp / 2 - 0.4, fr);
+      box(w * 0.36, 1.6, 0.6, 0, yc + lh / 2 - 2.4, dp / 2 + 0.6, zw);
+    }
+    return;
+  }
+
+  if (k === 'fotoplank') {
+    // zwarte fotoplank boven het bed (foto): drie zwarte lijstjes met lichtblauwe prints, twee plantjes in rieten potjes
+    const zw = new T.MeshStandardMaterial({ color: '#1F2022', roughness: 0.6 });
+    const pp = new T.MeshStandardMaterial({ color: '#F4F2EC', roughness: 0.8 });
+    const y0 = hh - 3.5;
+    box(w, 3, dp, 0, y0 + 1.5, 0, zw);                 // plank
+    box(w, 2.5, 1, 0, y0 + 4.2, dp / 2 - 0.5, zw);     // opstaand randje
+    const lijst = (x, bw, bh, prints) => {
+      const g2 = new T.Group(); g2.position.set(x, y0 + 3 + bh / 2, -dp / 2 + 4); g2.rotation.x = -0.06; g.add(g2);
+      const m = new T.Mesh(new T.BoxGeometry(bw, bh, 1.8), zw); m.castShadow = true; g2.add(m);
+      const p = new T.Mesh(new T.BoxGeometry(bw - 3, bh - 3, 0.2), pp); p.position.z = 1; g2.add(p);
+      prints.forEach(([c, ph, py]) => { const q = new T.Mesh(new T.BoxGeometry(bw - 10, ph, 0.2), new T.MeshStandardMaterial({ color: c, roughness: 0.7 })); q.position.set(0, py, 1.1); g2.add(q); });
+    };
+    lijst(-w / 2 + 14, 23, 28, [['#8DB7D0', 7, 1.5], ['#D8CFAE', 3, -3]]);
+    lijst(-w / 2 + 40, 23, 28, [['#7FA8CC', 11, 0]]);
+    lijst(-w / 2 + 67, 25, 33, [['#9CC3D6', 10, -2], ['#6F7F88', 1, 7]]);
+    [w / 2 - 38, w / 2 - 24].forEach(x => {
+      const pot = new T.Mesh(new T.CylinderGeometry(5, 4, 7, 16), new T.MeshStandardMaterial({ color: '#A88A5C', roughness: 0.9 }));
+      pot.position.set(x, y0 + 6.5, -1); pot.castShadow = true; g.add(pot);
+      for (let a = 0; a < 9; a++) {
+        const bl = new T.Mesh(new T.ConeGeometry(0.9, 11, 5), new T.MeshStandardMaterial({ color: '#5E7F4A', roughness: 0.8 }));
+        const an = a / 9 * Math.PI * 2; bl.position.set(x + Math.cos(an) * 1.6, y0 + 14.5, -1 + Math.sin(an) * 1.6);
+        bl.rotation.set(Math.sin(an) * 0.35, 0, -Math.cos(an) * 0.35); g.add(bl);
+      }
+    });
+    return;
+  }
+
+  if (k === 'wandspiegel') {
+    // IKEA Nissedal-achtige spiegel 40×150, zwarte lijst, aan de wand; onderkant op hh - 150
+    const zw = new T.MeshStandardMaterial({ color: it.frame || '#1E1F21', roughness: it.frame ? 0.85 : 0.55 });
+    const gl = new T.MeshStandardMaterial({ color: '#CFDCE2', roughness: 0.03, metalness: 0.95 });
+    const sh = it.sh || 150, y0 = hh - sh, lt = it.lt || 2.8;
+    box(w, lt, dp, 0, y0 + lt / 2, 0, zw); box(w, lt, dp, 0, hh - lt / 2, 0, zw);
+    box(lt, sh, dp, -w / 2 + lt / 2, y0 + sh / 2, 0, zw); box(lt, sh, dp, w / 2 - lt / 2, y0 + sh / 2, 0, zw);
+    box(w - lt * 2, sh - lt * 2, 0.6, 0, y0 + sh / 2, -dp / 2 + 1, gl);
+    return;
+  }
+
+  if (k === 'airco') {
+    // wit binnendeel van de airco hoog aan de wand (foto); alleen de unit zelf, geen voet
+    const wit = new T.MeshStandardMaterial({ color: '#F5F6F7', roughness: 0.35 });
+    const gr = new T.MeshStandardMaterial({ color: '#D9DCDF', roughness: 0.4 });
+    const uh = 29, y0 = hh - uh;
+    box(w, uh, dp, 0, y0 + uh / 2, 0, wit);
+    box(w - 4, 2.2, 0.6, 0, y0 + 4, dp / 2 + 0.2, gr);          // uitblaasklep
+    box(w - 6, 0.5, 0.4, 0, y0 + 9, dp / 2 + 0.1, gr);          // naad frontpaneel
+    box(4, 1, 0.4, w / 2 - 8, y0 + 20, dp / 2 + 0.1, new T.MeshStandardMaterial({ color: '#5A5F66', roughness: 0.5 }));
+    return;
+  }
+
+  if (k === 'fontein') {
+    // zwevend fonteinmeubel (foto): antraciet houtnerf-kastje met één deur, wit keramisch blad met kom, chromen kraan
+    const ant = new T.MeshStandardMaterial({ color: '#4A4846', roughness: 0.75, metalness: 0 });
+    const wit = new T.MeshStandardMaterial({ color: '#F4F4F2', roughness: 0.25, metalness: 0 });
+    const kom = new T.MeshStandardMaterial({ color: '#E6E7E5', roughness: 0.2, metalness: 0 });
+    const chr = new T.MeshStandardMaterial({ color: '#D6D9DC', roughness: 0.15, metalness: 0.9 });
+    const top = 12, y0 = 18, kh = hh - top - y0;
+    box(w - 2, kh, dp - 3, 0, y0 + kh / 2, -1.5, ant);
+    box(w - 2.4, kh - 0.6, 0.4, 0, y0 + kh / 2, dp / 2 - 2.8, new T.MeshStandardMaterial({ color: '#3F3D3B', roughness: 0.8 }));   // deurnaad
+    box(w, top, dp, 0, hh - top / 2, 0, wit);
+    box(w - 8, 0.4, dp - 14, 0, hh + 0.05, 2, kom);                               // kom
+    const kr = new T.Mesh(new T.CylinderGeometry(1.4, 1.8, 16, 14), chr); kr.position.set(-w / 2 + 9, hh + 8, -dp / 2 + 6); kr.castShadow = true; g.add(kr);
+    box(1.8, 1.8, 10, -w / 2 + 9, hh + 14, -dp / 2 + 11, chr);                     // uitloop
+    box(1, 1, 6, -w / 2 + 9, hh + 17, -dp / 2 + 5, chr);                           // hendel
+    return;
+  }
+
+  if (k === 'koelkast') {
+    // Samsung koel-vriescombinatie, wit, 59,5 breed: grote koeldeur boven met display, greeplijst, vriesdeur onder, stelpootjes
+    const wit = new T.MeshStandardMaterial({ color: '#F1F2F4', roughness: 0.35, metalness: 0.05 });
+    const grijs = new T.MeshStandardMaterial({ color: '#6E7176', roughness: 0.4, metalness: 0.3 });
+    const zwart = new T.MeshStandardMaterial({ color: '#16181B', roughness: 0.25, metalness: 0.2 });
+    const ft = 1.5, kd = dp - 4, H = hh - ft;
+    [-1, 1].forEach(sx => [-1, 1].forEach(sz => box(3.5, ft, 3.5, sx * (w / 2 - 4), ft / 2, sz * (dp / 2 - 6), zwart)));
+    box(w, H, kd, 0, ft + H / 2, -2, wit);                       // kast
+    const zf = kd / 2 - 2 + 2, split = ft + H * 0.405;
+    box(w, split - ft - 2.2, 4, 0, ft + (split - ft - 2.2) / 2, zf, wit);            // vriesdeur
+    box(w - 0.4, 1.2, 4.2, 0, split - 0.6, zf + 0.1, grijs);                          // naad met greep
+    box(w - 3, 2.6, 3.2, 0, split + 1.5, zf + 0.6, new T.MeshStandardMaterial({ color: '#E2E4E7', roughness: 0.3, metalness: 0.05 }));
+    box(w, hh - split - 3, 4, 0, split + 3 + (hh - split - 3) / 2, zf, wit);         // koeldeur
+    box(7.5, 11.5, 0.6, 0, ft + H * 0.85, zf + 2.2, zwart);                           // display
+    box(8, 1, 0.4, 0, ft + H * 0.92, zf + 2.1, grijs);                                // logo
     return;
   }
 
@@ -1490,6 +1725,58 @@ function buildPiece(T, g, it, col, fabTex) {
       });
       return;
     }
+    if (it.camping) {
+      // kampeerspullen per vak: slaapzakken, matjes, tentzak, opbergboxen, stoeltjes, kooktoestel en lantaarn
+      const M = (c, r) => new T.MeshStandardMaterial({ color: c, roughness: r === undefined ? 0.85 : r, metalness: 0 });
+      const yb = (i) => 6 + st + (hh - 6 - st * 2) * i / 6;
+      const vak = (c) => (c === 0 ? 6 + st : yb(c) + st / 2);
+      const cyl = (r, len, x, y, z, mat, as) => {
+        const m = new T.Mesh(new T.CylinderGeometry(r, r, len, 20), mat);
+        if (as === 'x') m.rotation.z = Math.PI / 2; else if (as === 'z') m.rotation.x = Math.PI / 2;
+        m.position.set(x, y, z); m.castShadow = true; m.receiveShadow = true; g.add(m); return m;
+      };
+      const iw = w - st * 2, zf = dp / 2 - 2;
+      const A = it.camping === 2;
+      const lay = A
+        ? ['box', 'matjes', 'tent', 'stoel', 'koken', 'box']
+        : ['slaapzak', 'slaapzak', 'box', 'matjes', 'koken', 'tent'];
+      const cols = A ? ['#3D5A73', '#C2672E', '#4F6B3A', '#6E2F2B'] : ['#2F5A4A', '#B8452F', '#2E4462', '#C9A03A'];
+      lay.forEach((t, c) => {
+        const y0 = vak(c), col = cols[c % cols.length];
+        if (t === 'slaapzak') {
+          [-1, 1].forEach((sx, i) => {
+            cyl(12.5, 34, sx * iw / 4, y0 + 12.5, 0.5, M(i ? col : cols[(c + 1) % cols.length], 0.7), 'z');
+            cyl(12.8, 2, sx * iw / 4, y0 + 12.5, 0.5 + 16.5, M('#1E1E1E', 0.6), 'z');   // trekkoord-rand
+          });
+        } else if (t === 'matjes') {
+          cyl(7, iw - 4, 0, y0 + 7, zf - 9, M(col, 0.6), 'x');
+          cyl(7, iw - 4, 0, y0 + 7, zf - 25, M('#7C8A3E', 0.6), 'x');
+          cyl(6, iw - 8, 0, y0 + 19.5, zf - 17, M('#5B6770', 0.6), 'x');
+        } else if (t === 'tent') {
+          cyl(11, iw - 6, 0, y0 + 11, 0, M(col, 0.75), 'x');
+          [-1, 1].forEach(sx => cyl(11.3, 1.5, sx * (iw / 2 - 5), y0 + 11, 0, M('#222', 0.6), 'x'));
+        } else if (t === 'box') {
+          const bw = iw - 3, bhh = 24, bd = dp - 6;
+          box(bw, bhh - 2, bd, 0, y0 + (bhh - 2) / 2, 0, M('#D9D6CF', 0.5));     // grijze opbergbox
+          box(bw + 0.6, 2.2, bd + 0.6, 0, y0 + bhh - 1.1, 0, M(col, 0.5));     // gekleurd deksel
+          box(12, 3, 0.8, 0, y0 + bhh - 6, bd / 2 + 0.3, M('#3A3A3A', 0.5));   // handgreep
+        } else if (t === 'stoel') {
+          [0, 1].forEach(i => {
+            box(iw - 6, 4, 34, 0, y0 + 2 + i * 4.4, 0, M(i ? '#2E4462' : '#4F6B3A', 0.8));
+            [-1, 1].forEach(sx => box(1.6, 1.6, 34, sx * (iw / 2 - 5), y0 + 4.3 + i * 4.4, 0, M('#9AA0A6', 0.3)));
+          });
+          box(iw - 10, 10, 22, 0, y0 + 14, 0, M('#C2672E', 0.7));   // opgevouwen tafeltje in tas
+        } else if (t === 'koken') {
+          box(26, 10, 24, -iw / 2 + 15, y0 + 5, 2, M('#6A6E72', 0.4));   // kooktoestel in koffer
+          cyl(5.5, 16, -iw / 2 + 9, y0 + 18, -4, M('#2F6FB0', 0.4));     // gasbusje
+          cyl(9, 6, iw / 2 - 12, y0 + 3, 2, M('#9A9C9E', 0.3));          // pannenset
+          cyl(8.2, 5, iw / 2 - 12, y0 + 8.5, 2, M('#8C8E90', 0.3));
+          cyl(4, 14, iw / 2 - 12, y0 + 18, 2, M('#E8E2C8', 0.4));        // lantaarn
+          cyl(4.5, 2, iw / 2 - 12, y0 + 26, 2, M('#2A2A2A', 0.5));
+        }
+      });
+      return;
+    }
     // boeken: per kast een vaste toevalsreeks, wisselende kleuren, hoogtes, diktes en dieptes
     let sd = 0; String(it.id || 'b').split('').forEach(ch => { sd = (sd * 31 + ch.charCodeAt(0)) >>> 0; });
     const rr = () => { sd = (sd * 1664525 + 1013904223) >>> 0; return sd / 4294967296; };
@@ -2058,6 +2345,7 @@ function paintCans(l) {
 const nl = (v, d) => v.toFixed(d).replace('.', ',');
 
 class Component extends DCLogic {
+  isMW() { try { return localStorage.getItem('kamille14-ik') === 'Marjolein + Wilmer'; } catch (e) { return false; } }
   isAdm() { try { return localStorage.getItem('kamille14-ik') === 'Marjolein + Wilmer' && !!localStorage.getItem('kamille14-beheer'); } catch (e) { return false; } }
   state = {
     paintOpen: false, coats: 2, yld: 10, ceil: false, paintOff: { Badkamer: true, Trapkast: true },
@@ -2074,7 +2362,7 @@ class Component extends DCLogic {
         const lv = v.lvl;
         setLvl(lv);
         const st = { lvl: lv, walk: !!v.walk && !!v.wk };
-        if (v.ind === 'alt') {
+        if (v.ind === 'alt' && this.isMW()) {
           st.ind = 'alt';
           st.items = BAKED_ITEMS.filter(i => ALT_WEG.indexOf(i.id) < 0).map(i => Object.assign({}, i, ALT_WOON[i.id] || {}));
         }
@@ -3402,7 +3690,11 @@ class Component extends DCLogic {
     const greyHem = hemMat.clone(); greyHem.color = new T.Color('#BDBEBC');
     const greyMat2 = linenMat.clone(); greyMat2.color = new T.Color('#55575B'); greyMat2.opacity = 0.97;   // studeerkamer: antraciet, zoals op de foto
     const greyHem2 = hemMat.clone(); greyHem2.color = new T.Color('#4C4E52'); greyHem2.opacity = 0.98;
+    const greyMat3 = linenMat.clone(); greyMat3.color = new T.Color('#625C57'); greyMat3.opacity = 0.93;   // woonkamerpui: warm taupegrijs linnen (foto)
+    const greyHem3 = hemMat.clone(); greyHem3.color = new T.Color('#57524D'); greyHem3.opacity = 0.96;
     const plisMat = new T.MeshStandardMaterial({ color: '#EAE3D4', roughness: 0.94, metalness: 0 });
+    const plisZw = new T.MeshStandardMaterial({ color: '#1C1C1D', roughness: 0.92, metalness: 0 });   // hal en keuken: zwart doek, witte profielen
+    const randWit = new T.MeshStandardMaterial({ color: '#FFFFFF', roughness: 0.4 });
     const railMat = new T.MeshStandardMaterial({ color: '#8E8B84', roughness: 0.35, metalness: 0.6 });
     const glassMat = new T.MeshPhysicalMaterial({
       color: '#CFE2EC', roughness: 0.05, metalness: 0,
@@ -3519,7 +3811,7 @@ class Component extends DCLogic {
         const heeft = (c2) => fl.indexOf(c2) >= 0;
         const bare = heeft('g');
         holes.push({ u0: o[0], u1: o[1], y0: y0, y1: y1, kind: o[4], hinge: o[5], side: o[6],
-                     noCurtain: bare || heeft('k'), bare: bare || heeft('P'), jal: heeft('J'), grey: heeft('G') ? 1 : heeft('D') ? 2 : 0, shut: heeft('z'), join: heeft('r') });
+                     noCurtain: bare || heeft('k'), bare: bare || heeft('P'), jal: heeft('J'), grey: heeft('G') ? 1 : heeft('D') ? 2 : heeft('L') ? 3 : 0, shut: heeft('z'), join: heeft('r'), mid: heeft('M') });
       });
       cuts.forEach(c => {
         const p = new T.Path();
@@ -3791,6 +4083,7 @@ class Component extends DCLogic {
           const cover = Math.max(7, (oh - 5) * pAmt);
           const nP = Math.max(3, Math.round(cover / 3.4));
           const ph = cover / nP, pw = uw - 5;
+          const bandTop = o.mid ? Math.min(o.y1 - 4.4, (o.y0 + o.y1) / 2 + cover / 2) : o.y1 - 2.5;
           if (o.jal) {
             // zwarte aluminium luxaflex: lamellen van 2,5 cm over de hele hoogte, gekanteld open
             if (!d.jalMat) d.jalMat = new T.MeshStandardMaterial({ color: '#1B1B1C', roughness: 0.45, metalness: 0.35, side: T.DoubleSide });
@@ -3808,11 +4101,11 @@ class Component extends DCLogic {
             d.wallGroup.add(ond);
           }
           for (let i = 0; !o.bare && !o.jal && i < nP; i++) {
-            const py = o.y1 - 2.5 - ph * (i + 0.5);
+            const py = bandTop - ph * (i + 0.5);
             const zo = i % 2 ? 0.65 : -0.65;
             const pm = new T.Mesh(
               alongX ? new T.BoxGeometry(pw, ph * 0.9, 1.4) : new T.BoxGeometry(1.4, ph * 0.9, pw),
-              plisMat
+              o.mid ? plisZw : plisMat
             );
             if (alongX) pm.position.set(w[0] - CX + uc, py, w[1] - CZ + inZ + zo);
             else pm.position.set(w[0] - CX + inZ + zo, py, w[1] - CZ + uc);
@@ -3823,11 +4116,19 @@ class Component extends DCLogic {
           }
           const cas = new T.Mesh(
             alongX ? new T.BoxGeometry(pw + 3, 3.6, 3.4) : new T.BoxGeometry(3.4, 3.6, pw + 3),
-            o.jal ? d.jalMat : frameMat
+            o.jal ? d.jalMat : (o.mid ? randWit : frameMat)
           );
           if (alongX) cas.position.set(w[0] - CX + uc, o.y1 - 1.2, w[1] - CZ + inZ);
           else cas.position.set(w[0] - CX + inZ, o.y1 - 1.2, w[1] - CZ + uc);
           if (!o.bare) add(cas);
+          if (o.mid && !o.bare) {
+            // twee losse profielen boven en onder het doek
+            [bandTop + 0.6, bandTop - cover - 0.6].forEach(yy => {
+              const pr = new T.Mesh(alongX ? new T.BoxGeometry(pw + 1, 1.2, 2) : new T.BoxGeometry(2, 1.2, pw + 1), randWit);
+              if (alongX) pr.position.set(w[0] - CX + uc, yy, w[1] - CZ + inZ); else pr.position.set(w[0] - CX + inZ, yy, w[1] - CZ + uc);
+              pr.userData.win = wKey; d.wins.push(pr); add(pr);
+            });
+          }
         }
         if (o.kind === 'do') {
           const atU0 = o.hinge !== 'u1';
@@ -4083,7 +4384,7 @@ class Component extends DCLogic {
             const u0 = dicht ? e.u + e.dir * 2 : e.u + e.dir * (lead - ribR);
             const p0 = at(u0);
             const geo = curtainGeo(T, run, len, amp, per, 'gordijn-' + wi + '-' + gp.u0 + '-' + si + (dicht ? '-d' : ''));
-            const cur = new T.Mesh(geo, gp.grey === 2 ? greyMat2 : gp.grey ? greyMat : linenMat);
+            const cur = new T.Mesh(geo, gp.grey === 3 ? greyMat3 : gp.grey === 2 ? greyMat2 : gp.grey ? greyMat : linenMat);
             // baan staat langs de wand, met de golf de kamer in
             if (alongX) {
               cur.position.set(p0[0], bot, p0[1]);
@@ -4102,7 +4403,7 @@ class Component extends DCLogic {
             // zoomband onderaan: dubbelgeslagen linnen, iets dichter
             const hem = new T.Mesh(
               curtainGeo(T, run, 4.5, amp * 1.02, per, 'gordijn-' + wi + '-' + gp.u0 + '-' + si + (dicht ? '-d' : '')),
-              gp.grey === 2 ? greyHem2 : gp.grey ? greyHem : hemMat
+              gp.grey === 3 ? greyHem3 : gp.grey === 2 ? greyHem2 : gp.grey ? greyHem : hemMat
             );
             hem.position.copy(cur.position);
             hem.rotation.copy(cur.rotation);
@@ -6390,7 +6691,7 @@ class Component extends DCLogic {
     const seg = (on) => ({ flex: 1, height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', cursor: 'pointer', fontSize: '12.5px', userSelect: 'none', color: on ? '#FBFAF7' : '#4A4741', background: on ? '#3A3833' : 'transparent' });
     const togglePaint = () => this.setState({ paintOpen: !s.paintOpen }, () => { if (this.onResize) this.onResize(); });
     return {
-      paintOpen: !!s.paintOpen && this.isAdm(), onPaint: togglePaint, isAdm: this.isAdm(), paintBtn: chip(!!s.paintOpen),
+      paintOpen: !!s.paintOpen && this.isAdm(), onPaint: togglePaint, isAdm: this.isAdm(), isMW: this.isMW(), paintBtn: chip(!!s.paintOpen),
       paintG: pr.filter(r => r.lvl === 0),
       paint1: pr.filter(r => r.lvl === 1),
       paint2: pr.filter(r => r.lvl === 2),
