@@ -325,11 +325,11 @@ const ARM = 90; // armdiepte van de hoekbank in cm
 const WALLS_G = [
   [0, 111, 598, 29], [0, 1081, 598, 29], [0, 140, 29, 941], [570, 140, 28, 941],
   [325, 683, 15, 398], [340, 683, 110, 10],
-  [452, 781, 118, 10], [452, 791, 18, 132], [452, 923, 118, 14],
+  [436, 781, 134, 10], [452, 791, 18, 132], [452, 923, 118, 14],
   [598, 0, 333, 24], [598, 622, 333, 14], [598, 24, 19, 598], [917, 24, 14, 598],
   [617, 472, 300, 14],
   [450, 624, 120, 10],      // kastwand onder de trap, iets naar voren in de kamer
-  [440, 617, 10, 89],       // zijwand van de kast, door tot de onderste waaiertrede (z 706), gelijk met de zijkant van de trap (x 450)
+  [440, 617, 10, 76],       // zijwand van de kast, tot de halwand (z 693), gelijk met de zijkant van de trap (x 450) — plattegrond
   [617, 24, 10, 100]        // garage: verdikking van de westmuur, 100 cm vanaf de achtergevel, fonteinmeubel ertegen (foto)
 ];
 
@@ -4664,6 +4664,7 @@ class Component extends DCLogic {
     const Z = ZTRAP, W = Z.x1 - Z.x0, xc = (Z.x0 + Z.x1) / 2, TT = 4.2, HALF = Math.PI / 2;
 
     const DB = Z.z1 - Z.zTurn, DT = Z.zTop - Z.z0;
+    this.stairRail(g, { zBot: Z.z1, zStr: Z.zTurn, zTop: Z.zTop, zEnd: Z.z0, x0: Z.x0, x1: Z.x1, nB: Z.nE + Z.nB, nStr: Z.nStr, nW: Z.nW, rise: Z.rise, go: Z.go }, cp);
     const winders = (n, y0, fx, fz) => {
       for (let k = 1; k <= n; k++) {
         const a0 = (k - 1) * HALF / n, a1 = k * HALF / n;
@@ -4724,6 +4725,73 @@ class Component extends DCLogic {
     box(5.5, 5.5, len - 8, Z.x0 + 2.4, yMid + 90, zMid, leunMat, ang);
     // eindstijl op de hoek van het bordes, van de zoldervloer tot onder de leuning
     box(4.4, 92, 4.4, Z.x0 + 2.4, Z.n * Z.rise + 46, Z.z0 + 2.4, wangMat);
+  };
+
+  // zwarte muurleuning (foto): rechthoekig profiel op zilveren steunen, langs de buitenwanden van de trap
+  // t: trapmaat met zBot/zStr/zTop/zEnd, x0/x1, nB/nStr/nW, rise, go — de hoogte volgt de looplijn
+  stairRail = (g, t, cp) => {
+    const d = this.d3, T = d.T;
+    const yAt = (px, pz) => {
+      const yS = t.nB * t.rise, yT = (t.nB + t.nStr) * t.rise;
+      if (pz <= t.zTop) return yT + t.nW * windT((px - t.x0) / (t.x1 - t.x0), (t.zTop - pz) / (t.zTop - t.zEnd)) * t.rise;
+      if (pz >= t.zStr) return t.nB * windT((pz - t.zStr) / (t.zBot - t.zStr), (px - t.x0) / (t.x1 - t.x0)) * t.rise;
+      return yS + Math.min(t.nStr, (t.zStr - pz) / t.go) * t.rise;
+    };
+    const o = 6, xa = t.x0 + 6, xb = t.x1 - o, zs = t.zBot - o, zn = t.zEnd + o;
+    const legs = [[[xa, zs], [xb, zs], [0, -30]], [[xb, zs], [xb, zn], [-30, 0]], [[xb, zn], [xa, zn], [0, 30]]];
+    const pts = [], steunen = [];
+    let acc = 0;
+    legs.forEach(([a, b, inw], li) => {
+      const L = Math.hypot(b[0] - a[0], b[1] - a[1]), n = Math.max(2, Math.round(L / 6));
+      for (let k = li ? 1 : 0; k <= n; k++) {
+        const f = k / n, px = a[0] + (b[0] - a[0]) * f, pz = a[1] + (b[1] - a[1]) * f;
+        const y = yAt(Math.max(px, t.x0 + 1), pz) + t.rise + 88;   // hoek rond de binnenhoek: loopt vloeiend door langs de buitenrand
+        pts.push(new T.Vector3(px - CX, y, pz - CZ));
+        const s = acc + L * f;
+        if (k > 0 && k < n && Math.floor(s / 85) !== Math.floor((s - L / n) / 85)) steunen.push([px, y, pz, inw]);
+      }
+      acc += L;
+    });
+    // verdikte muurwang: een witte band van 30 cm die met de treden mee omhoog loopt, 2,5 cm voor de muur
+    {
+      const wit = new T.MeshStandardMaterial({ color: '#F2F1EC', roughness: 0.5, side: T.DoubleSide });
+      wit.clippingPlanes = cp; wit.clipShadows = true;
+      const dk = 2.5, xw = t.x1 - dk, zs2 = t.zBot - dk, zn2 = t.zEnd + dk;
+      const wl = [[[t.x0 - (t.xb || 0), zs2], [xw, zs2], [0, -1]], [[xw, zs2], [xw, zn2], [-1, 0]], [[xw, zn2], [t.x0, zn2], [0, 1]]];
+      const pos = [];
+      const quad = (a, b, c, e) => pos.push(...a, ...b, ...c, ...a, ...c, ...e);
+      let prev = null;
+      wl.forEach(([a, b, nv], li) => {
+        const L = Math.hypot(b[0] - a[0], b[1] - a[1]), n = Math.max(2, Math.round(L / 4));
+        for (let k = li ? 1 : 0; k <= n; k++) {
+          const f = k / n, px = a[0] + (b[0] - a[0]) * f, pz = a[1] + (b[1] - a[1]) * f;
+          const nose = yAt(Math.max(px, t.x0 + 1), pz) + t.rise;
+          const yb = Math.max(0.5, nose - t.rise - 6), yt = nose + 18;   // onderrand tot in de treden: geen muur meer tussen wang en trede
+          const wx = px - nv[0] * dk, wz = pz - nv[1] * dk;   // punt tegen de muur
+          const cur = { f: [px - CX, yb, pz - CZ], ft: [px - CX, yt, pz - CZ], wt: [wx - CX, yt, wz - CZ] };
+          if (prev) { quad(prev.f, cur.f, cur.ft, prev.ft); quad(prev.ft, cur.ft, cur.wt, prev.wt); }
+          prev = cur;
+        }
+      });
+      const gw = new T.BufferGeometry(); gw.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); gw.computeVertexNormals();
+      const wm = new T.Mesh(gw, wit); wm.receiveShadow = true; g.add(wm);
+    }
+    const zwart = new T.MeshStandardMaterial({ color: '#1F1F20', roughness: 0.42, metalness: 0.1 });
+    const zilver = new T.MeshStandardMaterial({ color: '#B9BCBF', roughness: 0.3, metalness: 0.85 });
+    [zwart, zilver].forEach(m => { m.clippingPlanes = cp; m.clipShadows = true; });
+    const curve = new T.CatmullRomCurve3(pts, false, 'centripetal');
+    const prof = new T.Shape(); prof.moveTo(-2.2, -2.8); prof.lineTo(2.2, -2.8); prof.lineTo(2.2, 2.8); prof.lineTo(-2.2, 2.8); prof.closePath();
+    const rail = new T.Mesh(new T.ExtrudeGeometry(prof, { steps: pts.length * 2, bevelEnabled: false, extrudePath: curve }), zwart);
+    rail.castShadow = true; g.add(rail);
+    // dichte kopjes aan beide uiteinden
+    [pts[0], pts[pts.length - 1]].forEach(p => { const c = new T.Mesh(new T.BoxGeometry(4.4, 5.6, 4.4), zwart); c.position.copy(p); g.add(c); });
+    steunen.forEach(([px, y, pz, inw]) => {
+      const dx = -Math.sign(inw[0]), dz = -Math.sign(inw[1]);
+      const arm = new T.Mesh(new T.BoxGeometry(dx ? o : 1.4, 1.4, dz ? o : 1.4), zilver);
+      arm.position.set(px + dx * o / 2 - CX, y - 4.5, pz + dz * o / 2 - CZ); g.add(arm);
+      const pl = new T.Mesh(new T.BoxGeometry(dx ? 0.8 : 3, 9, dz ? 0.8 : 3), zilver);
+      pl.position.set(px + dx * (o - 0.4) - CX, y - 7, pz + dz * (o - 0.4) - CZ); g.add(pl);
+    });
   };
 
   // trap met twee kwartdraaien: onderaan uit de entree, bovenaan naar de overloop
@@ -4799,15 +4867,22 @@ class Component extends DCLogic {
     }
 
     // onderste kwartdraai: binnenhoek op (x0, zStr), naar het oosten erin, naar het noorden eruit
-    winders(TRAP.nB, yB, (u, v) => TRAP.x0 + v * W, (u, v) => TRAP.zStr + u * DB);
+    // onderaan tien cm breder naar het westen: de treden lopen van de kastwand tot de uitstekende wc-muur (plattegrond)
+    const XB = 10;
+    // en naar het noorden tot het eind van de kastwand (z 693), zodat er onder de eerste rechte trede geen gat blijft
+    const ZB0 = 693;
+    winders(TRAP.nB, yB, (u, v) => TRAP.x0 - XB + v * (W + XB), (u, v) => TRAP.zStr + u * DB);
 
     // rechte steek
     for (let i = 0; i < TRAP.nStr; i++) {
       const y = yS + (i + 1) * R, zF = TRAP.zStr - i * GO;
-      box(W, TT, GO + 3, xc, y - TT / 2, zF - GO / 2 + 1.5, tredeMat);
+      const xb = i === 0 ? XB : 0, wb = W + xb, xcb = xc - xb / 2;   // eerste rechte trede even breed als de verbrede waaiertreden   // eerste rechte trede ook langer, tot de kastwand
+      const nose = i === 0 ? 0 : 3;   // eerste rechte trede zonder overstek: vlak met het blok eronder
+      box(wb, TT, GO + nose, xcb, y - TT / 2, zF - GO / 2 + nose / 2, tredeMat);
       // stootbord aan de voorkant van de trede (stond aan de achterkant, waardoor je onder elke neus een tweede rand zag)
-      box(W, R - TT, 2.4, xc, y - TT - (R - TT) / 2, zF - 1.2, stootMat);
-      box(W, 3.2, GO, xc, y - R + 1.6, zF - GO / 2, soffMat);
+      box(wb, R - TT, 2.4, xcb, y - TT - (R - TT) / 2, zF - 1.2, stootMat);
+      box(wb, 3.2, GO, xcb, y - R + 1.6, zF - GO / 2, soffMat);
+      if (i === 0) box(wb, y - TT, zF - ZB0, xcb, (y - TT) / 2, (zF + ZB0) / 2, stootMat);   // eerste rechte trede dicht tot op de vloer, tot het eind van de kastwand
     }
 
     // bovenste kwartdraai: binnenhoek op (x0, zTop), naar het noorden erin, naar het westen eruit
@@ -4833,37 +4908,23 @@ class Component extends DCLogic {
     // dichte wangen rond de draaigedeelten
     const hW = withTop ? TRAP.n * R : Math.min(TRAP.n * R, 258);
     // de wang tegen de oostmuur loopt visueel door in het blauwe wandvlak
-    const wangE = withTop ? boomMat : new T.MeshStandardMaterial({ color: '#6C8B92', roughness: 0.95 });
+    const wangE = withTop ? boomMat : new T.MeshStandardMaterial({ color: '#EFE8DA', roughness: 0.93, bumpMap: this.d3.stucTex, bumpScale: 0.18, envMapIntensity: 0.45 });   // zelfde crème stucwerk als de wand erboven
     // op de begane grond is de wang zo dun dat hij precies in het wandvlak valt
     const tE = withTop ? 4.8 : 1;
     const xE = TRAP.x1 - tE / 2;
-    box(tE, hW, DT, xE, hW / 2, (TRAP.zTop + TRAP.zEnd) / 2, wangE);
+    if (withTop) box(tE, hW, DT, xE, hW / 2, (TRAP.zTop + TRAP.zEnd) / 2, wangE);   // begane grond: de muur zelf, geen extra strook die uitsteekt
     if (withTop) box(W, hW, 4.8, xc, hW / 2, TRAP.zEnd + 2.4, boomMat);
-    box(tE, base, DB, xE, base / 2, (TRAP.zStr + TRAP.zBot) / 2, wangE);
+    if (withTop) box(tE, base, DB, xE, base / 2, (TRAP.zStr + TRAP.zBot) / 2, wangE);
     if (!withTop) {
       // witte plint langs de blauwe wang, in lijn met de rest van de kamer
       const plMat = new T.MeshStandardMaterial({ color: '#FCFAF6', roughness: 0.38 });
       box(1.6, 9, DT, TRAP.x1 - 1.8, 4.5, (TRAP.zTop + TRAP.zEnd) / 2, plMat);
       box(1.6, 9, DB, TRAP.x1 - 1.8, 4.5, (TRAP.zStr + TRAP.zBot) / 2, plMat);
     }
-    box(W, base, 4.8, xc, base / 2, TRAP.zBot - 2.4, boomMat);
+    // geen los blok meer langs de zuidmuur onderaan: de verdikte wang loopt daar door tot op de vloer
 
-    // leuning aan de open zijde, met stijlen onder- en bovenaan
-    const px = TRAP.x0 + 2.4;
-    for (let i = 0; i <= TRAP.nStr - 2; i += 3) {
-      box(4.4, 92, 4.4, px, base + (i + 1) * R + 46, TRAP.zStr - i * GO - GO / 2, boomMat);
-    }
-    const hr = new T.Mesh(new T.BoxGeometry(6.5, 5.5, len), leunMat);
-    hr.rotation.x = ang;
-    hr.position.set(px - CX, base + rise / 2 + R / 2 + 92, zMid - CZ);
-    hr.castShadow = true;
-    g.add(hr);
-    if (withTop) {
-      box(4.4, 92, 4.4, px, TRAP.n * R + 46, TRAP.zTop - 6, boomMat);
-      box(6.5, 5.5, 34, px, TRAP.n * R + 92, TRAP.zTop - 6, leunMat);
-    }
-    box(4.4, 92, 4.4, px, base + 46, TRAP.zStr + 6, boomMat);
-    box(6.5, 5.5, 34, px, base + 92, TRAP.zStr + 6, leunMat);
+    // geen leuning aan de open zijde (wens bewoners); wel een zwarte muurleuning langs de buitenwanden
+    this.stairRail(g, Object.assign({}, TRAP, { xb: XB }), cp);
   };
 
   // kavel: achtertuin op het noorden, bestrating en oprit aan de voorzijde, schuur achterin rechts
