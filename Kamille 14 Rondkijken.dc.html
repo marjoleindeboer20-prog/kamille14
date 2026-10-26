@@ -44,6 +44,7 @@
         </div>
       </div>
       </sc-if>
+      <sc-if value="{{ isLokaal }}" hint-placeholder-val="{{ false }}"><a href="Hexagonwand%20hal.dc.html" style="height:30px;padding:0 11px;display:flex;align-items:center;border-radius:7px;font-size:12.5px;color:#4A4741;text-decoration:none;white-space:nowrap">Hexagonwand</a></sc-if>
       <a href="Draaiboek%20Kamille%2014%20Gedeeld.dc.html" style="height:30px;padding:0 11px;display:flex;align-items:center;border-radius:7px;font-size:12.5px;color:#4A4741;text-decoration:none;white-space:nowrap;margin-right:6px;background:#EDEAE2">‹ Draaiboek</a>
       <sc-if value="{{ isAdm }}" hint-placeholder-val="{{ false }}"><div sc-camel-on-click="{{ onPaint }}" style="{{ paintBtn }}">Verf berekenen</div></sc-if>
       </header>
@@ -274,7 +275,7 @@
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;: { &quot;width&quot;: 1440, &quot;height&quot;: 900 }}">
 const KEY = 'kamille14-rondkijken-v1';
 // vaste indeling voor de publieke versie
-const BAKED_ITEMS = [{"id":"strelitzia-wk","name":"Strelitzia","w":40,"h":40,"hh":175,"x":62,"y":362,"rot":0,"shape":"circle","cat":"div"},{"id":"slede-wk","name":"Sledefauteuil","w":64,"h":78,"hh":105,"x":394,"y":202,"rot":25,"shape":"rect","cat":"zit"},{"id":"brimnes-zo","name":"Brimnes bed","w":166,"h":206,"hh":47,"x":176,"y":378,"rot":0,"shape":"rect","cat":"bed","lv":2},{"id":"tafel-zo","name":"Tafel wit","w":125,"h":75,"hh":74,"x":392,"y":312,"rot":0,"shape":"rect","cat":"eet","lv":2},{"id":"stefan1-zo","name":"Stoel Stefan","w":40,"h":49,"hh":90,"x":362,"y":340,"rot":180,"shape":"rect","cat":"eet","lv":2},{"id":"stefan2-zo","name":"Stoel Stefan","w":40,"h":49,"hh":90,"x":422,"y":340,"rot":180,"shape":"rect","cat":"eet","lv":2},{"id":"bureau-st","name":"Bureau","col":"#4A3528","w":160,"h":80,"hh":75,"x":200,"y":931,"rot":90,"shape":"rect","cat":"kast","lv":1},{"id":"blade1-st","name":"Ladeblok","col":"#4A3528","w":40,"h":74,"hh":72,"x":200,"y":989,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"blade2-st","name":"Ladeblok","col":"#4A3528","w":40,"h":74,"hh":72,"x":200,"y":873,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"bstoel-st","name":"Bureaustoel","w":60,"h":60,"hh":120,"x":267,"y":931,"rot":90,"shape":"rect","cat":"kast","lv":1},{"id":"billy6-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":1036,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy5-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":736,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy1-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":976,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy2-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":916,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy3-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":856,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy4-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":796,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"f1mta7mngo","name":"Eettafel","w":220,"h":100,"x":128,"y":588,"rot":90,"shape":"rect","cat":"eet"},{"id":"f3mta857u5","name":"Tv-meubel","w":100,"h":40,"hh":45,"x":62,"y":274,"rot":270,"shape":"rect","cat":"zit"},{"id":"f4mta85o82","name":"Salontafel","w":60,"h":60,"hh":42,"x":394,"y":330,"rot":0,"shape":"rect","cat":"zit","col":"#D9CDB8"},{"id":"f5mta89bg0","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":652,"rot":90,"shape":"rect","cat":"eet"},{"id":"f6mta89pe7","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":652,"rot":270,"shape":"rect","cat":"eet"},{"id":"f7mta89tol","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":594,"rot":270,"shape":"rect","cat":"eet"},{"id":"f8mta89yrx","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":594,"rot":90,"shape":"rect","cat":"eet"},{"id":"f9mta8a2f6","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":536,"rot":90,"shape":"rect","cat":"eet"},{"id":"f10mta8a5jx","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":536,"rot":270,"shape":"rect","cat":"eet"},{"id":"bin-keuken","name":"Prullenbak","w":30,"h":30,"hh":65,"x":57,"y":1066,"rot":0,"shape":"circle","cat":"div"},{"id":"bijzettafel-wk","name":"Bijzettafel rond met monstera","w":50,"h":50,"hh":50,"x":536,"y":556,"rot":0,"shape":"circle","cat":"zit"},{"id":"boekenkast-zo","name":"Boekenkast zwartbruin","w":90,"h":37,"hh":197,"x":47.5,"y":643,"rot":270,"shape":"rect","cat":"berg","lv":2},{"id":"f2mtbpssgj","name":"Vloerkleed","w":200,"h":250,"hh":1,"x":395,"y":345,"rot":0,"shape":"rect","cat":"kleed","col":"#E2D9CA"},{"id":"f1mtbqs5bb","name":"Hoekbank Charlotte rechts","w":295,"h":272,"hh":78,"x":431,"y":376,"rot":90,"shape":"L","cat":"zit","col":"#DDCFB9"},{"id":"kapstok-hal","name":"Kapstok","w":79,"h":32,"hh":185,"x":356,"y":1021,"rot":270,"cat":"berg","col":"#2B2A27"},{"id":"schoenenrek-hal","name":"Schoenenrek","w":79,"h":32,"hh":37,"x":356,"y":1021,"rot":270,"shape":"rect","cat":"berg"},{"id":"spiegel-hal","name":"Wandspiegel whitewash","w":50,"h":3.5,"hh":215,"sh":160,"lt":6,"frame":"#E4DED3","x":511,"y":938.75,"rot":0,"shape":"rect","cat":"div"},{"id":"kastje-hal","name":"Kastje wit","w":59,"h":35,"hh":85,"x":423.5,"y":1063.5,"rot":180,"shape":"rect","cat":"berg","col":"#F3F2EE"},{"id":"meterkast-hal","name":"Meterkast","w":117,"h":35,"hh":258,"x":511.5,"y":1063.5,"rot":180,"shape":"rect","cat":"berg","col":"#F3F2EE"},{"id":"bed-sk1","name":"Tweepersoonsbed","w":160,"h":200,"hh":95,"x":129,"y":335,"rot":270,"shape":"rect","cat":"bed","lv":1,"col":"#9C8C76","wood":true},{"id":"fotoplank-sk1","name":"Fotoplank zwart","w":115,"h":12,"hh":150,"x":35,"y":339,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"nk1-sk1","name":"Nachtkastje","col":"#9C8C76","w":55,"h":40,"hh":48,"x":49,"y":226,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"nk2-sk1","name":"Nachtkastje","col":"#9C8C76","w":55,"h":40,"hh":48,"x":49,"y":444,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"kk-sk1","name":"Kledingkast","w":200,"h":60,"hh":220,"x":129.5,"y":626,"rot":180,"shape":"rect","cat":"kast","lv":1},{"id":"nymo-1","name":"Hanglamp Nymo","w":44,"h":44,"hh":258,"x":128,"y":533,"rot":0,"shape":"circle","cat":"div","lv":0,"pend":true},{"id":"nymo-2","name":"Hanglamp Nymo","w":44,"h":44,"hh":258,"x":128,"y":643,"rot":0,"shape":"circle","cat":"div","lv":0,"pend":true},{"id":"lauters-wk","name":"Staande lamp Lauters","w":52,"h":52,"hh":147,"x":541,"y":186,"rot":0,"shape":"circle","cat":"div","lv":0},{"id":"bed-sk2","name":"Eenpersoonsbed","w":90,"h":200,"hh":85,"x":505,"y":257,"rot":0,"shape":"rect","cat":"bed","lv":1,"white":true},{"id":"wasmand-bk","name":"Wasmand zwart","w":44.8,"h":34.1,"hh":61.5,"x":367,"y":889.5,"rot":90,"shape":"rect","cat":"div","lv":1},{"id":"ladekast-sk2","name":"Ladekast","w":100,"h":48,"hh":75,"x":546,"y":409,"rot":90,"shape":"rect","cat":"kast","lv":1},{"id":"spiegel-sk2","name":"Wandspiegel zwart","w":40,"h":3,"hh":190,"x":30.5,"y":534,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"billy1-sk2","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":637,"y":524,"rot":270,"shape":"rect","cat":"kast","besta":true,"camping":1},{"id":"billy2-sk2","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":637,"y":584,"rot":270,"shape":"rect","cat":"kast","besta":true,"camping":2},{"id":"besta1-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":322,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta2-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":262,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta3-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":202,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta4-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":142,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta5-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":442,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta6-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":382,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"koelvries-gar","name":"Koel-vriescombinatie","w":59.5,"h":65.8,"hh":185.3,"x":650,"y":178,"rot":270,"shape":"rect","cat":"kast"},{"id":"platsa1-gar","name":"Platsa kast wit","w":60,"h":55,"hh":180,"x":644.5,"y":238,"rot":270,"shape":"rect","cat":"kast"},{"id":"platsa2-gar","name":"Platsa kast wit","w":60,"h":55,"hh":180,"x":644.5,"y":298,"rot":270,"shape":"rect","cat":"kast"},{"id":"platsa3-gar","name":"Platsa kast wit","w":60,"h":55,"hh":180,"x":644.5,"y":358,"rot":270,"shape":"rect","cat":"kast"},{"id":"fontein-gar","name":"Fonteinmeubel","w":46,"h":41,"hh":88,"x":647.5,"y":47,"rot":270,"shape":"rect","cat":"kast"},{"id":"airco-gar","name":"Airco binnendeel","w":80,"h":22,"hh":232,"x":906,"y":110,"rot":90,"shape":"rect","cat":"kast"},{"id":"besta1-st","name":"Bestå open kast","besta":true,"w":60,"h":40,"hh":193,"x":99,"y":686,"rot":0,"shape":"rect","cat":"kast","lv":1,"front":"lades"},{"id":"besta2-st","name":"Bestå open kast","besta":true,"w":60,"h":40,"hh":193,"x":159,"y":686,"rot":0,"shape":"rect","cat":"kast","lv":1,"front":"deuren"},{"id":"bestalaag-st","name":"Bestå laag met printer","w":60,"h":40,"hh":64,"x":220,"y":1041,"rot":270,"shape":"rect","cat":"kast","lv":1,"lowbesta":true},{"id":"brimkast-zo","name":"Brimnes kledingkast","w":117,"h":50,"hh":190,"x":55,"y":539.5,"rot":270,"shape":"rect","cat":"kast","lv":2,"kast3":true}];
+const BAKED_ITEMS = [{"id":"strelitzia-wk","name":"Strelitzia","w":40,"h":40,"hh":175,"x":62,"y":362,"rot":0,"shape":"circle","cat":"div"},{"id":"slede-wk","name":"Sledefauteuil","w":64,"h":78,"hh":105,"x":409,"y":202,"rot":12,"shape":"rect","cat":"zit"},{"id":"slede2-wk","name":"Sledefauteuil","w":64,"h":78,"hh":105,"x":314,"y":202,"rot":348,"shape":"rect","cat":"zit"},{"id":"brimnes-zo","name":"Brimnes bed","w":166,"h":206,"hh":47,"x":176,"y":378,"rot":0,"shape":"rect","cat":"bed","lv":2},{"id":"tafel-zo","name":"Tafel wit","w":125,"h":75,"hh":74,"x":392,"y":312,"rot":0,"shape":"rect","cat":"eet","lv":2},{"id":"stefan1-zo","name":"Stoel Stefan","w":40,"h":49,"hh":90,"x":362,"y":340,"rot":180,"shape":"rect","cat":"eet","lv":2},{"id":"stefan2-zo","name":"Stoel Stefan","w":40,"h":49,"hh":90,"x":422,"y":340,"rot":180,"shape":"rect","cat":"eet","lv":2},{"id":"bureau-st","name":"Bureau","col":"#4A3528","w":160,"h":80,"hh":75,"x":200,"y":931,"rot":90,"shape":"rect","cat":"kast","lv":1},{"id":"blade1-st","name":"Ladeblok","col":"#4A3528","w":40,"h":74,"hh":72,"x":200,"y":989,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"blade2-st","name":"Ladeblok","col":"#4A3528","w":40,"h":74,"hh":72,"x":200,"y":873,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"bstoel-st","name":"Bureaustoel","w":60,"h":60,"hh":120,"x":267,"y":931,"rot":90,"shape":"rect","cat":"kast","lv":1},{"id":"billy6-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":1036,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy5-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":736,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy1-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":976,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy2-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":916,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy3-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":856,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"billy4-st","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":49,"y":796,"rot":270,"shape":"rect","cat":"kast","lv":1,"besta":true},{"id":"f1mta7mngo","name":"Eettafel","w":220,"h":100,"x":128,"y":588,"rot":90,"shape":"rect","cat":"eet"},{"id":"f3mta857u5","name":"Tv-meubel","w":100,"h":40,"hh":45,"x":62,"y":274,"rot":270,"shape":"rect","cat":"zit"},{"id":"f4mta85o82","name":"Salontafel","w":60,"h":60,"hh":42,"x":394,"y":330,"rot":0,"shape":"rect","cat":"zit","col":"#D9CDB8"},{"id":"f5mta89bg0","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":652,"rot":90,"shape":"rect","cat":"eet"},{"id":"f6mta89pe7","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":652,"rot":270,"shape":"rect","cat":"eet"},{"id":"f7mta89tol","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":594,"rot":270,"shape":"rect","cat":"eet"},{"id":"f8mta89yrx","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":594,"rot":90,"shape":"rect","cat":"eet"},{"id":"f9mta8a2f6","name":"Eetstoel","w":50,"h":50,"hh":90,"x":178,"y":536,"rot":90,"shape":"rect","cat":"eet"},{"id":"f10mta8a5jx","name":"Eetstoel","w":50,"h":50,"hh":90,"x":72,"y":536,"rot":270,"shape":"rect","cat":"eet"},{"id":"bin-keuken","name":"Prullenbak","w":30,"h":30,"hh":65,"x":57,"y":1066,"rot":0,"shape":"circle","cat":"div"},{"id":"bijzettafel-wk","name":"Bijzettafel rond met monstera","w":50,"h":50,"hh":50,"x":536,"y":556,"rot":0,"shape":"circle","cat":"zit"},{"id":"boekenkast-zo","name":"Boekenkast zwartbruin","w":90,"h":37,"hh":197,"x":551.5,"y":486,"rot":90,"shape":"rect","cat":"berg","lv":1},{"id":"f2mtbpssgj","name":"Vloerkleed","w":200,"h":250,"hh":1,"x":395,"y":345,"rot":0,"shape":"rect","cat":"kleed","col":"#E2D9CA"},{"id":"f1mtbqs5bb","name":"Hoekbank Charlotte rechts","w":295,"h":272,"hh":78,"x":431,"y":376,"rot":90,"shape":"L","cat":"zit","col":"#DDCFB9"},{"id":"kapstok-hal","name":"Kapstok","w":79,"h":32,"hh":185,"x":356,"y":1021,"rot":270,"cat":"berg","col":"#2B2A27"},{"id":"schoenenrek-hal","name":"Schoenenrek","w":79,"h":32,"hh":37,"x":356,"y":1021,"rot":270,"shape":"rect","cat":"berg"},{"id":"spiegel-hal","name":"Wandspiegel whitewash","w":50,"h":3.5,"hh":215,"sh":160,"lt":6,"frame":"#E4DED3","x":511,"y":938.75,"rot":0,"shape":"rect","cat":"div"},{"id":"kastje-hal","name":"Kastje wit","w":59,"h":35,"hh":85,"x":423.5,"y":1063.5,"rot":180,"shape":"rect","cat":"berg","col":"#F3F2EE"},{"id":"meterkast-hal","name":"Meterkast","w":117,"h":35,"hh":258,"x":511.5,"y":1063.5,"rot":180,"shape":"rect","cat":"berg","col":"#F3F2EE"},{"id":"bed-sk1","name":"Tweepersoonsbed","w":160,"h":200,"hh":95,"x":129,"y":335,"rot":270,"shape":"rect","cat":"bed","lv":1,"col":"#9C8C76","wood":true},{"id":"fotoplank-sk1","name":"Fotoplank zwart","w":115,"h":12,"hh":150,"x":35,"y":339,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"nk1-sk1","name":"Nachtkastje","col":"#9C8C76","w":55,"h":40,"hh":48,"x":49,"y":226,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"nk2-sk1","name":"Nachtkastje","col":"#9C8C76","w":55,"h":40,"hh":48,"x":49,"y":444,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"kk-sk1","name":"Kledingkast","w":200,"h":60,"hh":220,"x":129.5,"y":626,"rot":180,"shape":"rect","cat":"kast","lv":1},{"id":"nymo-1","name":"Hanglamp Nymo","w":44,"h":44,"hh":258,"x":128,"y":533,"rot":0,"shape":"circle","cat":"div","lv":0,"pend":true},{"id":"nymo-2","name":"Hanglamp Nymo","w":44,"h":44,"hh":258,"x":128,"y":643,"rot":0,"shape":"circle","cat":"div","lv":0,"pend":true},{"id":"lauters-wk","name":"Staande lamp Lauters","w":52,"h":52,"hh":147,"x":541,"y":186,"rot":0,"shape":"circle","cat":"div","lv":0},{"id":"bed-sk2","name":"Eenpersoonsbed","w":90,"h":200,"hh":85,"x":505,"y":257,"rot":0,"shape":"rect","cat":"bed","lv":1,"white":true},{"id":"wasmand-bk","name":"Wasmand zwart","w":44.8,"h":34.1,"hh":61.5,"x":367,"y":889.5,"rot":90,"shape":"rect","cat":"div","lv":1},{"id":"ladekast-sk2","name":"Ladekast","w":100,"h":48,"hh":75,"x":305,"y":220,"rot":90,"shape":"rect","cat":"kast","lv":1},{"id":"klapstoel-sk1","name":"Klapstoel zwart","w":45,"h":48,"hh":80,"x":296,"y":304,"rot":70,"shape":"rect","cat":"kast","lv":1,"col":"#1B1B1C"},{"id":"spiegel-sk2","name":"Wandspiegel zwart","w":40,"h":3,"hh":190,"x":30.5,"y":534,"rot":270,"shape":"rect","cat":"kast","lv":1},{"id":"billy1-sk2","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":637,"y":238,"rot":270,"shape":"rect","cat":"kast","besta":true},{"id":"billy2-sk2","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":637,"y":298,"rot":270,"shape":"rect","cat":"kast","besta":true},{"id":"besta1-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":322,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta2-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":262,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta3-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":202,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta4-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":142,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta5-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":442,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"besta6-gar","name":"Bestå open kast","w":60,"h":40,"hh":193,"x":897,"y":382,"rot":90,"shape":"rect","cat":"kast","besta":true},{"id":"koelvries-gar","name":"Koel-vriescombinatie","w":59.5,"h":65.8,"hh":185.3,"x":650,"y":178,"rot":270,"shape":"rect","cat":"kast"},{"id":"platsa1-gar","name":"Platsa kast wit","w":60,"h":55,"hh":180,"x":644.5,"y":524,"rot":270,"shape":"rect","cat":"kast","camping":1},{"id":"platsa2-gar","name":"Platsa kast wit","w":60,"h":55,"hh":180,"x":644.5,"y":584,"rot":270,"shape":"rect","cat":"kast","camping":2},{"id":"platsa3-gar","name":"Platsa kast wit","w":60,"h":55,"hh":180,"x":644.5,"y":358,"rot":270,"shape":"rect","cat":"kast"},{"id":"fontein-gar","name":"Fonteinmeubel","w":46,"h":41,"hh":88,"x":647.5,"y":47,"rot":270,"shape":"rect","cat":"kast"},{"id":"airco-gar","name":"Airco binnendeel","w":80,"h":22,"hh":232,"x":906,"y":110,"rot":90,"shape":"rect","cat":"kast"},{"id":"besta1-st","name":"Bestå open kast","besta":true,"w":60,"h":40,"hh":193,"x":99,"y":686,"rot":0,"shape":"rect","cat":"kast","lv":1,"front":"lades"},{"id":"besta2-st","name":"Bestå open kast","besta":true,"w":60,"h":40,"hh":193,"x":159,"y":686,"rot":0,"shape":"rect","cat":"kast","lv":1,"front":"deuren"},{"id":"bestalaag-st","name":"Bestå laag met printer","w":60,"h":40,"hh":64,"x":220,"y":1041,"rot":270,"shape":"rect","cat":"kast","lv":1,"lowbesta":true},{"id":"brimkast-zo","name":"Brimnes kledingkast","w":117,"h":50,"hh":190,"x":55,"y":539.5,"rot":270,"shape":"rect","cat":"kast","lv":2,"kast3":true}];
 const CX = 466, CZ = 555;
 // tweede indeling woonkamer: bank tegen de westmuur, tv-meubel tegen de blauwe muur
 const ALT_WOON = {
@@ -596,6 +597,7 @@ function kindOf(it) {
   if (it.shape === 'L') return 'sofaL';
   if (n.indexOf('prullenbak') >= 0) return 'bin';
   if (n.indexOf('kapstok') >= 0) return 'rack';
+  if (n.indexOf('klapstoel') >= 0) return 'klapstoel';
   if (n.indexOf('slede') >= 0) return 'sled';
   if (n.indexOf('bank') >= 0 || n.indexOf('chaise') >= 0 || n.indexOf('fauteuil') >= 0) return 'sofa';
   if (n.indexOf('poef') >= 0) return 'pouf';
@@ -1061,7 +1063,7 @@ function buildPiece(T, g, it, col, fabTex) {
   if (k === 'hexwand') {
     // hexagon fotocollectie (foto): 12 zeshoeken 28×24, liggend (punt links en rechts), zwart-wit foto's, groen blad, hartje
     const R = 14, gx = 23, gy = 26, y0 = hh - 12 - 2 * gy;
-    const hexShape = (rr) => { const sh = new T.Shape(); for (let a = 0; a < 6; a++) { const an = a * Math.PI / 3; const px = rr * Math.cos(an), py = rr * Math.sin(an); if (a) sh.lineTo(px, py); else sh.moveTo(px, py); } sh.closePath(); return sh; };
+    const hexShape = (rr) => { const sh = new T.Shape(), hy = 12 * rr / R; sh.moveTo(rr, 0); sh.lineTo(rr / 2, hy); sh.lineTo(-rr / 2, hy); sh.lineTo(-rr, 0); sh.lineTo(-rr / 2, -hy); sh.lineTo(rr / 2, -hy); sh.closePath(); return sh; };   // 28 × 24 cm
     const tex = (kind, seed) => {
       const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
       let sd = seed * 9301 + 49297; const rnd = () => (sd = (sd * 9301 + 49297) % 233280) / 233280;
@@ -1082,15 +1084,61 @@ function buildPiece(T, g, it, col, fabTex) {
       else { x.fillStyle = '#EAD9C8'; x.fillRect(0, 0, 128, 128); x.fillStyle = '#C9A993'; for (let i = 0; i < 4; i++) x.fillRect(20 + i * 24, 30, 12, 70); x.strokeStyle = '#6C8A4E'; x.lineWidth = 4; x.beginPath(); x.moveTo(10, 128); x.lineTo(40, 10); x.stroke(); }
       const t = new T.CanvasTexture(c); t.repeat.set(1 / (2 * R), 1 / (2 * R)); t.offset.set(0.5, 0.5); if (T.SRGBColorSpace) t.colorSpace = T.SRGBColorSpace; return t;
     };
-    const L = [[0, 0.5, 'zw'], [1, 0, 'strand'], [1, 1, 'zw'], [1, 2, 'blad'], [2, 0.5, 'zw'], [2, 1.5, 'zw'], [3, 0, 'groot'], [3, 1, 'hart'], [3, 2, 'zw'], [4, 0.5, 'zw'], [4, 1.5, 'effen'], [5, 0, 'zw'], [5, 1, 'stad']];
+    const L = [[0, 1.5, 'zw'], [1, 1, 'strand'], [2, 0.5, 'zw'], [2, 1.5, 'blad'], [4, 0.5, 'hart'], [1, 2, 'effen'], [3, 0, 'groot'], [3, 1, 'zw'], [3, 2, 'zw'], [4, 1.5, 'zw'], [5, 1, 'zw'], [5, 2, 'zw']];   // 12 kaders als wolk; hart (4) en family (5) raken elkaar niet
     const rand = new T.MeshStandardMaterial({ color: '#EFE9DE', roughness: 0.7 });
+    // eigen foto's van de pagina Hexagonwand hal (alleen lokaal, in deze browser bewaard)
+    let eigen = {}, zwF = false;
+    try { eigen = JSON.parse(localStorage.getItem('kamille14-hexfotos') || '{}') || {}; zwF = localStorage.getItem('kamille14-hexzw') === '1'; } catch (e) {}
+    const fotoTex = (p, mat) => {
+      const im = new Image();
+      im.onload = () => {
+        const N = 512, c = document.createElement('canvas'); c.width = c.height = N; const x = c.getContext('2d');
+        const W = N, H = N * 24 / 28, top = (N - H) / 2;
+        const s = Math.max(W / p.w, H / p.h) * (p.z || 1), dw = p.w * s, dh = p.h * s;
+        if (zwF) x.filter = 'grayscale(1) contrast(1.05)';
+        x.drawImage(im, (W - dw) * p.x / 100, top + (H - dh) * p.y / 100, dw, dh);
+        const t = new T.CanvasTexture(c); t.repeat.set(1 / (2 * R), 1 / (2 * R)); t.offset.set(0.5, 0.5); if (T.SRGBColorSpace) t.colorSpace = T.SRGBColorSpace;
+        if (mat.map) mat.map.dispose(); mat.map = t; mat.needsUpdate = true;
+      };
+      im.src = p.src;
+    };
+    let lay = null; try { lay = JSON.parse(localStorage.getItem('kamille14-hexlayout') || 'null'); } catch (e) {}
+    // vaste indeling (wolk); eigen foto's en indeling uit deze browser gaan voor, die ziet alleen deze computer
+    if (!Array.isArray(lay) || lay.length !== L.length) lay = [[0, 1.5], [1, 1], [2, 0.5], [2, 1.5], [4, 0.5], [1, 2], [3, 0], [3, 1], [1, 0], [4, 1.5], [5, 1], [5, 2]];
+    if (Array.isArray(lay) && lay.length === L.length) L.forEach((p, i) => { p[0] = lay[i][0]; p[1] = lay[i][1]; });
     L.forEach(([c, rw, kind], i) => {
       const px = -w / 2 + R + c * gx, py = hh - 12 - rw * gy;
       const back = new T.Mesh(new T.ExtrudeGeometry(hexShape(R), { depth: 1.2, bevelEnabled: false }), rand);
       back.position.set(px, py, -dp / 2); back.castShadow = true; g.add(back);
       const f = new T.Mesh(new T.ShapeGeometry(hexShape(R - 0.7)), new T.MeshStandardMaterial({ map: tex(kind, i + 1), roughness: 0.6 }));
       f.position.set(px, py, -dp / 2 + 1.25); g.add(f);
+      if (eigen[i] && eigen[i].src) fotoTex(eigen[i], f.material);
+
     });
+    return;
+  }
+
+  if (k === 'klapstoel') {
+    // zwarte klapstoel, uitgeklapt: buisframe met gekruiste poten, vlakke zitting en rugleuning
+    const zw = new T.MeshStandardMaterial({ color: '#1B1B1C', roughness: 0.45, metalness: 0.35 });
+    const zm = new T.MeshStandardMaterial({ color: '#232324', roughness: 0.7 });
+    const tube = (x, y0, z0, y1, z1, r) => {
+      const L = Math.hypot(y1 - y0, z1 - z0);
+      const m = box(r, L, r, x, (y0 + y1) / 2, (z0 + z1) / 2, zw);
+      m.rotation.x = Math.atan2(z1 - z0, y1 - y0);
+      return m;
+    };
+    const sh = 45, zb = -dp / 2 + 3, zf = dp / 2 - 3;
+    [-1, 1].forEach(s => {
+      const x = s * (w / 2 - 1.5);
+      tube(x, 0, zb + 4, hh, zb, 2.2);                    // achterpoot en rugstijl in één buis
+      tube(x * 0.9, 0, zf, sh + 1, zb + 6, 2);             // voorpoot schuin naar achter onder de zitting
+      box(2, 1.8, zf - zb - 4, x * 0.9, sh - 1, (zf + zb) / 2 + 1, zw);   // zitregel
+    });
+    box(w - 4, 1.8, zf - zb - 2, 0, sh, (zf + zb) / 2 + 1, zm);           // zitting
+    const bk = box(w - 4, 16, 1.4, 0, hh - 11, zb + 1.1, zm); bk.rotation.x = -Math.atan(4 / hh);   // rugleuning
+    box(w - 6, 1.6, 1.6, 0, 10, zf - 1, zw);
+    box(w - 4, 1.6, 1.6, 0, 10, zb + 3.5, zw);
     return;
   }
 
@@ -1102,6 +1150,72 @@ function buildPiece(T, g, it, col, fabTex) {
     box(w - 2, pl, dp - 6, 0, pl / 2, -2, wit);
     box(w, kh, dp - 2, 0, pl + kh / 2, -1, wit);
     const dh = (kh - 0.8) / 3;
+    if (it.camping) {
+      // open Platsa vol kampeerspullen: holle romp met legplanken, deuren opengezwaaid
+      const st = 1.8;
+      g.children.splice(g.children.length - 1, 1);
+      box(st, kh, dp - 2, -w / 2 + st / 2, pl + kh / 2, -1, wit); box(st, kh, dp - 2, w / 2 - st / 2, pl + kh / 2, -1, wit);
+      box(w, st, dp - 2, 0, pl + st / 2, -1, wit); box(w, st, dp - 2, 0, hh - st / 2, -1, wit);
+      box(w - st * 2, kh, 0.6, 0, pl + kh / 2, -dp / 2 + 0.3, wit);
+      for (let c = 1; c < 6; c++) box(w - st * 2, st, dp - 4, 0, pl + st + (hh - pl - st * 2) * c / 6, -1, wit);
+      const ph = -100 * Math.PI / 180, dwd = w - 0.4;
+      for (let i = 0; i < 3; i++) {
+        const yc = pl + 0.2 + dh * i + dh / 2;
+        const d = box(dwd, dh - 0.4, 1.8, -w / 2 + Math.cos(ph) * dwd / 2, yc, dp / 2 + 0.9 - Math.sin(ph) * dwd / 2, dw);
+        d.rotation.y = ph;
+        d.userData.door = { kast: it.id + ':' + i, cp: new T.Vector3(0, yc, dp / 2 - 0.9), op: d.position.clone(), closedRot: 0, openRot: ph, open: true, t: 1 };
+      }
+      // kampeerspullen per vak: slaapzakken, matjes, tentzak, opbergboxen, stoeltjes, kooktoestel en lantaarn
+      const M = (c, r) => new T.MeshStandardMaterial({ color: c, roughness: r === undefined ? 0.85 : r, metalness: 0 });
+      const yb = (i) => pl + st + (hh - pl - st * 2) * i / 6;
+      const vak = (c) => (c === 0 ? pl + st : yb(c) + st / 2);
+      const cyl = (r, len, x, y, z, mat, as) => {
+        const m = new T.Mesh(new T.CylinderGeometry(r, r, len, 20), mat);
+        if (as === 'x') m.rotation.z = Math.PI / 2; else if (as === 'z') m.rotation.x = Math.PI / 2;
+        m.position.set(x, y, z); m.castShadow = true; m.receiveShadow = true; g.add(m); return m;
+      };
+      const iw = w - st * 2, zf = dp / 2 - 2;
+      const A = it.camping === 2;
+      const lay = A
+        ? ['box', 'matjes', 'tent', 'stoel', 'koken', 'box']
+        : ['slaapzak', 'slaapzak', 'box', 'matjes', 'koken', 'tent'];
+      const cols = A ? ['#3D5A73', '#C2672E', '#4F6B3A', '#6E2F2B'] : ['#2F5A4A', '#B8452F', '#2E4462', '#C9A03A'];
+      lay.forEach((t, c) => {
+        const y0 = vak(c), col = cols[c % cols.length];
+        if (t === 'slaapzak') {
+          [-1, 1].forEach((sx, i) => {
+            cyl(12.5, 34, sx * iw / 4, y0 + 12.5, 0.5, M(i ? col : cols[(c + 1) % cols.length], 0.7), 'z');
+            cyl(12.8, 2, sx * iw / 4, y0 + 12.5, 0.5 + 16.5, M('#1E1E1E', 0.6), 'z');   // trekkoord-rand
+          });
+        } else if (t === 'matjes') {
+          cyl(7, iw - 4, 0, y0 + 7, zf - 9, M(col, 0.6), 'x');
+          cyl(7, iw - 4, 0, y0 + 7, zf - 25, M('#7C8A3E', 0.6), 'x');
+          cyl(6, iw - 8, 0, y0 + 19.5, zf - 17, M('#5B6770', 0.6), 'x');
+        } else if (t === 'tent') {
+          cyl(11, iw - 6, 0, y0 + 11, 0, M(col, 0.75), 'x');
+          [-1, 1].forEach(sx => cyl(11.3, 1.5, sx * (iw / 2 - 5), y0 + 11, 0, M('#222', 0.6), 'x'));
+        } else if (t === 'box') {
+          const bw = iw - 3, bhh = 24, bd = dp - 6;
+          box(bw, bhh - 2, bd, 0, y0 + (bhh - 2) / 2, 0, M('#D9D6CF', 0.5));     // grijze opbergbox
+          box(bw + 0.6, 2.2, bd + 0.6, 0, y0 + bhh - 1.1, 0, M(col, 0.5));     // gekleurd deksel
+          box(12, 3, 0.8, 0, y0 + bhh - 6, bd / 2 + 0.3, M('#3A3A3A', 0.5));   // handgreep
+        } else if (t === 'stoel') {
+          [0, 1].forEach(i => {
+            box(iw - 6, 4, 34, 0, y0 + 2 + i * 4.4, 0, M(i ? '#2E4462' : '#4F6B3A', 0.8));
+            [-1, 1].forEach(sx => box(1.6, 1.6, 34, sx * (iw / 2 - 5), y0 + 4.3 + i * 4.4, 0, M('#9AA0A6', 0.3)));
+          });
+          box(iw - 10, 10, 22, 0, y0 + 14, 0, M('#C2672E', 0.7));   // opgevouwen tafeltje in tas
+        } else if (t === 'koken') {
+          box(26, 10, 24, -iw / 2 + 15, y0 + 5, 2, M('#6A6E72', 0.4));   // kooktoestel in koffer
+          cyl(5.5, 16, -iw / 2 + 9, y0 + 18, -4, M('#2F6FB0', 0.4));     // gasbusje
+          cyl(9, 6, iw / 2 - 12, y0 + 3, 2, M('#9A9C9E', 0.3));          // pannenset
+          cyl(8.2, 5, iw / 2 - 12, y0 + 8.5, 2, M('#8C8E90', 0.3));
+          cyl(4, 14, iw / 2 - 12, y0 + 18, 2, M('#E8E2C8', 0.4));        // lantaarn
+          cyl(4.5, 2, iw / 2 - 12, y0 + 26, 2, M('#2A2A2A', 0.5));
+        }
+      });
+      return;
+    }
     for (let i = 0; i < 3; i++) {
       const yc = pl + 0.2 + dh * i + dh / 2;
       box(w - 0.4, dh - 0.4, 1.8, 0, yc, dp / 2 - 0.9, dw);
@@ -2830,7 +2944,7 @@ class Component extends DCLogic {
   // deuren zwaaien open en dicht; het blad schuift daarbij uit de dagkant naar het scharnier
   animDoors = (dt) => {
     const d = this.d3; if (!d || !d.doors) return;
-    d.doors.forEach(leaf => {
+    d.doors.concat(d.kastDoors || []).forEach(leaf => {
       const u = leaf.userData.door;
       const goal = u.open ? 1 : 0;
       if (u.t === goal) return;
@@ -2873,16 +2987,18 @@ class Component extends DCLogic {
 
   // klik op een deurblad: open of dicht
   hitDoor = (cx, cy) => {
-    const d = this.d3; if (!d || !d.doors || !d.doors.length) return false;
+    const d = this.d3; if (!d || !d.doors) return false;
+    const all = d.doors.concat(d.kastDoors || []); if (!all.length) return false;
     const r = this.cv.getBoundingClientRect();
     const nd = new d.T.Vector2(((cx - r.left) / r.width) * 2 - 1, -((cy - r.top) / r.height) * 2 + 1);
     d.ray.setFromCamera(nd, d.camera);
-    const hits = d.ray.intersectObjects(d.doors, true);
+    const hits = d.ray.intersectObjects(all, true);
     if (!hits.length) return false;
     let o = hits[0].object;
     while (o && !(o.userData && o.userData.door)) o = o.parent;
     if (!o) return false;
     o.userData.door.open = !o.userData.door.open;
+    if (o.userData.door.kast) { this._kastOpen = this._kastOpen || {}; this._kastOpen[o.userData.door.kast] = o.userData.door.open; }
     return true;
   };
 
@@ -6264,6 +6380,7 @@ class Component extends DCLogic {
     const tone = TONES[this.props.furnitureTone] || TONES.Zacht;
     const acc = this.props.accentColor ?? '#B4553A';
     this.purge(d.furnGroup);
+    d.kastDoors = [];
     if (LVL === 3) return;
     if (!d.fab) { d.fab = mkTex(T, 'fabric'); d.fab.repeat.set(9, 9); }
 
@@ -6280,6 +6397,11 @@ class Component extends DCLogic {
       try { buildPiece(T, holder, it, baseCol(it, tone), d.fab); }
       catch (e) { console.error('3D-vorm mislukt voor', it.name, e); }
       holder.traverse(o => {
+        if (o.userData.door && o.userData.door.kast) {
+          const u = o.userData.door, km = this._kastOpen || {};
+          if (km[u.kast] === false) { u.open = false; u.t = 0; o.rotation.y = u.closedRot; o.position.copy(u.cp); }
+          d.kastDoors.push(o);
+        }
         if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; o.userData.id = it.id; }
       });
       if (on) {
@@ -6916,6 +7038,7 @@ class Component extends DCLogic {
     const seg = (on) => ({ flex: 1, height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', cursor: 'pointer', fontSize: '12.5px', userSelect: 'none', color: on ? '#FBFAF7' : '#4A4741', background: on ? '#3A3833' : 'transparent' });
     const togglePaint = () => this.setState({ paintOpen: !s.paintOpen }, () => { if (this.onResize) this.onResize(); });
     return {
+      isLokaal: !/naarkamille14\.nl$/i.test(location.hostname),
       paintOpen: !!s.paintOpen && this.isAdm(), onPaint: togglePaint, isAdm: this.isAdm(), isMW: this.isMW(), loading3d: !!s.loading3d && !s.note3d, paintBtn: chip(!!s.paintOpen),
       paintG: pr.filter(r => r.lvl === 0),
       paint1: pr.filter(r => r.lvl === 1),
